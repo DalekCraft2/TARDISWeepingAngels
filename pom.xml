@@ -1,5 +1,6 @@
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.eccentric_nz.tardisweepingangels</groupId>
@@ -14,7 +15,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
-        <java.version>16</java.version>
+        <spigot.version>1.17.1</spigot.version>
+        <spigot.javadocs>https://hub.spigotmc.org/javadocs/spigot/</spigot.javadocs>
     </properties>
     <licenses>
         <license>
@@ -49,7 +51,7 @@
         <repository>
             <!-- Citizens -->
             <id>citizens-repo</id>
-            <url>http://repo.citizensnpcs.co/</url>
+            <url>https://repo.citizensnpcs.co/</url>
         </repository>
         <repository>
             <!-- WorldEdit, WorldGuard -->
@@ -119,72 +121,70 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <links> <!-- References to external Javadocs -->
+                        <!-- Spigot-API -->
+                        <link>${spigot.javadocs}</link>
+                        <!-- Jetbrains Java Annotations -->
+                        <link>https://javadoc.io/doc/org.jetbrains/annotations/latest/</link>
+                        <!-- Citizens -->
+                        <link>https://jd.citizensnpcs.co/</link>
+                        <!-- WorldEdit -->
+                        <link>https://docs.enginehub.org/javadoc/com.sk89q.worldedit/worldedit-core/snapshot/</link>
+                        <!-- WorldGuard -->
+                        <link>https://docs.enginehub.org/javadoc/com.sk89q.worldguard/worldguard-core/snapshot/</link>
+                    </links>
+                </configuration>
             </plugin>
         </plugins>
     </build>
     <dependencies>
+        <!-- Hard Dependencies -->
+        <dependency>
+            <!-- Spigot-API -->
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>${spigot.version}-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Shaded Dependencies -->
         <dependency>
             <!-- JetBrains Java Annotations -->
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
             <version>21.0.1</version>
-            <type>jar</type>
             <scope>compile</scope>
-            <optional>true</optional>
         </dependency>
-        <dependency>
-            <!-- Spigot-API -->
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.17-R0.1-SNAPSHOT</version>
-            <type>jar</type>
-            <scope>provided</scope>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <!-- Spigot-Server -->
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot</artifactId>
-            <version>1.17-R0.1-SNAPSHOT</version>
-            <type>jar</type>
-            <scope>provided</scope>
-            <optional>true</optional>
-        </dependency>
+
+        <!-- Soft Dependencies -->
         <dependency>
             <!-- TARDISChunkGenerator -->
             <groupId>me.eccentric_nz.tardischunkgenerator</groupId>
             <artifactId>TARDISChunkGenerator</artifactId>
             <version>4.7.3-SNAPSHOT</version>
-            <type>jar</type>
-            <scope>compile</scope>
-            <optional>true</optional>
+            <scope>provided</scope>
         </dependency>
         <dependency>
-            <!-- CitizensAPI -->
+            <!-- Citizens -->
             <groupId>net.citizensnpcs</groupId>
-            <artifactId>citizensapi</artifactId>
+            <artifactId>citizens-main</artifactId>
             <version>2.0.28-SNAPSHOT</version>
-            <type>jar</type>
-            <scope>compile</scope>
-            <optional>true</optional>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <!-- WorldEdit -->
             <groupId>com.sk89q.worldedit</groupId>
             <artifactId>worldedit-bukkit</artifactId>
             <version>7.3.0-SNAPSHOT</version>
-            <type>jar</type>
-            <scope>compile</scope>
-            <optional>true</optional>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <!-- WorldGuard -->
             <groupId>com.sk89q.worldguard</groupId>
             <artifactId>worldguard-bukkit</artifactId>
             <version>7.0.6-SNAPSHOT</version>
-            <type>jar</type>
-            <scope>compile</scope>
-            <optional>true</optional>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>
