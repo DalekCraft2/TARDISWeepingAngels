@@ -32,7 +32,7 @@ public class TardisWeepingAngelsCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, Command command, @NotNull String label, String[] args) {
-        if (command.getName().equalsIgnoreCase("twa")) {
+        if (command.getName().equalsIgnoreCase("tardisweepingangels")) {
             if (args.length == 0) {
                 return false;
             }
