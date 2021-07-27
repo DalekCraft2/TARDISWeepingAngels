@@ -3,21 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>me.eccentric_nz.tardisweepingangels</groupId>
     <artifactId>TARDISWeepingAngels</artifactId>
     <version>3.4.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+
     <name>TARDISWeepingAngels</name>
     <description>Adds Doctor Who monsters for Spigot/Paper servers</description>
     <url>https://github.com/eccentricdevotion/TARDISWeepingAngels</url>
     <inceptionYear>2014</inceptionYear>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
-        <spigot.version>1.17.1</spigot.version>
-        <spigot.javadocs>https://hub.spigotmc.org/javadocs/spigot/</spigot.javadocs>
-    </properties>
     <licenses>
         <license>
             <name>GNU General Public License v3.0</name>
@@ -25,41 +20,211 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-    <issueManagement>
-        <system>GitHub Issues</system>
-        <url>https://github.com/eccentricdevotion/TARDISWeepingAngels/issues</url>
-    </issueManagement>
+
     <scm>
         <connection>scm:git:ssh://github.com/eccentricdevotion/TARDISWeepingAngels</connection>
         <developerConnection>scm:git:ssh://github.com/eccentricdevotion/TARDISWeepingAngels</developerConnection>
     </scm>
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/eccentricdevotion/TARDISWeepingAngels/issues</url>
+    </issueManagement>
     <ciManagement>
         <system>Jenkins</system>
         <url>http://tardisjenkins.duckdns.org:8080</url>
     </ciManagement>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
+        <spigot.version>1.17.1</spigot.version>
+    </properties>
+
+    <dependencies>
+        <!-- Hard dependencies -->
+        <dependency>
+            <!-- Spigot-API -->
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>${spigot.version}-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Shaded dependencies -->
+        <dependency>
+            <!-- JetBrains Java Annotations -->
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>21.0.1</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Soft dependencies -->
+        <dependency>
+            <!-- TARDISChunkGenerator -->
+            <groupId>me.eccentric_nz.tardischunkgenerator</groupId>
+            <artifactId>TARDISChunkGenerator</artifactId>
+            <version>4.7.5-SNAPSHOT</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <!-- Citizens -->
+            <groupId>net.citizensnpcs</groupId>
+            <artifactId>citizensapi</artifactId>
+            <version>2.0.28-SNAPSHOT</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <!-- WorldEdit -->
+            <groupId>com.sk89q.worldedit</groupId>
+            <artifactId>worldedit-bukkit</artifactId>
+            <version>7.3.0-SNAPSHOT</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sk89q.worldedit.worldedit-libs</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.antlr</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.code.findbugs</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.bstats</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.mozilla</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>de.schlichtherle</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>it.unimi.dsi</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.papermc</groupId>
+                    <artifactId>paperlib</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.yaml</groupId>
+                    <artifactId>snakeyaml</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.code.gson</groupId>
+                    <artifactId>gson</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <!-- WorldGuard -->
+            <groupId>com.sk89q.worldguard</groupId>
+            <artifactId>worldguard-bukkit</artifactId>
+            <version>7.0.6-SNAPSHOT</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sk89q.worldguard.worldguard-libs</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.sk89q</groupId>
+                    <artifactId>commandbook</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.flywaydb</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>it.unimi.dsi</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.sk89q.worldedit</groupId>
+                    <artifactId>worldedit-bukkit</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.yaml</groupId>
+                    <artifactId>snakeyaml</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.spigotmc</groupId>
+                    <artifactId>spigot-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
     <repositories>
         <repository>
-            <name>Spigot</name>
-            <id>spigot-repo</id>
+            <!-- Spigot-API -->
+            <name>SpigotMC</name>
+            <id>spigotmc-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
         <repository>
+            <!-- TARDISChunkGenerator -->
             <name>TARDIS</name>
             <id>tardis-repo</id>
             <url>http://tardisjenkins.duckdns.org:8080/plugin/repository/everything/</url>
         </repository>
         <repository>
+            <!-- Citizens -->
             <name>Citizens</name>
             <id>citizens-repo</id>
             <url>https://repo.citizensnpcs.co/</url>
         </repository>
         <repository>
-            <name>WorldEdit, WorldGuard</name>
+            <!-- WorldEdit, WorldGuard -->
+            <name>EngineHub</name>
             <id>enginehub-repo</id>
             <url>https://maven.enginehub.org/repo/</url>
         </repository>
     </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <!-- Apache Maven Javadoc Plugin -->
+            <name>Apache Snapshots</name>
+            <id>apache-snapshots</id>
+            <url>https://repository.apache.org/snapshots/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
     <build>
+        <finalName>${project.name}-${project.version}</finalName>
+        <defaultGoal>clean package</defaultGoal>
         <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
         <resources>
             <resource>
@@ -79,8 +244,6 @@
                 </includes>
             </resource>
         </resources>
-        <finalName>${project.name}-${project.version}</finalName>
-        <defaultGoal>clean package</defaultGoal>
         <plugins>
             <plugin>
                 <!-- Compile -->
@@ -90,7 +253,6 @@
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
             <plugin>
@@ -123,7 +285,7 @@
                 <configuration>
                     <links> <!-- References to external Javadocs -->
                         <!-- Spigot-API -->
-                        <link>${spigot.javadocs}</link>
+                        <link>https://hub.spigotmc.org/javadocs/spigot/</link>
                         <!-- Jetbrains Java Annotations -->
                         <link>https://javadoc.io/doc/org.jetbrains/annotations/latest/</link>
                         <!-- Citizens -->
@@ -135,55 +297,45 @@
                     </links>
                 </configuration>
             </plugin>
+            <plugin>
+                <!-- Shade dependencies -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.3.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <artifactSet>
+                                <includes>
+                                    <!-- JetBrains Java Annotations -->
+                                    <include>org.jetbrains:annotations</include>
+                                </includes>
+                            </artifactSet>
+                            <relocations>
+                                <relocation>
+                                    <!-- JetBrains Java Annotations -->
+                                    <pattern>org.jetbrains.annotations</pattern>
+                                    <shadedPattern>me.eccentric_nz.tardisweepingangels.lib.org.jetbrains.annotations
+                                    </shadedPattern>
+                                </relocation>
+                            </relocations>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
-    <dependencies>
-        <!-- Hard Dependencies -->
-        <dependency>
-            <!-- Spigot-API -->
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>${spigot.version}-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- Shaded Dependencies -->
-        <dependency>
-            <!-- JetBrains Java Annotations -->
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>21.0.1</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <!-- Soft Dependencies -->
-        <dependency>
-            <!-- TARDISChunkGenerator -->
-            <groupId>me.eccentric_nz.tardischunkgenerator</groupId>
-            <artifactId>TARDISChunkGenerator</artifactId>
-            <version>4.7.5-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <!-- Citizens -->
-            <groupId>net.citizensnpcs</groupId>
-            <artifactId>citizens-main</artifactId>
-            <version>2.0.28-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <!-- WorldEdit -->
-            <groupId>com.sk89q.worldedit</groupId>
-            <artifactId>worldedit-bukkit</artifactId>
-            <version>7.3.0-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <!-- WorldGuard -->
-            <groupId>com.sk89q.worldguard</groupId>
-            <artifactId>worldguard-bukkit</artifactId>
-            <version>7.0.6-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
 </project>
