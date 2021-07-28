@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.commands;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.HeadBuilder;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import org.bukkit.command.CommandSender;
@@ -25,9 +25,9 @@ import org.bukkit.inventory.ItemStack;
 
 public class GiveCommand {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public GiveCommand(TardisWeepingAngelsPlugin plugin) {
+    public GiveCommand(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 

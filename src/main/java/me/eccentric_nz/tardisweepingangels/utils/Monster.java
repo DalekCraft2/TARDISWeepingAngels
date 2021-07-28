@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.utils;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.Material;
 
 /**
@@ -79,7 +79,7 @@ public enum Monster {
     }
 
     public int getCustomModelData() {
-        return (this == DALEK) ? customModelData + TardisWeepingAngelsPlugin.random.nextInt(16) : customModelData;
+        return (this == DALEK) ? customModelData + TARDISWeepingAngelsPlugin.random.nextInt(16) : customModelData;
     }
 
     public Material getMaterial() {

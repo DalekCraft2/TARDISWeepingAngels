@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.dalek;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 
 import java.util.NavigableMap;
 import java.util.TreeMap;
@@ -36,7 +36,7 @@ public class WeightedChoice<E> {
     }
 
     public E next() {
-        double value = TardisWeepingAngelsPlugin.random.nextDouble() * total;
+        double value = TARDISWeepingAngelsPlugin.random.nextDouble() * total;
         return map.higherEntry(value).getValue();
     }
 }

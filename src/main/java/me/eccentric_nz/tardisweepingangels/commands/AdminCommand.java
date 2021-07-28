@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.commands;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
@@ -25,10 +25,10 @@ import java.util.HashMap;
 
 public class AdminCommand {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
     private final HashMap<Monster, String> types = new HashMap<>();
 
-    public AdminCommand(TardisWeepingAngelsPlugin plugin) {
+    public AdminCommand(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
         types.put(Monster.CYBERMAN, "cybermen");
         types.put(Monster.DALEK, "daleks");

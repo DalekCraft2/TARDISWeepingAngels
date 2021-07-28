@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.empty_child;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -35,9 +35,9 @@ import java.util.UUID;
  */
 public class GasMask implements Listener {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public GasMask(TardisWeepingAngelsPlugin plugin) {
+    public GasMask(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 

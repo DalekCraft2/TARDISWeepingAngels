@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.utils;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -40,22 +40,22 @@ public class FollowerChecker {
             return;
         }
         PersistentDataContainer persistentDataContainer = entity.getPersistentDataContainer();
-        if (persistentDataContainer.has(TardisWeepingAngelsPlugin.ownerUuid, TardisWeepingAngelsPlugin.persistentDataTypeUuid)) {
-            UUID uuid = persistentDataContainer.get(TardisWeepingAngelsPlugin.ownerUuid, TardisWeepingAngelsPlugin.persistentDataTypeUuid);
+        if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid)) {
+            UUID uuid = persistentDataContainer.get(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid);
             if (playerUuid.equals(uuid)) {
-                if (TardisWeepingAngelsPlugin.plugin.getFollowTasks().containsKey(playerUuid)) {
+                if (TARDISWeepingAngelsPlugin.plugin.getFollowTasks().containsKey(playerUuid)) {
                     following = true;
                     // remove following task
-                    TardisWeepingAngelsPlugin.plugin.getFollowTasks().remove(playerUuid);
+                    TARDISWeepingAngelsPlugin.plugin.getFollowTasks().remove(playerUuid);
                 }
-                if (persistentDataContainer.has(TardisWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER)) {
+                if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER)) {
                     monster = Monster.JUDOON;
-                    persist = persistentDataContainer.get(TardisWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER);
+                    persist = persistentDataContainer.get(TARDISWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER);
                     return;
-                } else if (persistentDataContainer.has(TardisWeepingAngelsPlugin.k9, PersistentDataType.INTEGER)) {
+                } else if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.k9, PersistentDataType.INTEGER)) {
                     monster = Monster.K9;
                     return;
-                } else if (persistentDataContainer.has(TardisWeepingAngelsPlugin.ood, PersistentDataType.INTEGER)) {
+                } else if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.ood, PersistentDataType.INTEGER)) {
                     monster = Monster.OOD;
                     return;
                 }

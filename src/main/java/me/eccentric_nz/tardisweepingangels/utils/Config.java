@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.utils;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -30,7 +30,7 @@ import java.util.*;
 public class Config {
 
     final double minVersion = 2.0d;
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
     private final FileConfiguration config;
     HashMap<String, List<String>> listOptions = new HashMap<>();
     HashMap<String, String> strOptions = new HashMap<>();
@@ -38,7 +38,7 @@ public class Config {
     HashMap<String, Double> doubleOptions = new HashMap<>();
     HashMap<String, Boolean> boolOptions = new HashMap<>();
 
-    public Config(TardisWeepingAngelsPlugin plugin) {
+    public Config(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
         File configFile = new File(plugin.getDataFolder(), "config.yml");
         config = YamlConfiguration.loadConfiguration(configFile);

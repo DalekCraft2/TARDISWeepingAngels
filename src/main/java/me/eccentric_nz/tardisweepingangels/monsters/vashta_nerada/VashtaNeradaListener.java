@@ -16,8 +16,8 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.vashta_nerada;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelSpawnEvent;
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelSpawnEvent;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import me.eccentric_nz.tardisweepingangels.utils.WorldProcessor;
 import org.bukkit.Location;
@@ -44,10 +44,10 @@ import java.util.List;
  */
 public class VashtaNeradaListener implements Listener {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
     private final List<BlockFace> faces = new ArrayList<>();
 
-    public VashtaNeradaListener(TardisWeepingAngelsPlugin plugin) {
+    public VashtaNeradaListener(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
         faces.add(BlockFace.EAST);
         faces.add(BlockFace.NORTH);
@@ -60,7 +60,7 @@ public class VashtaNeradaListener implements Listener {
         Block block = event.getBlock();
         if (block.getType().equals(Material.BOOKSHELF)) {
             String name = WorldProcessor.sanitiseName(block.getWorld().getName());
-            if (plugin.getConfig().getInt("vashta_nerada.worlds." + name) > 0 && TardisWeepingAngelsPlugin.random.nextInt(100) < plugin.getConfig().getInt("vashta_nerada.worlds." + name)) {
+            if (plugin.getConfig().getInt("vashta_nerada.worlds." + name) > 0 && TARDISWeepingAngelsPlugin.random.nextInt(100) < plugin.getConfig().getInt("vashta_nerada.worlds." + name)) {
                 Location location = getClearLocation(event.getPlayer());
                 if (location != null) {
                     // spawn Vashta Nerada at location
@@ -74,7 +74,7 @@ public class VashtaNeradaListener implements Listener {
         Location location = null;
         Block locationBlock = player.getLocation().getBlock();
         World world = locationBlock.getWorld();
-        Collections.shuffle(faces, TardisWeepingAngelsPlugin.random);
+        Collections.shuffle(faces, TARDISWeepingAngelsPlugin.random);
         for (BlockFace blockFace : faces) {
             Block block = locationBlock.getRelative(blockFace, 3);
             if (block.getType().equals(Material.AIR) && block.getRelative(BlockFace.UP).getType().equals(Material.AIR)) {
@@ -94,7 +94,7 @@ public class VashtaNeradaListener implements Listener {
         vashtaNerada.addPotionEffect(potionEffect);
         plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> {
             VashtaNeradaEquipment.set(vashtaNerada, false);
-            plugin.getServer().getPluginManager().callEvent(new TardisWeepingAngelSpawnEvent(vashtaNerada, EntityType.ZOMBIE, Monster.VASHTA_NERADA, location));
+            plugin.getServer().getPluginManager().callEvent(new TARDISWeepingAngelSpawnEvent(vashtaNerada, EntityType.ZOMBIE, Monster.VASHTA_NERADA, location));
         }, 5L);
     }
 }

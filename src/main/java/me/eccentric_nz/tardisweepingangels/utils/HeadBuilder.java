@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.utils;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -36,7 +36,7 @@ public class HeadBuilder {
         }
         ItemStack itemStack = new ItemStack(material, 1);
         ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.getPersistentDataContainer().set(TardisWeepingAngelsPlugin.monsterHead, PersistentDataType.INTEGER, 99);
+        itemMeta.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.monsterHead, PersistentDataType.INTEGER, 99);
         itemMeta.setDisplayName(monster.getName() + " Head");
         itemMeta.setCustomModelData(customModelData);
         itemStack.setItemMeta(itemMeta);

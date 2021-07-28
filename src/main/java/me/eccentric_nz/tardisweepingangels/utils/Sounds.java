@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.utils;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -33,10 +33,10 @@ import java.util.UUID;
 
 public class Sounds implements Listener {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
     private final List<UUID> tracker = new ArrayList<>();
 
-    public Sounds(TardisWeepingAngelsPlugin plugin) {
+    public Sounds(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -76,7 +76,7 @@ public class Sounds implements Listener {
             }
         }
         if (entity instanceof PigZombie) {
-            if (entity.getPersistentDataContainer().has(TardisWeepingAngelsPlugin.hath, PersistentDataType.INTEGER)) {
+            if (entity.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.hath, PersistentDataType.INTEGER)) {
                 tracker.add(uuid);
                 LivingEntity livingEntity = event.getTarget();
                 if (livingEntity instanceof Player player) {
@@ -88,7 +88,7 @@ public class Sounds implements Listener {
                     }, delay);
                 }
             }
-            if (entity.getPersistentDataContainer().has(TardisWeepingAngelsPlugin.iceWarrior, PersistentDataType.INTEGER)) {
+            if (entity.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.iceWarrior, PersistentDataType.INTEGER)) {
                 tracker.add(uuid);
                 LivingEntity livingEntity = event.getTarget();
                 if (livingEntity instanceof Player player) {
@@ -144,7 +144,7 @@ public class Sounds implements Listener {
         }
         if (entity instanceof Skeleton) {
             PersistentDataContainer persistentDataContainer = entity.getPersistentDataContainer();
-            if (persistentDataContainer.has(TardisWeepingAngelsPlugin.dalek, PersistentDataType.INTEGER)) {
+            if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.dalek, PersistentDataType.INTEGER)) {
                 tracker.add(uuid);
                 LivingEntity livingEntity = event.getTarget();
                 if (livingEntity instanceof Player player) {
@@ -155,7 +155,7 @@ public class Sounds implements Listener {
                         tracker.remove(uuid);
                     }, delay);
                 }
-            } else if (persistentDataContainer.has(TardisWeepingAngelsPlugin.silurian, PersistentDataType.INTEGER)) {
+            } else if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.silurian, PersistentDataType.INTEGER)) {
                 tracker.add(uuid);
                 LivingEntity livingEntity = event.getTarget();
                 if (livingEntity instanceof Player player) {

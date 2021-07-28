@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.judoon;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
 
@@ -24,14 +24,14 @@ import java.util.UUID;
 
 public class JudoonFollow {
 
-    public static void run(TardisWeepingAngelsPlugin plugin, Player player, ArmorStand armorStand, String[] args) {
+    public static void run(TARDISWeepingAngelsPlugin plugin, Player player, ArmorStand armorStand, String[] args) {
         if (!player.hasPermission("tardisweepingangels.follow.judoon")) {
             player.sendMessage(plugin.pluginName + "You don't have permission to make a Judoon follow you!");
             return;
         }
-        if (armorStand.getPersistentDataContainer().has(TardisWeepingAngelsPlugin.ownerUuid, TardisWeepingAngelsPlugin.persistentDataTypeUuid)) {
+        if (armorStand.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid)) {
             UUID uuid = player.getUniqueId();
-            UUID judoonId = armorStand.getPersistentDataContainer().get(TardisWeepingAngelsPlugin.ownerUuid, TardisWeepingAngelsPlugin.persistentDataTypeUuid);
+            UUID judoonId = armorStand.getPersistentDataContainer().get(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid);
             if (judoonId.equals(uuid)) {
                 double speed = (args.length == 2) ? Math.min(Double.parseDouble(args[1]) / 100.0d, 0.5d) : 0.15d;
                 int taskId = plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new JudoonWalkRunnable(armorStand, speed, player), 2L, 2L);

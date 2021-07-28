@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.ood;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -35,19 +35,19 @@ public class OodListener implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
     public void onDamageOod(EntityDamageByEntityEvent event) {
         if (event.getEntity() instanceof ArmorStand armorStand && event.getDamager() instanceof Player player) {
-            if (armorStand.getPersistentDataContainer().has(TardisWeepingAngelsPlugin.ood, PersistentDataType.INTEGER) && armorStand.getPersistentDataContainer().has(TardisWeepingAngelsPlugin.ownerUuid, TardisWeepingAngelsPlugin.persistentDataTypeUuid)) {
+            if (armorStand.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.ood, PersistentDataType.INTEGER) && armorStand.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid)) {
                 event.setCancelled(true);
                 player.playSound(armorStand.getLocation(), "ood", 1.0f, 1.0f);
                 if (!player.hasPermission("tardisweepingangels.ood")) {
                     return;
                 }
-                UUID oodId = armorStand.getPersistentDataContainer().get(TardisWeepingAngelsPlugin.ownerUuid, TardisWeepingAngelsPlugin.persistentDataTypeUuid);
+                UUID oodId = armorStand.getPersistentDataContainer().get(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid);
                 if (oodId.equals(player.getUniqueId())) {
                     EntityEquipment entityEquipment = armorStand.getEquipment();
                     if (entityEquipment != null) {
                         ItemStack head = entityEquipment.getHelmet();
                         ItemMeta itemMeta = head.getItemMeta();
-                        int rage = armorStand.getPersistentDataContainer().get(TardisWeepingAngelsPlugin.ood, PersistentDataType.INTEGER);
+                        int rage = armorStand.getPersistentDataContainer().get(TARDISWeepingAngelsPlugin.ood, PersistentDataType.INTEGER);
                         int customModelData = itemMeta.getCustomModelData();
                         if (rage == 1) {
                             customModelData -= 100;
@@ -59,12 +59,12 @@ public class OodListener implements Listener {
                         itemMeta.setCustomModelData(customModelData);
                         head.setItemMeta(itemMeta);
                         entityEquipment.setHelmet(head);
-                        armorStand.getPersistentDataContainer().set(TardisWeepingAngelsPlugin.ood, PersistentDataType.INTEGER, rage);
+                        armorStand.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.ood, PersistentDataType.INTEGER, rage);
                     }
-                } else if (oodId.equals(TardisWeepingAngelsPlugin.unclaimed)) {
+                } else if (oodId.equals(TARDISWeepingAngelsPlugin.unclaimed)) {
                     // claim the Ood
-                    armorStand.getPersistentDataContainer().set(TardisWeepingAngelsPlugin.ownerUuid, TardisWeepingAngelsPlugin.persistentDataTypeUuid, player.getUniqueId());
-                    player.sendMessage(TardisWeepingAngelsPlugin.plugin.pluginName + "You have claimed this Ood!");
+                    armorStand.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid, player.getUniqueId());
+                    player.sendMessage(TARDISWeepingAngelsPlugin.plugin.pluginName + "You have claimed this Ood!");
                 }
             }
         }

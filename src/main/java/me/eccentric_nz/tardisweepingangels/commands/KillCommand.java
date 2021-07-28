@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.commands;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -30,9 +30,9 @@ import java.util.Collection;
 
 public class KillCommand {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public KillCommand(TardisWeepingAngelsPlugin plugin) {
+    public KillCommand(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -190,19 +190,19 @@ public class KillCommand {
             case TOCLAFANE:
                 Collection<ArmorStand> oods = world.getEntitiesByClass(ArmorStand.class);
                 for (ArmorStand ood : oods) {
-                    if (ood.getPersistentDataContainer().has(TardisWeepingAngelsPlugin.ood, PersistentDataType.INTEGER)) {
+                    if (ood.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.ood, PersistentDataType.INTEGER)) {
                         what = "Ood";
                         ood.remove();
                         count++;
-                    } else if (ood.getPersistentDataContainer().has(TardisWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER)) {
+                    } else if (ood.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER)) {
                         what = "Judoon";
                         ood.remove();
                         count++;
-                    } else if (ood.getPersistentDataContainer().has(TardisWeepingAngelsPlugin.k9, PersistentDataType.INTEGER)) {
+                    } else if (ood.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.k9, PersistentDataType.INTEGER)) {
                         what = "K9s";
                         ood.remove();
                         count++;
-                    } else if (ood.getPersistentDataContainer().has(TardisWeepingAngelsPlugin.toclafane, PersistentDataType.INTEGER)) {
+                    } else if (ood.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.toclafane, PersistentDataType.INTEGER)) {
                         what = "Toclafane";
                         // also remove the bee
                         if (ood.getVehicle() != null) {

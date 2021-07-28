@@ -30,7 +30,7 @@ import java.util.UUID;
 /**
  * @author eccentric_nz
  */
-public interface TardisWeepingAngelsApi {
+public interface TARDISWeepingAngelsAPI {
 
     /**
      * Sets an entity as a Weeping Angel.

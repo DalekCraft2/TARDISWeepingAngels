@@ -16,8 +16,8 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.k9;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelSpawnEvent;
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelSpawnEvent;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -35,9 +35,9 @@ import org.bukkit.event.block.BlockPlaceEvent;
  */
 public class K9Builder implements Listener {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public K9Builder(TardisWeepingAngelsPlugin plugin) {
+    public K9Builder(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -79,7 +79,7 @@ public class K9Builder implements Listener {
                     Entity entity = location.getWorld().spawnEntity(location, EntityType.ARMOR_STAND);
                     plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> {
                         K9Equipment.set(player, entity, false);
-                        plugin.getServer().getPluginManager().callEvent(new TardisWeepingAngelSpawnEvent(entity, EntityType.ARMOR_STAND, Monster.K9, location));
+                        plugin.getServer().getPluginManager().callEvent(new TARDISWeepingAngelSpawnEvent(entity, EntityType.ARMOR_STAND, Monster.K9, location));
                     }, 2L);
                 }, 20L);
             }

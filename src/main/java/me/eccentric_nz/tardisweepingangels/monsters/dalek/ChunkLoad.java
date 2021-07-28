@@ -3,7 +3,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.dalek;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.monsters.cyberman.CybermanEquipment;
 import me.eccentric_nz.tardisweepingangels.monsters.empty_child.EmptyChildEquipment;
 import me.eccentric_nz.tardisweepingangels.monsters.ice_warrior.IceWarriorEquipment;
@@ -34,37 +34,37 @@ public class ChunkLoad implements Listener {
         for (Entity entity : event.getChunk().getEntities()) {
             PersistentDataContainer persistentDataContainer = entity.getPersistentDataContainer();
             if (entity instanceof Skeleton skeleton) {
-                if (persistentDataContainer.has(TardisWeepingAngelsPlugin.dalek, PersistentDataType.INTEGER) && (skeleton.getEquipment().getHelmet() == null || skeleton.getEquipment().getHelmet().getType() == Material.MUSHROOM_STEM)) {
+                if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.dalek, PersistentDataType.INTEGER) && (skeleton.getEquipment().getHelmet() == null || skeleton.getEquipment().getHelmet().getType() == Material.MUSHROOM_STEM)) {
                     DalekEquipment.set(skeleton, false);
-                } else if (persistentDataContainer.has(TardisWeepingAngelsPlugin.weepingAngel, PersistentDataType.INTEGER) && (skeleton.getEquipment().getHelmet() != null && skeleton.getEquipment().getHelmet().getType() == Material.STONE_BUTTON)) {
+                } else if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.weepingAngel, PersistentDataType.INTEGER) && (skeleton.getEquipment().getHelmet() != null && skeleton.getEquipment().getHelmet().getType() == Material.STONE_BUTTON)) {
                     AngelEquipment.set(skeleton, false);
-                } else if (persistentDataContainer.has(TardisWeepingAngelsPlugin.silurian, PersistentDataType.INTEGER) && skeleton.getEquipment().getHelmet() != null && skeleton.getEquipment().getHelmet().getType() == Material.GOLDEN_HELMET) {
+                } else if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.silurian, PersistentDataType.INTEGER) && skeleton.getEquipment().getHelmet() != null && skeleton.getEquipment().getHelmet().getType() == Material.GOLDEN_HELMET) {
                     SilurianEquipment.set(skeleton, false);
                 }
             } else if (entity instanceof PigZombie pigZombie) {
-                if (persistentDataContainer.has(TardisWeepingAngelsPlugin.iceWarrior, PersistentDataType.INTEGER) && pigZombie.getEquipment().getHelmet() != null && pigZombie.getEquipment().getHelmet().getType() == Material.IRON_HELMET) {
+                if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.iceWarrior, PersistentDataType.INTEGER) && pigZombie.getEquipment().getHelmet() != null && pigZombie.getEquipment().getHelmet().getType() == Material.IRON_HELMET) {
                     IceWarriorEquipment.set(pigZombie, false);
-                } else if (persistentDataContainer.has(TardisWeepingAngelsPlugin.strax, PersistentDataType.INTEGER) && pigZombie.getEquipment().getHelmet() != null && pigZombie.getEquipment().getHelmet().getType() == Material.CHAINMAIL_HELMET) {
+                } else if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.strax, PersistentDataType.INTEGER) && pigZombie.getEquipment().getHelmet() != null && pigZombie.getEquipment().getHelmet().getType() == Material.CHAINMAIL_HELMET) {
                     StraxEquipment.set(pigZombie, false);
                 }
             } else if (entity instanceof Drowned drowned) {
                 if (drowned.getEquipment().getHelmet() != null) {
                     ItemMeta itemMeta = drowned.getEquipment().getHelmet().getItemMeta();
                     if (itemMeta != null && itemMeta.hasDisplayName() && itemMeta.getDisplayName().endsWith(" Head")) {
-                        Bukkit.getScheduler().scheduleSyncDelayedTask(TardisWeepingAngelsPlugin.plugin, drowned::remove, 2L);
+                        Bukkit.getScheduler().scheduleSyncDelayedTask(TARDISWeepingAngelsPlugin.plugin, drowned::remove, 2L);
                     }
                 }
             } else if (entity instanceof Zombie zombie) {
-                if (persistentDataContainer.has(TardisWeepingAngelsPlugin.cyberman, PersistentDataType.INTEGER) && zombie.getEquipment().getHelmet() != null && zombie.getEquipment().getHelmet().getType() == Material.IRON_HELMET) {
+                if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.cyberman, PersistentDataType.INTEGER) && zombie.getEquipment().getHelmet() != null && zombie.getEquipment().getHelmet().getType() == Material.IRON_HELMET) {
                     CybermanEquipment.set(zombie, false);
                 } else if (zombie.getEquipment().getHelmet() != null && zombie.getEquipment().getHelmet().getType() == Material.GOLDEN_HELMET) {
-                    if (persistentDataContainer.has(TardisWeepingAngelsPlugin.emptyChild, PersistentDataType.INTEGER)) {
+                    if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.emptyChild, PersistentDataType.INTEGER)) {
                         EmptyChildEquipment.set(zombie, false);
-                    } else if (persistentDataContainer.has(TardisWeepingAngelsPlugin.zygon, PersistentDataType.INTEGER)) {
+                    } else if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.zygon, PersistentDataType.INTEGER)) {
                         ZygonEquipment.set(zombie, false);
-                    } else if (persistentDataContainer.has(TardisWeepingAngelsPlugin.sontaran, PersistentDataType.INTEGER)) {
+                    } else if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.sontaran, PersistentDataType.INTEGER)) {
                         SontaranEquipment.set(zombie, false);
-                    } else if (persistentDataContainer.has(TardisWeepingAngelsPlugin.vashtaNerada, PersistentDataType.INTEGER)) {
+                    } else if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.vashtaNerada, PersistentDataType.INTEGER)) {
                         VashtaNeradaEquipment.set(zombie, false);
                     }
                 }

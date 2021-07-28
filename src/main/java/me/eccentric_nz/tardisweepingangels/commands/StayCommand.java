@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.commands;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -24,9 +24,9 @@ import java.util.UUID;
 
 public class StayCommand {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public StayCommand(TardisWeepingAngelsPlugin plugin) {
+    public StayCommand(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 

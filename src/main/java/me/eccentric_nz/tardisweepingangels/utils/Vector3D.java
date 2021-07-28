@@ -22,12 +22,12 @@ package me.eccentric_nz.tardisweepingangels.utils;
 import org.bukkit.Location;
 import org.bukkit.util.Vector;
 
-public class Vector3d {
+public class Vector3D {
 
     /**
      * Represents the null (0, 0, 0) origin.
      */
-    public static final Vector3d ORIGIN = new Vector3d(0, 0, 0);
+    public static final Vector3D ORIGIN = new Vector3D(0, 0, 0);
 
     // Use protected members, like Bukkit
     public final double x;
@@ -37,7 +37,7 @@ public class Vector3d {
     /**
      * Construct an immutable 3D vector.
      */
-    public Vector3d(double x, double y, double z) {
+    public Vector3D(double x, double y, double z) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -48,7 +48,7 @@ public class Vector3d {
      *
      * @param location - the location to copy.
      */
-    public Vector3d(Location location) {
+    public Vector3D(Location location) {
         this(location.toVector());
     }
 
@@ -57,7 +57,7 @@ public class Vector3d {
      *
      * @param vector - the mutable real Bukkit vector to copy.
      */
-    public Vector3d(Vector vector) {
+    public Vector3D(Vector vector) {
         if (vector == null) {
             throw new IllegalArgumentException("Vector cannot be NULL.");
         }
@@ -72,11 +72,11 @@ public class Vector3d {
      * @param other - the other vector.
      * @return The new result vector.
      */
-    public Vector3d add(Vector3d other) {
+    public Vector3D add(Vector3D other) {
         if (other == null) {
             throw new IllegalArgumentException("other cannot be NULL");
         }
-        return new Vector3d(x + other.x, y + other.y, z + other.z);
+        return new Vector3D(x + other.x, y + other.y, z + other.z);
     }
 
     /**
@@ -84,8 +84,8 @@ public class Vector3d {
      *
      * @return The new result vector.
      */
-    public Vector3d add(double x, double y, double z) {
-        return new Vector3d(this.x + x, this.y + y, this.z + z);
+    public Vector3D add(double x, double y, double z) {
+        return new Vector3D(this.x + x, this.y + y, this.z + z);
     }
 
     /**
@@ -94,11 +94,11 @@ public class Vector3d {
      * @param other - the other position.
      * @return The new result position.
      */
-    public Vector3d subtract(Vector3d other) {
+    public Vector3D subtract(Vector3D other) {
         if (other == null) {
             throw new IllegalArgumentException("other cannot be NULL");
         }
-        return new Vector3d(x - other.x, y - other.y, z - other.z);
+        return new Vector3D(x - other.x, y - other.y, z - other.z);
     }
 
     /**
@@ -107,8 +107,8 @@ public class Vector3d {
      * @param factor - multiplier.
      * @return The new result.
      */
-    public Vector3d multiply(int factor) {
-        return new Vector3d(x * factor, y * factor, z * factor);
+    public Vector3D multiply(int factor) {
+        return new Vector3D(x * factor, y * factor, z * factor);
     }
 
     /**
@@ -117,8 +117,8 @@ public class Vector3d {
      * @param factor - multiplier.
      * @return The new result.
      */
-    public Vector3d multiply(double factor) {
-        return new Vector3d(x * factor, y * factor, z * factor);
+    public Vector3D multiply(double factor) {
+        return new Vector3D(x * factor, y * factor, z * factor);
     }
 
     /**
@@ -126,8 +126,8 @@ public class Vector3d {
      *
      * @return The new result.
      */
-    public Vector3d abs() {
-        return new Vector3d(Math.abs(x), Math.abs(y), Math.abs(z));
+    public Vector3D abs() {
+        return new Vector3D(Math.abs(x), Math.abs(y), Math.abs(z));
     }
 
     @Override

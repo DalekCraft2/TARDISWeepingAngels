@@ -17,7 +17,7 @@
 package me.eccentric_nz.tardisweepingangels.commands;
 
 import com.google.common.collect.ImmutableList;
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -35,13 +35,13 @@ import java.util.List;
  */
 public class TabComplete implements TabCompleter {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
     private final ImmutableList<String> ON_OFF_SUBS = ImmutableList.of("on", "off");
     private final ImmutableList<String> WORLD_SUBS;
     private final ImmutableList<String> MONSTER_SUBS;
     ImmutableList<String> CMD_SUBS = ImmutableList.of("spawn", "equip", "disguise", "kill", "count", "follow", "stay", "remove", "set", "give");
 
-    public TabComplete(TardisWeepingAngelsPlugin plugin) {
+    public TabComplete(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
         List<String> temp = new ArrayList<>();
         for (Monster monster : Monster.values()) {

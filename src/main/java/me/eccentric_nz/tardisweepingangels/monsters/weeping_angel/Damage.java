@@ -3,7 +3,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.weeping_angel;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.MonsterTargetListener;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
@@ -29,11 +29,11 @@ import java.util.List;
  */
 public class Damage implements Listener {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
     private final Material material;
     private final List<World> angelTpWorlds = new ArrayList<>();
 
-    public Damage(TardisWeepingAngelsPlugin plugin) {
+    public Damage(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
         material = Material.valueOf(plugin.getConfig().getString("angels.weapon"));
         plugin.getConfig().getStringList("angels.teleport_worlds").forEach((worldName) -> {
@@ -50,7 +50,7 @@ public class Damage implements Listener {
         if (entityType.equals(EntityType.SKELETON)) {
             LivingEntity livingEntity = (LivingEntity) event.getEntity();
             Entity entity = event.getDamager();
-            if (livingEntity.getPersistentDataContainer().has(TardisWeepingAngelsPlugin.weepingAngel, PersistentDataType.INTEGER)) {
+            if (livingEntity.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.weepingAngel, PersistentDataType.INTEGER)) {
                 if (entity instanceof AbstractArrow) {
                     event.setCancelled(true);
                 }
@@ -61,7 +61,7 @@ public class Damage implements Listener {
                 }
                 return;
             }
-            if (livingEntity.getPersistentDataContainer().has(TardisWeepingAngelsPlugin.dalek, PersistentDataType.INTEGER) && (entity instanceof Player player)) {
+            if (livingEntity.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.dalek, PersistentDataType.INTEGER) && (entity instanceof Player player)) {
                 player.playSound(livingEntity.getLocation(), "dalek_hit", 0.5f, 1.0f);
             }
         }
@@ -73,7 +73,7 @@ public class Damage implements Listener {
                 return;
             }
             if (entity instanceof Skeleton) {
-                if (entity.getPersistentDataContainer().has(TardisWeepingAngelsPlugin.weepingAngel, PersistentDataType.INTEGER)) {
+                if (entity.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.weepingAngel, PersistentDataType.INTEGER)) {
                     Entity target = event.getEntity();
                     Player player = (Player) target;
                     Location location = getRandomLocation(target.getWorld());
@@ -93,12 +93,12 @@ public class Damage implements Listener {
         // is this world an allowable world? - we don't want Nether or TARDIS worlds
         if (!angelTpWorlds.contains(world)) {
             // get a random teleport world
-            world = angelTpWorlds.get(TardisWeepingAngelsPlugin.random.nextInt(angelTpWorlds.size()));
+            world = angelTpWorlds.get(TARDISWeepingAngelsPlugin.random.nextInt(angelTpWorlds.size()));
         }
         Chunk[] chunks = world.getLoadedChunks();
-        Chunk chunk = chunks[TardisWeepingAngelsPlugin.random.nextInt(chunks.length)];
-        int x = chunk.getX() * 16 + TardisWeepingAngelsPlugin.random.nextInt(16);
-        int z = chunk.getZ() * 16 + TardisWeepingAngelsPlugin.random.nextInt(16);
+        Chunk chunk = chunks[TARDISWeepingAngelsPlugin.random.nextInt(chunks.length)];
+        int x = chunk.getX() * 16 + TARDISWeepingAngelsPlugin.random.nextInt(16);
+        int z = chunk.getZ() * 16 + TARDISWeepingAngelsPlugin.random.nextInt(16);
         int y = world.getHighestBlockYAt(x, z);
         return new Location(world, x, y + 1, z);
     }

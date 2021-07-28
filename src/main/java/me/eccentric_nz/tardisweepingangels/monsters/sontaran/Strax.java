@@ -3,8 +3,8 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.sontaran;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelSpawnEvent;
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelSpawnEvent;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -33,9 +33,9 @@ import java.util.UUID;
 public class Strax implements Listener {
 
     private final List<UUID> milkers = new ArrayList<>();
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public Strax(TardisWeepingAngelsPlugin plugin) {
+    public Strax(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -69,9 +69,9 @@ public class Strax implements Listener {
                             pigZombie.setAdult();
                             plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> {
                                 StraxEquipment.set(pigZombie, false);
-                                pigZombie.getPersistentDataContainer().set(TardisWeepingAngelsPlugin.strax, PersistentDataType.INTEGER, Monster.STRAX.getPersist());
-                                pigZombie.getPersistentDataContainer().remove(TardisWeepingAngelsPlugin.sontaran);
-                                plugin.getServer().getPluginManager().callEvent(new TardisWeepingAngelSpawnEvent(pigZombie, EntityType.ZOMBIFIED_PIGLIN, Monster.STRAX, location));
+                                pigZombie.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.strax, PersistentDataType.INTEGER, Monster.STRAX.getPersist());
+                                pigZombie.getPersistentDataContainer().remove(TARDISWeepingAngelsPlugin.sontaran);
+                                plugin.getServer().getPluginManager().callEvent(new TARDISWeepingAngelSpawnEvent(pigZombie, EntityType.ZOMBIFIED_PIGLIN, Monster.STRAX, location));
                             }, 2L);
                         }
                     }

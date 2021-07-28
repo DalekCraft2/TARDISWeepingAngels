@@ -28,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
  * @author eccentric_nz
  */
 
-public final class TardisWeepingAngelSpawnEvent extends Event {
+public final class TARDISWeepingAngelSpawnEvent extends Event {
 
     private static final HandlerList HANDLERS = new HandlerList();
     private final Entity entity;
@@ -36,7 +36,7 @@ public final class TardisWeepingAngelSpawnEvent extends Event {
     private final Monster monsterType;
     private final Location location;
 
-    public TardisWeepingAngelSpawnEvent(Entity entity, EntityType entityType, Monster monsterType, Location location) {
+    public TARDISWeepingAngelSpawnEvent(Entity entity, EntityType entityType, Monster monsterType, Location location) {
         this.entity = entity;
         this.entityType = entityType;
         this.monsterType = monsterType;

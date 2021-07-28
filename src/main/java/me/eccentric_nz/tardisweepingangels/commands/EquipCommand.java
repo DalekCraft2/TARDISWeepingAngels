@@ -16,11 +16,11 @@
  */
 package me.eccentric_nz.tardisweepingangels.commands;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.equip.ArmourStandEquipment;
 import me.eccentric_nz.tardisweepingangels.monsters.weeping_angel.Blink;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
-import me.eccentric_nz.tardisweepingangels.utils.Vector3d;
+import me.eccentric_nz.tardisweepingangels.utils.Vector3D;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.ArmorStand;
@@ -30,9 +30,9 @@ import org.bukkit.entity.Player;
 
 public class EquipCommand {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public EquipCommand(TardisWeepingAngelsPlugin plugin) {
+    public EquipCommand(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -59,16 +59,16 @@ public class EquipCommand {
         }
         // get the armour stand player is looking at
         Location observerPose = player.getEyeLocation();
-        Vector3d observerDirection = new Vector3d(observerPose.getDirection());
-        Vector3d observerStart = new Vector3d(observerPose);
-        Vector3d observerEnd = observerStart.add(observerDirection.multiply(16));
+        Vector3D observerDirection = new Vector3D(observerPose.getDirection());
+        Vector3D observerStart = new Vector3D(observerPose);
+        Vector3D observerEnd = observerStart.add(observerDirection.multiply(16));
         ArmorStand armorStand = null;
         // Get nearby entities
         for (Entity target : player.getNearbyEntities(8.0d, 8.0d, 8.0d)) {
             // Bounding box of the given player
-            Vector3d targetPos = new Vector3d(target.getLocation());
-            Vector3d minimum = targetPos.add(-0.5, 0, -0.5);
-            Vector3d maximum = targetPos.add(0.5, 1.67, 0.5);
+            Vector3D targetPos = new Vector3D(target.getLocation());
+            Vector3D minimum = targetPos.add(-0.5, 0, -0.5);
+            Vector3D maximum = targetPos.add(0.5, 1.67, 0.5);
             if (target.getType().equals(EntityType.ARMOR_STAND) && Blink.hasIntersection(observerStart, observerEnd, minimum, maximum)) {
                 if (armorStand == null || armorStand.getLocation().distanceSquared(observerPose) > target.getLocation().distanceSquared(observerPose)) {
                     armorStand = (ArmorStand) target;

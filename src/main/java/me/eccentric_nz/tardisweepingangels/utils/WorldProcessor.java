@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.utils;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.util.FileUtil;
 
@@ -24,10 +24,10 @@ import java.io.File;
 
 public class WorldProcessor implements Runnable {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
     private final FileConfiguration config;
 
-    public WorldProcessor(TardisWeepingAngelsPlugin plugin) {
+    public WorldProcessor(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
         config = this.plugin.getConfig();
     }

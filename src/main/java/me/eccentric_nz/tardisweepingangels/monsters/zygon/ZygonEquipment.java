@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.zygon;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import org.bukkit.Material;
 import org.bukkit.entity.LivingEntity;
@@ -70,7 +70,7 @@ public class ZygonEquipment {
             entityEquipment.setChestplateDropChance(0F);
             entityEquipment.setLeggingsDropChance(0F);
             livingEntity.setCanPickupItems(false);
-            livingEntity.getPersistentDataContainer().set(TardisWeepingAngelsPlugin.zygon, PersistentDataType.INTEGER, Monster.ZYGON.getPersist());
+            livingEntity.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.zygon, PersistentDataType.INTEGER, Monster.ZYGON.getPersist());
         }
     }
 }

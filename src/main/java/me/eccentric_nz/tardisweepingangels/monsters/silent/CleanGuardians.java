@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.silent;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.WorldProcessor;
 import org.bukkit.entity.Guardian;
 import org.bukkit.potion.PotionEffectType;
@@ -28,9 +28,9 @@ import java.util.Collection;
  */
 public class CleanGuardians implements Runnable {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public CleanGuardians(TardisWeepingAngelsPlugin plugin) {
+    public CleanGuardians(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 

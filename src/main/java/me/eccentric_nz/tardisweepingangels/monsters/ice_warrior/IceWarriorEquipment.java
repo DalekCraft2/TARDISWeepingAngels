@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.ice_warrior;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import org.bukkit.Material;
 import org.bukkit.entity.LivingEntity;
@@ -75,7 +75,7 @@ public class IceWarriorEquipment {
             entityEquipment.setChestplateDropChance(0F);
             entityEquipment.setLeggingsDropChance(0F);
             livingEntity.setCanPickupItems(false);
-            livingEntity.getPersistentDataContainer().set(TardisWeepingAngelsPlugin.iceWarrior, PersistentDataType.INTEGER, Monster.ICE_WARRIOR.getPersist());
+            livingEntity.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.iceWarrior, PersistentDataType.INTEGER, Monster.ICE_WARRIOR.getPersist());
         }
     }
 }

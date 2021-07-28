@@ -16,17 +16,17 @@
  */
 package me.eccentric_nz.tardisweepingangels.commands;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
-public class TardisWeepingAngelsCommand implements CommandExecutor {
+public class TARDISWeepingAngelsCommand implements CommandExecutor {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public TardisWeepingAngelsCommand(TardisWeepingAngelsPlugin plugin) {
+    public TARDISWeepingAngelsCommand(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 

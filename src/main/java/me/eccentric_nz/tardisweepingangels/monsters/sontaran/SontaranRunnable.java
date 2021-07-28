@@ -16,8 +16,8 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.sontaran;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelSpawnEvent;
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelSpawnEvent;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import me.eccentric_nz.tardisweepingangels.utils.WaterChecker;
 import me.eccentric_nz.tardisweepingangels.utils.WorldGuardChecker;
@@ -42,10 +42,10 @@ import java.util.Collection;
  */
 public class SontaranRunnable implements Runnable {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
     private final int spawnRate;
 
-    public SontaranRunnable(TardisWeepingAngelsPlugin plugin) {
+    public SontaranRunnable(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
         spawnRate = plugin.getConfig().getInt("spawn_rate.how_many");
     }
@@ -64,7 +64,7 @@ public class SontaranRunnable implements Runnable {
                     Collection<Zombie> zombies = world.getEntitiesByClass(Zombie.class);
                     for (Zombie sontaran : zombies) {
                         PersistentDataContainer persistentDataContainer = sontaran.getPersistentDataContainer();
-                        if (persistentDataContainer.has(TardisWeepingAngelsPlugin.sontaran, PersistentDataType.INTEGER)) {
+                        if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.sontaran, PersistentDataType.INTEGER)) {
                             sontarans++;
                         }
                     }
@@ -83,9 +83,9 @@ public class SontaranRunnable implements Runnable {
     private void spawnSontaran(World world) {
         Chunk[] chunks = world.getLoadedChunks();
         if (chunks.length > 0) {
-            Chunk chunk = chunks[TardisWeepingAngelsPlugin.random.nextInt(chunks.length)];
-            int x = chunk.getX() * 16 + TardisWeepingAngelsPlugin.random.nextInt(16);
-            int z = chunk.getZ() * 16 + TardisWeepingAngelsPlugin.random.nextInt(16);
+            Chunk chunk = chunks[TARDISWeepingAngelsPlugin.random.nextInt(chunks.length)];
+            int x = chunk.getX() * 16 + TARDISWeepingAngelsPlugin.random.nextInt(16);
+            int z = chunk.getZ() * 16 + TARDISWeepingAngelsPlugin.random.nextInt(16);
             int y = world.getHighestBlockYAt(x, z);
             Location location = new Location(world, x, y + 1, z);
             if (WaterChecker.isNotWater(location)) {
@@ -99,7 +99,7 @@ public class SontaranRunnable implements Runnable {
                 sontaran.addPotionEffect(potionEffect);
                 plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> {
                     SontaranEquipment.set(sontaran, false);
-                    plugin.getServer().getPluginManager().callEvent(new TardisWeepingAngelSpawnEvent(sontaran, EntityType.ZOMBIE, Monster.SONTARAN, location));
+                    plugin.getServer().getPluginManager().callEvent(new TARDISWeepingAngelSpawnEvent(sontaran, EntityType.ZOMBIE, Monster.SONTARAN, location));
                 }, 5L);
             }
         }

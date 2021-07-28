@@ -16,8 +16,8 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.weeping_angel;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelSpawnEvent;
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelSpawnEvent;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -34,9 +34,9 @@ import org.bukkit.event.block.BlockPlaceEvent;
  */
 public class AngelBuilder implements Listener {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public AngelBuilder(TardisWeepingAngelsPlugin plugin) {
+    public AngelBuilder(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -79,7 +79,7 @@ public class AngelBuilder implements Listener {
                     weepingAngel.setSilent(true);
                     plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> {
                         AngelEquipment.set(weepingAngel, false);
-                        plugin.getServer().getPluginManager().callEvent(new TardisWeepingAngelSpawnEvent(weepingAngel, EntityType.SKELETON, Monster.WEEPING_ANGEL, location));
+                        plugin.getServer().getPluginManager().callEvent(new TARDISWeepingAngelSpawnEvent(weepingAngel, EntityType.SKELETON, Monster.WEEPING_ANGEL, location));
                     }, 5L);
                 }, 20L);
             }

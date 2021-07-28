@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.commands;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.monsters.judoon.JudoonFollow;
 import me.eccentric_nz.tardisweepingangels.monsters.k9.K9Follow;
 import me.eccentric_nz.tardisweepingangels.monsters.ood.OodFollow;
@@ -29,9 +29,9 @@ import org.bukkit.persistence.PersistentDataType;
 
 public class FollowCommand {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public FollowCommand(TardisWeepingAngelsPlugin plugin) {
+    public FollowCommand(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -55,11 +55,11 @@ public class FollowCommand {
             return;
         }
         PersistentDataContainer persistentDataContainer = armorStand.getPersistentDataContainer();
-        if (persistentDataContainer.has(TardisWeepingAngelsPlugin.ood, PersistentDataType.INTEGER)) {
+        if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.ood, PersistentDataType.INTEGER)) {
             OodFollow.run(plugin, player, armorStand, args);
-        } else if (persistentDataContainer.has(TardisWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER)) {
+        } else if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER)) {
             JudoonFollow.run(plugin, player, armorStand, args);
-        } else if (persistentDataContainer.has(TardisWeepingAngelsPlugin.k9, PersistentDataType.INTEGER)) {
+        } else if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.k9, PersistentDataType.INTEGER)) {
             K9Follow.run(plugin, player, armorStand, args);
         } else {
             player.sendMessage(plugin.pluginName + "You are not looking at an entity that can follow you!");

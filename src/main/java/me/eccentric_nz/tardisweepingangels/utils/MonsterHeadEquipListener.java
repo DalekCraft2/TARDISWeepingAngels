@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.utils;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -28,9 +28,9 @@ import org.bukkit.persistence.PersistentDataType;
 
 public class MonsterHeadEquipListener implements Listener {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public MonsterHeadEquipListener(TardisWeepingAngelsPlugin plugin) {
+    public MonsterHeadEquipListener(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -41,7 +41,7 @@ public class MonsterHeadEquipListener implements Listener {
             InventoryType inventoryType = inventory.getType();
             if (inventoryType == InventoryType.PLAYER && event.getRawSlot() == 5) {
                 ItemStack cursor = event.getCursor();
-                if (cursor != null && cursor.hasItemMeta() && cursor.getItemMeta().getPersistentDataContainer().has(TardisWeepingAngelsPlugin.monsterHead, PersistentDataType.INTEGER) && isNullOrAir(event.getCurrentItem())) {
+                if (cursor != null && cursor.hasItemMeta() && cursor.getItemMeta().getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.monsterHead, PersistentDataType.INTEGER) && isNullOrAir(event.getCurrentItem())) {
                     event.setCurrentItem(cursor);
                     plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> event.setCursor(new ItemStack(Material.AIR)), 1L);
                     event.setCancelled(true);

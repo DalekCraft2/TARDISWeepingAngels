@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.silent;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -31,9 +31,9 @@ import org.bukkit.event.entity.EntityTeleportEvent;
  */
 public class AntiTeleport implements Listener {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public AntiTeleport(TardisWeepingAngelsPlugin plugin) {
+    public AntiTeleport(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 

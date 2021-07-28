@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.commands;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.ArmorStandFinder;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.ArmorStand;
@@ -27,9 +27,9 @@ import java.util.UUID;
 
 public class RemoveCommand {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public RemoveCommand(TardisWeepingAngelsPlugin plugin) {
+    public RemoveCommand(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -48,20 +48,20 @@ public class RemoveCommand {
             return;
         }
         ArmorStand armorStand = ArmorStandFinder.getStand(player);
-        if (armorStand == null || !armorStand.getPersistentDataContainer().has(TardisWeepingAngelsPlugin.ownerUuid, TardisWeepingAngelsPlugin.persistentDataTypeUuid)) {
+        if (armorStand == null || !armorStand.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid)) {
             player.sendMessage(plugin.pluginName + "You are not looking at a TARDISWeepingAngels entity!");
         } else {
-            if (armorStand.getPersistentDataContainer().has(TardisWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER) && !player.hasPermission("tardisweepingangels.remove.judoon")) {
+            if (armorStand.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER) && !player.hasPermission("tardisweepingangels.remove.judoon")) {
                 player.sendMessage(plugin.pluginName + "You don't have permission to remove a Judoon!");
                 return;
-            } else if (armorStand.getPersistentDataContainer().has(TardisWeepingAngelsPlugin.k9, PersistentDataType.INTEGER) && !player.hasPermission("tardisweepingangels.remove.k9")) {
+            } else if (armorStand.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.k9, PersistentDataType.INTEGER) && !player.hasPermission("tardisweepingangels.remove.k9")) {
                 player.sendMessage(plugin.pluginName + "You don't have permission to remove K9!");
                 return;
-            } else if (armorStand.getPersistentDataContainer().has(TardisWeepingAngelsPlugin.ood, PersistentDataType.INTEGER) && !player.hasPermission("tardisweepingangels.remove.ood")) {
+            } else if (armorStand.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.ood, PersistentDataType.INTEGER) && !player.hasPermission("tardisweepingangels.remove.ood")) {
                 player.sendMessage(plugin.pluginName + "You don't have permission to remove an Ood!");
                 return;
             }
-            UUID storedUuid = armorStand.getPersistentDataContainer().get(TardisWeepingAngelsPlugin.ownerUuid, TardisWeepingAngelsPlugin.persistentDataTypeUuid);
+            UUID storedUuid = armorStand.getPersistentDataContainer().get(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid);
             if (storedUuid != null && storedUuid.equals(uuid)) {
                 armorStand.remove();
             } else {

@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.toclafane;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
@@ -38,8 +38,8 @@ public class ToclafaneEquipment {
             ArmorStand armorStand = (ArmorStand) entity;
             Location location = armorStand.getLocation();
             int difficulty = (location.getWorld().getDifficulty().ordinal() * 6) + 1;
-            armorStand.getPersistentDataContainer().set(TardisWeepingAngelsPlugin.toclafane, PersistentDataType.INTEGER, difficulty);
-            armorStand.getPersistentDataContainer().set(TardisWeepingAngelsPlugin.ownerUuid, TardisWeepingAngelsPlugin.persistentDataTypeUuid, TardisWeepingAngelsPlugin.unclaimed);
+            armorStand.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.toclafane, PersistentDataType.INTEGER, difficulty);
+            armorStand.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid, TARDISWeepingAngelsPlugin.unclaimed);
             armorStand.getEquipment().setHelmet(head);
             armorStand.setVisible(false);
             armorStand.setSilent(true);

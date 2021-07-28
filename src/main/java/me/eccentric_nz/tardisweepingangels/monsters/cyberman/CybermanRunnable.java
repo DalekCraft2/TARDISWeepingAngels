@@ -16,8 +16,8 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.cyberman;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelSpawnEvent;
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelSpawnEvent;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import me.eccentric_nz.tardisweepingangels.utils.WaterChecker;
 import me.eccentric_nz.tardisweepingangels.utils.WorldGuardChecker;
@@ -42,10 +42,10 @@ import java.util.Collection;
  */
 public class CybermanRunnable implements Runnable {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
     private final int spawnRate;
 
-    public CybermanRunnable(TardisWeepingAngelsPlugin plugin) {
+    public CybermanRunnable(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
         spawnRate = plugin.getConfig().getInt("spawn_rate.how_many");
     }
@@ -61,7 +61,7 @@ public class CybermanRunnable implements Runnable {
                 Collection<Zombie> zombies = world.getEntitiesByClass(Zombie.class);
                 for (Zombie cyberman : zombies) {
                     PersistentDataContainer persistentDataContainer = cyberman.getPersistentDataContainer();
-                    if (persistentDataContainer.has(TardisWeepingAngelsPlugin.cyberman, PersistentDataType.INTEGER)) {
+                    if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.cyberman, PersistentDataType.INTEGER)) {
                         cybermen++;
                     }
                 }
@@ -79,9 +79,9 @@ public class CybermanRunnable implements Runnable {
     private void spawnCyberman(World world) {
         Chunk[] chunks = world.getLoadedChunks();
         if (chunks.length > 0) {
-            Chunk chunk = chunks[TardisWeepingAngelsPlugin.random.nextInt(chunks.length)];
-            int x = chunk.getX() * 16 + TardisWeepingAngelsPlugin.random.nextInt(16);
-            int z = chunk.getZ() * 16 + TardisWeepingAngelsPlugin.random.nextInt(16);
+            Chunk chunk = chunks[TARDISWeepingAngelsPlugin.random.nextInt(chunks.length)];
+            int x = chunk.getX() * 16 + TARDISWeepingAngelsPlugin.random.nextInt(16);
+            int z = chunk.getZ() * 16 + TARDISWeepingAngelsPlugin.random.nextInt(16);
             int y = world.getHighestBlockYAt(x, z);
             Location location = new Location(world, x, y + 1, z);
             if (WaterChecker.isNotWater(location)) {
@@ -95,7 +95,7 @@ public class CybermanRunnable implements Runnable {
                 cyberman.addPotionEffect(potionEffect);
                 plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> {
                     CybermanEquipment.set(cyberman, false);
-                    plugin.getServer().getPluginManager().callEvent(new TardisWeepingAngelSpawnEvent(cyberman, EntityType.ZOMBIE, Monster.CYBERMAN, location));
+                    plugin.getServer().getPluginManager().callEvent(new TARDISWeepingAngelSpawnEvent(cyberman, EntityType.ZOMBIE, Monster.CYBERMAN, location));
                 }, 5L);
             }
         }

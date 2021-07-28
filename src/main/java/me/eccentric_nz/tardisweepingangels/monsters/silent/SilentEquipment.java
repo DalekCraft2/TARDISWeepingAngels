@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.silent;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -36,14 +36,14 @@ public class SilentEquipment {
             guardian.setSilent(true);
             PotionEffect potionEffect = new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 1, true, false);
             guardian.addPotionEffect(potionEffect);
-            guardian.getPersistentDataContainer().set(TardisWeepingAngelsPlugin.silent, PersistentDataType.INTEGER, Monster.SILENT.getPersist());
+            guardian.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.silent, PersistentDataType.INTEGER, Monster.SILENT.getPersist());
             livingEntity.addPassenger(guardian);
-            livingEntity.getPersistentDataContainer().set(TardisWeepingAngelsPlugin.silent, PersistentDataType.INTEGER, Monster.SILENT.getPersist());
+            livingEntity.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.silent, PersistentDataType.INTEGER, Monster.SILENT.getPersist());
         } else {
             ItemStack head = new ItemStack(Material.END_STONE);
             ItemMeta headMeta = head.getItemMeta();
             headMeta.setDisplayName("Silent Head");
-            headMeta.setCustomModelData((TardisWeepingAngelsPlugin.random.nextBoolean()) ? 3 : 2);
+            headMeta.setCustomModelData((TARDISWeepingAngelsPlugin.random.nextBoolean()) ? 3 : 2);
             head.setItemMeta(headMeta);
             Player player = (Player) livingEntity;
             player.getInventory().setHelmet(head);

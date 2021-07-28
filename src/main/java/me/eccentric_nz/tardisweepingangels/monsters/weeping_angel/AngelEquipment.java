@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.weeping_angel;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import org.bukkit.Material;
 import org.bukkit.entity.LivingEntity;
@@ -74,7 +74,7 @@ public class AngelEquipment {
             entityEquipment.setLeggingsDropChance(0F);
             entityEquipment.setBootsDropChance(0F);
             livingEntity.setCanPickupItems(false);
-            livingEntity.getPersistentDataContainer().set(TardisWeepingAngelsPlugin.weepingAngel, PersistentDataType.INTEGER, Monster.WEEPING_ANGEL.getPersist());
+            livingEntity.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.weepingAngel, PersistentDataType.INTEGER, Monster.WEEPING_ANGEL.getPersist());
         }
     }
 }

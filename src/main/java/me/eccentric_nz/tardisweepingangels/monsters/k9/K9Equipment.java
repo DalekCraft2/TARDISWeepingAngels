@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.k9;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.Material;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
@@ -43,10 +43,10 @@ public class K9Equipment {
             if (player != null) {
                 uuid = player.getUniqueId();
             } else {
-                uuid = TardisWeepingAngelsPlugin.unclaimed;
+                uuid = TARDISWeepingAngelsPlugin.unclaimed;
             }
-            armorStand.getPersistentDataContainer().set(TardisWeepingAngelsPlugin.k9, PersistentDataType.INTEGER, 0);
-            armorStand.getPersistentDataContainer().set(TardisWeepingAngelsPlugin.ownerUuid, TardisWeepingAngelsPlugin.persistentDataTypeUuid, uuid);
+            armorStand.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.k9, PersistentDataType.INTEGER, 0);
+            armorStand.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid, uuid);
             EntityEquipment entityEquipment = armorStand.getEquipment();
             entityEquipment.setHelmet(head);
             entityEquipment.setItemInMainHand(null);

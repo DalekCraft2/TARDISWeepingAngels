@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.k9;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
@@ -24,9 +24,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class K9Recipe {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public K9Recipe(TardisWeepingAngelsPlugin plugin) {
+    public K9Recipe(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -36,7 +36,7 @@ public class K9Recipe {
         itemMeta.setDisplayName("K9");
         itemMeta.setCustomModelData(1);
         itemStack.setItemMeta(itemMeta);
-        ShapedRecipe recipe = new ShapedRecipe(TardisWeepingAngelsPlugin.k9, itemStack);
+        ShapedRecipe recipe = new ShapedRecipe(TARDISWeepingAngelsPlugin.k9, itemStack);
         recipe.shape("III", "RRR", "BBB");
         // set ingredients
         recipe.setIngredient('I', Material.IRON_INGOT);

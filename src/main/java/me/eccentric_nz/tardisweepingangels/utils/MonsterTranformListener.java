@@ -16,16 +16,16 @@
  */
 package me.eccentric_nz.tardisweepingangels.utils;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityTransformEvent;
 
 public class MonsterTranformListener implements Listener {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public MonsterTranformListener(TardisWeepingAngelsPlugin plugin) {
+    public MonsterTranformListener(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 

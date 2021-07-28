@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.equip;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -28,9 +28,9 @@ import org.bukkit.persistence.PersistentDataType;
 
 public class PlayerUndisguise implements Listener {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public PlayerUndisguise(TardisWeepingAngelsPlugin plugin) {
+    public PlayerUndisguise(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -43,7 +43,7 @@ public class PlayerUndisguise implements Listener {
                 if (itemStack != null) {
                     if (itemStack.hasItemMeta()) {
                         ItemMeta itemMeta = itemStack.getItemMeta();
-                        if (!itemMeta.getPersistentDataContainer().has(TardisWeepingAngelsPlugin.monsterHead, PersistentDataType.INTEGER)) {
+                        if (!itemMeta.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.monsterHead, PersistentDataType.INTEGER)) {
                             if (itemMeta.hasDisplayName() && (itemMeta.getDisplayName().startsWith("Weeping Angel") || itemMeta.getDisplayName().startsWith("Ice Warrior") || itemMeta.getDisplayName().startsWith("Cyberman") || itemMeta.getDisplayName().startsWith("Empty Child") || itemMeta.getDisplayName().startsWith("Hath") || itemMeta.getDisplayName().startsWith("Silurian") || itemMeta.getDisplayName().startsWith("Sontaran") || itemMeta.getDisplayName().startsWith("Strax") || itemMeta.getDisplayName().startsWith("Zygon") || itemMeta.getDisplayName().startsWith("Vashta"))) {
                                 event.setCancelled(true);
                                 (event.getWhoClicked()).sendMessage(plugin.pluginName + "You must use the '/twad [monster] off' command to remove this armour!");

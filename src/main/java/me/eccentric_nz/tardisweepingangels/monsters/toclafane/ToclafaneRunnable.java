@@ -16,8 +16,8 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.toclafane;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelSpawnEvent;
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelSpawnEvent;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import me.eccentric_nz.tardisweepingangels.utils.WaterChecker;
 import me.eccentric_nz.tardisweepingangels.utils.WorldGuardChecker;
@@ -35,10 +35,10 @@ import java.util.Collection;
 
 public class ToclafaneRunnable implements Runnable {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
     private final int spawnRate;
 
-    public ToclafaneRunnable(TardisWeepingAngelsPlugin plugin) {
+    public ToclafaneRunnable(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
         spawnRate = this.plugin.getConfig().getInt("spawn_rate.how_many");
     }
@@ -70,9 +70,9 @@ public class ToclafaneRunnable implements Runnable {
     private void spawnToclafane(World world) {
         Chunk[] chunks = world.getLoadedChunks();
         if (chunks.length > 0) {
-            Chunk chunk = chunks[TardisWeepingAngelsPlugin.random.nextInt(chunks.length)];
-            int x = chunk.getX() * 16 + TardisWeepingAngelsPlugin.random.nextInt(16);
-            int z = chunk.getZ() * 16 + TardisWeepingAngelsPlugin.random.nextInt(16);
+            Chunk chunk = chunks[TARDISWeepingAngelsPlugin.random.nextInt(chunks.length)];
+            int x = chunk.getX() * 16 + TARDISWeepingAngelsPlugin.random.nextInt(16);
+            int z = chunk.getZ() * 16 + TARDISWeepingAngelsPlugin.random.nextInt(16);
             int y = world.getHighestBlockYAt(x, z);
             Location location = new Location(world, x, y + 1, z);
             if (WaterChecker.isNotWater(location)) {
@@ -82,7 +82,7 @@ public class ToclafaneRunnable implements Runnable {
                 Entity toclafane = world.spawnEntity(location, EntityType.ARMOR_STAND);
                 plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> {
                     ToclafaneEquipment.set(toclafane, false);
-                    plugin.getServer().getPluginManager().callEvent(new TardisWeepingAngelSpawnEvent(toclafane, EntityType.ARMOR_STAND, Monster.TOCLAFANE, location));
+                    plugin.getServer().getPluginManager().callEvent(new TARDISWeepingAngelSpawnEvent(toclafane, EntityType.ARMOR_STAND, Monster.TOCLAFANE, location));
                 }, 5L);
             }
         }

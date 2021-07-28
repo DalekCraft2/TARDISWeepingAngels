@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.commands;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.equip.RemoveEquipment;
 import me.eccentric_nz.tardisweepingangels.monsters.cyberman.CybermanEquipment;
 import me.eccentric_nz.tardisweepingangels.monsters.dalek.DalekEquipment;
@@ -44,9 +44,9 @@ import java.util.UUID;
 
 public class DisguiseCommand {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public DisguiseCommand(TardisWeepingAngelsPlugin plugin) {
+    public DisguiseCommand(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 

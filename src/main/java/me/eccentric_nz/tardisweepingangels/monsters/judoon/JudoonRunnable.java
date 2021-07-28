@@ -16,8 +16,8 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.judoon;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelSpawnEvent;
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelSpawnEvent;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import me.eccentric_nz.tardisweepingangels.utils.WaterChecker;
 import me.eccentric_nz.tardisweepingangels.utils.WorldGuardChecker;
@@ -39,9 +39,9 @@ import java.util.Collection;
  */
 public class JudoonRunnable implements Runnable {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public JudoonRunnable(TardisWeepingAngelsPlugin plugin) {
+    public JudoonRunnable(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -56,7 +56,7 @@ public class JudoonRunnable implements Runnable {
                 Collection<ArmorStand> armorStands = world.getEntitiesByClass(ArmorStand.class);
                 for (ArmorStand judoon : armorStands) {
                     PersistentDataContainer persistentDataContainer = judoon.getPersistentDataContainer();
-                    if (persistentDataContainer.has(TardisWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER)) {
+                    if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER)) {
                         judoons++;
                     }
                 }
@@ -71,9 +71,9 @@ public class JudoonRunnable implements Runnable {
     private void spawnJudoon(World world) {
         Chunk[] chunks = world.getLoadedChunks();
         if (chunks.length > 0) {
-            Chunk chunk = chunks[TardisWeepingAngelsPlugin.random.nextInt(chunks.length)];
-            int x = chunk.getX() * 16 + TardisWeepingAngelsPlugin.random.nextInt(16);
-            int z = chunk.getZ() * 16 + TardisWeepingAngelsPlugin.random.nextInt(16);
+            Chunk chunk = chunks[TARDISWeepingAngelsPlugin.random.nextInt(chunks.length)];
+            int x = chunk.getX() * 16 + TARDISWeepingAngelsPlugin.random.nextInt(16);
+            int z = chunk.getZ() * 16 + TARDISWeepingAngelsPlugin.random.nextInt(16);
             int y = world.getHighestBlockYAt(x, z);
             Location location = new Location(world, x, y + 1, z);
             if (WaterChecker.isNotWater(location)) {
@@ -83,7 +83,7 @@ public class JudoonRunnable implements Runnable {
                 Entity judoon = world.spawnEntity(location, EntityType.ARMOR_STAND);
                 plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> {
                     JudoonEquipment.set(null, judoon, false);
-                    plugin.getServer().getPluginManager().callEvent(new TardisWeepingAngelSpawnEvent(judoon, EntityType.ARMOR_STAND, Monster.JUDOON, location));
+                    plugin.getServer().getPluginManager().callEvent(new TARDISWeepingAngelSpawnEvent(judoon, EntityType.ARMOR_STAND, Monster.JUDOON, location));
                 }, 2L);
             }
         }

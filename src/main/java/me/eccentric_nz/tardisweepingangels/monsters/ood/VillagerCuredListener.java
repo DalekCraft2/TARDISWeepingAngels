@@ -16,8 +16,8 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.ood;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelSpawnEvent;
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelSpawnEvent;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
@@ -28,9 +28,9 @@ import org.bukkit.event.entity.EntityTransformEvent;
 
 public class VillagerCuredListener implements Listener {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public VillagerCuredListener(TardisWeepingAngelsPlugin plugin) {
+    public VillagerCuredListener(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -44,10 +44,10 @@ public class VillagerCuredListener implements Listener {
         if (!plugin.getConfig().getBoolean("ood.worlds." + world.getName())) {
             return;
         }
-        if (TardisWeepingAngelsPlugin.random.nextInt(100) < plugin.getConfig().getInt("ood.spawn_from_cured")) {
+        if (TARDISWeepingAngelsPlugin.random.nextInt(100) < plugin.getConfig().getInt("ood.spawn_from_cured")) {
             Entity ood = world.spawnEntity(entity.getLocation(), EntityType.ARMOR_STAND);
             OodEquipment.set(null, ood, false);
-            plugin.getServer().getPluginManager().callEvent(new TardisWeepingAngelSpawnEvent(ood, EntityType.ARMOR_STAND, Monster.OOD, entity.getLocation()));
+            plugin.getServer().getPluginManager().callEvent(new TARDISWeepingAngelSpawnEvent(ood, EntityType.ARMOR_STAND, Monster.OOD, entity.getLocation()));
         }
     }
 }

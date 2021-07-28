@@ -17,7 +17,7 @@
 package me.eccentric_nz.tardisweepingangels;
 
 import me.eccentric_nz.tardisweepingangels.commands.TabComplete;
-import me.eccentric_nz.tardisweepingangels.commands.TardisWeepingAngelsCommand;
+import me.eccentric_nz.tardisweepingangels.commands.TARDISWeepingAngelsCommand;
 import me.eccentric_nz.tardisweepingangels.death.Death;
 import me.eccentric_nz.tardisweepingangels.death.PlayerDeath;
 import me.eccentric_nz.tardisweepingangels.death.RainDamage;
@@ -61,9 +61,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
 
-public class TardisWeepingAngelsPlugin extends JavaPlugin {
+public class TARDISWeepingAngelsPlugin extends JavaPlugin {
 
-    public static TardisWeepingAngelsPlugin plugin;
+    public static TARDISWeepingAngelsPlugin plugin;
     public static Random random = new Random();
     public static NamespacedKey weepingAngel;
     public static NamespacedKey cyberman;
@@ -159,7 +159,7 @@ public class TardisWeepingAngelsPlugin extends JavaPlugin {
             pluginManager.registerEvents(new BeeSpawnListener(this), this);
         }
         // register command
-        getCommand("tardisweepingangels").setExecutor(new TardisWeepingAngelsCommand(this));
+        getCommand("tardisweepingangels").setExecutor(new TARDISWeepingAngelsCommand(this));
         // set tab completion
         getCommand("tardisweepingangels").setTabCompleter(new TabComplete(this));
         // remove invisible Guardians not riding an Enderman
@@ -228,7 +228,7 @@ public class TardisWeepingAngelsPlugin extends JavaPlugin {
         return followTasks;
     }
 
-    private void initKeys(TardisWeepingAngelsPlugin plugin) {
+    private void initKeys(TARDISWeepingAngelsPlugin plugin) {
         weepingAngel = new NamespacedKey(plugin, "angel");
         cyberman = new NamespacedKey(plugin, "cyberman");
         dalek = new NamespacedKey(plugin, "dalek");

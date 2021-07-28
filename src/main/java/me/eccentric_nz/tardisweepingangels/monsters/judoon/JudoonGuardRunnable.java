@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.judoon;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.*;
 import org.bukkit.persistence.PersistentDataType;
@@ -26,9 +26,9 @@ import java.util.UUID;
 
 public class JudoonGuardRunnable implements Runnable {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
 
-    public JudoonGuardRunnable(TardisWeepingAngelsPlugin plugin) {
+    public JudoonGuardRunnable(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -42,8 +42,8 @@ public class JudoonGuardRunnable implements Runnable {
                         if (entity instanceof Monster) {
                             Damageable damageable = (Damageable) entity;
                             double health = damageable.getHealth();
-                            if (uuidEntity.getPersistentDataContainer().has(TardisWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER)) {
-                                int ammo = uuidEntity.getPersistentDataContainer().get(TardisWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER);
+                            if (uuidEntity.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER)) {
+                                int ammo = uuidEntity.getPersistentDataContainer().get(TARDISWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER);
                                 if (ammo > 0 && health > 0) {
                                     damageable.damage(plugin.getConfig().getDouble("judoon.damage"), uuidEntity);
                                     uuidEntity.getWorld().playSound(uuidEntity.getLocation(), "judoon_fire", 1.0f, 1.0f);
@@ -57,7 +57,7 @@ public class JudoonGuardRunnable implements Runnable {
                                         ArmorStand stand = (ArmorStand) uuidEntity;
                                         stand.setCustomName("Ammunition: " + ammo);
                                         stand.setCustomNameVisible(true);
-                                        uuidEntity.getPersistentDataContainer().set(TardisWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER, ammo);
+                                        uuidEntity.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER, ammo);
                                     }
                                 }
                             }

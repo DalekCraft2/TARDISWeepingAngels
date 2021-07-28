@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.ood;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.Material;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
@@ -35,7 +35,7 @@ public class OodEquipment {
 
     public static void set(Player player, Entity entity, boolean disguise) {
         int colour = 0;
-        int r = TardisWeepingAngelsPlugin.random.nextInt(100);
+        int r = TARDISWeepingAngelsPlugin.random.nextInt(100);
         if (r > 70) {
             colour = (r > 85) ? 20 : 10;
         }
@@ -49,11 +49,11 @@ public class OodEquipment {
             if (player != null) {
                 uuid = player.getUniqueId();
             } else {
-                uuid = TardisWeepingAngelsPlugin.unclaimed;
+                uuid = TARDISWeepingAngelsPlugin.unclaimed;
             }
             ArmorStand armorStand = (ArmorStand) entity;
-            armorStand.getPersistentDataContainer().set(TardisWeepingAngelsPlugin.ood, PersistentDataType.INTEGER, 0);
-            armorStand.getPersistentDataContainer().set(TardisWeepingAngelsPlugin.ownerUuid, TardisWeepingAngelsPlugin.persistentDataTypeUuid, uuid);
+            armorStand.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.ood, PersistentDataType.INTEGER, 0);
+            armorStand.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid, uuid);
             ItemStack arm = new ItemStack(Material.ROTTEN_FLESH);
             ItemMeta armMeta = arm.getItemMeta();
             armMeta.setDisplayName("Ood Arm");

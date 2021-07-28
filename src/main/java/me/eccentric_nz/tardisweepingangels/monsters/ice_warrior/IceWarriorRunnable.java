@@ -16,8 +16,8 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.ice_warrior;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelSpawnEvent;
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelSpawnEvent;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import me.eccentric_nz.tardisweepingangels.utils.WaterChecker;
 import me.eccentric_nz.tardisweepingangels.utils.WorldGuardChecker;
@@ -44,11 +44,11 @@ import java.util.List;
  */
 public class IceWarriorRunnable implements Runnable {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
     private final int spawnRate;
     private final List<Biome> biomes = new ArrayList<>();
 
-    public IceWarriorRunnable(TardisWeepingAngelsPlugin plugin) {
+    public IceWarriorRunnable(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
         spawnRate = plugin.getConfig().getInt("spawn_rate.how_many");
         biomes.add(Biome.DEEP_FROZEN_OCEAN);
@@ -77,7 +77,7 @@ public class IceWarriorRunnable implements Runnable {
                     Collection<PigZombie> pigZombies = world.getEntitiesByClass(PigZombie.class);
                     for (PigZombie iceWarrior : pigZombies) {
                         PersistentDataContainer persistentDataContainer = iceWarrior.getPersistentDataContainer();
-                        if (persistentDataContainer.has(TardisWeepingAngelsPlugin.iceWarrior, PersistentDataType.INTEGER)) {
+                        if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.iceWarrior, PersistentDataType.INTEGER)) {
                             iceWarriors++;
                         }
                     }
@@ -96,9 +96,9 @@ public class IceWarriorRunnable implements Runnable {
     private void spawnIceWarrior(World world) {
         Chunk[] chunks = world.getLoadedChunks();
         if (chunks.length > 0) {
-            Chunk chunk = chunks[TardisWeepingAngelsPlugin.random.nextInt(chunks.length)];
-            int x = chunk.getX() * 16 + TardisWeepingAngelsPlugin.random.nextInt(16);
-            int z = chunk.getZ() * 16 + TardisWeepingAngelsPlugin.random.nextInt(16);
+            Chunk chunk = chunks[TARDISWeepingAngelsPlugin.random.nextInt(chunks.length)];
+            int x = chunk.getX() * 16 + TARDISWeepingAngelsPlugin.random.nextInt(16);
+            int z = chunk.getZ() * 16 + TARDISWeepingAngelsPlugin.random.nextInt(16);
             int y = world.getHighestBlockYAt(x, z);
             Location location = new Location(world, x, y + 1, z);
             if (biomes.contains(location.getBlock().getBiome()) && WaterChecker.isNotWater(location)) {
@@ -114,7 +114,7 @@ public class IceWarriorRunnable implements Runnable {
                 pigZombie.addPotionEffect(potionEffect);
                 plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> {
                     IceWarriorEquipment.set(iceWarrior, false);
-                    plugin.getServer().getPluginManager().callEvent(new TardisWeepingAngelSpawnEvent(iceWarrior, EntityType.ZOMBIFIED_PIGLIN, Monster.ICE_WARRIOR, location));
+                    plugin.getServer().getPluginManager().callEvent(new TARDISWeepingAngelSpawnEvent(iceWarrior, EntityType.ZOMBIFIED_PIGLIN, Monster.ICE_WARRIOR, location));
                 }, 5L);
             }
         }

@@ -16,8 +16,8 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.silurian;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelSpawnEvent;
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelSpawnEvent;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import me.eccentric_nz.tardisweepingangels.utils.WorldGuardChecker;
 import me.eccentric_nz.tardisweepingangels.utils.WorldProcessor;
@@ -41,10 +41,10 @@ import java.util.logging.Level;
  */
 public class SilurianRunnable implements Runnable {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
     private final int spawnRate;
 
-    public SilurianRunnable(TardisWeepingAngelsPlugin plugin) {
+    public SilurianRunnable(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
         spawnRate = plugin.getConfig().getInt("spawn_rate.how_many");
     }
@@ -66,7 +66,7 @@ public class SilurianRunnable implements Runnable {
                     Collection<Skeleton> skeletons = world.getEntitiesByClass(Skeleton.class);
                     for (Skeleton silurian : skeletons) {
                         PersistentDataContainer persistentDataContainer = silurian.getPersistentDataContainer();
-                        if (persistentDataContainer.has(TardisWeepingAngelsPlugin.silurian, PersistentDataType.INTEGER)) {
+                        if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.silurian, PersistentDataType.INTEGER)) {
                             silurians++;
                         }
                     }
@@ -84,9 +84,9 @@ public class SilurianRunnable implements Runnable {
     private void spawnSilurian(World world) {
         Chunk[] chunks = world.getLoadedChunks();
         if (chunks.length > 0) {
-            Chunk chunk = chunks[TardisWeepingAngelsPlugin.random.nextInt(chunks.length)];
-            int x = chunk.getX() * 16 + TardisWeepingAngelsPlugin.random.nextInt(16);
-            int z = chunk.getZ() * 16 + TardisWeepingAngelsPlugin.random.nextInt(16);
+            Chunk chunk = chunks[TARDISWeepingAngelsPlugin.random.nextInt(chunks.length)];
+            int x = chunk.getX() * 16 + TARDISWeepingAngelsPlugin.random.nextInt(16);
+            int z = chunk.getZ() * 16 + TARDISWeepingAngelsPlugin.random.nextInt(16);
             int y = world.getHighestBlockYAt(x, z);
             Location location = new Location(world, x, y + 1, z);
             Location search = CaveFinder.searchCave(location);
@@ -100,7 +100,7 @@ public class SilurianRunnable implements Runnable {
             silurian.addPotionEffect(potionEffect);
             plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> {
                 SilurianEquipment.set(silurian, false);
-                plugin.getServer().getPluginManager().callEvent(new TardisWeepingAngelSpawnEvent(silurian, EntityType.SKELETON, Monster.SILURIAN, cave));
+                plugin.getServer().getPluginManager().callEvent(new TARDISWeepingAngelSpawnEvent(silurian, EntityType.SKELETON, Monster.SILURIAN, cave));
             }, 5L);
         }
     }

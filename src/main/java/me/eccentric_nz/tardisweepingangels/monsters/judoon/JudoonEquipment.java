@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.judoon;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import org.bukkit.Material;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
@@ -43,11 +43,11 @@ public class JudoonEquipment {
             if (player != null) {
                 uuid = player.getUniqueId();
             } else {
-                uuid = TardisWeepingAngelsPlugin.unclaimed;
+                uuid = TARDISWeepingAngelsPlugin.unclaimed;
             }
             ArmorStand armorStand = (ArmorStand) entity;
-            armorStand.getPersistentDataContainer().set(TardisWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER, 0);
-            armorStand.getPersistentDataContainer().set(TardisWeepingAngelsPlugin.ownerUuid, TardisWeepingAngelsPlugin.persistentDataTypeUuid, uuid);
+            armorStand.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER, 0);
+            armorStand.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid, uuid);
             ItemStack arm = new ItemStack(Material.YELLOW_DYE);
             ItemMeta armMeta = arm.getItemMeta();
             armMeta.setDisplayName("Judoon Arm");

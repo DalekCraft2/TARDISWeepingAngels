@@ -16,8 +16,8 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.weeping_angel;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelSpawnEvent;
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelSpawnEvent;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -36,10 +36,10 @@ import java.util.List;
  */
 public class ImageHolder implements Listener {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
     private final List<BlockFace> faces = new ArrayList<>();
 
-    public ImageHolder(TardisWeepingAngelsPlugin plugin) {
+    public ImageHolder(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
         faces.add(BlockFace.EAST);
         faces.add(BlockFace.NORTH);
@@ -50,9 +50,9 @@ public class ImageHolder implements Listener {
     @EventHandler(ignoreCancelled = true)
     public void onChatAboutWeepingAngel(AsyncPlayerChatEvent event) {
         String message = event.getMessage();
-        if (message.toLowerCase().contains("angel") && TardisWeepingAngelsPlugin.random.nextInt(100) < plugin.getConfig().getInt("angels.spawn_from_chat.chance")) {
+        if (message.toLowerCase().contains("angel") && TARDISWeepingAngelsPlugin.random.nextInt(100) < plugin.getConfig().getInt("angels.spawn_from_chat.chance")) {
             int distance = plugin.getConfig().getInt("angels.spawn_from_chat.distance_from_player");
-            Block block = event.getPlayer().getLocation().getBlock().getRelative(faces.get(TardisWeepingAngelsPlugin.random.nextInt(4)), distance);
+            Block block = event.getPlayer().getLocation().getBlock().getRelative(faces.get(TARDISWeepingAngelsPlugin.random.nextInt(4)), distance);
             // get highest block in a random direction
             Location highest = block.getWorld().getHighestBlockAt(block.getLocation()).getLocation();
             Location location = highest.add(0, 1, 0);
@@ -62,7 +62,7 @@ public class ImageHolder implements Listener {
                 weepingAngel.setSilent(true);
                 plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> {
                     AngelEquipment.set(weepingAngel, false);
-                    plugin.getServer().getPluginManager().callEvent(new TardisWeepingAngelSpawnEvent(weepingAngel, EntityType.SKELETON, Monster.WEEPING_ANGEL, location));
+                    plugin.getServer().getPluginManager().callEvent(new TARDISWeepingAngelSpawnEvent(weepingAngel, EntityType.SKELETON, Monster.WEEPING_ANGEL, location));
                 }, 5L);
             }, 20L);
         }

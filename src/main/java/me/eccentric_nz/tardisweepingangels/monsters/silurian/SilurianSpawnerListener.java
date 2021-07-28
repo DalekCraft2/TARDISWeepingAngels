@@ -16,8 +16,8 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.silurian;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelSpawnEvent;
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelSpawnEvent;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
 import me.eccentric_nz.tardisweepingangels.utils.Monster;
 import me.eccentric_nz.tardisweepingangels.utils.WorldGuardChecker;
 import me.eccentric_nz.tardisweepingangels.utils.WorldProcessor;
@@ -40,10 +40,10 @@ import java.util.List;
 
 public class SilurianSpawnerListener implements Listener {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
     private final int spawnRate;
 
-    public SilurianSpawnerListener(TardisWeepingAngelsPlugin plugin) {
+    public SilurianSpawnerListener(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
         spawnRate = plugin.getConfig().getInt("spawn_rate.how_many");
     }
@@ -65,7 +65,7 @@ public class SilurianSpawnerListener implements Listener {
             Collection<Skeleton> skeletons = cave.getWorld().getEntitiesByClass(Skeleton.class);
             skeletons.forEach((silurian) -> {
                 PersistentDataContainer persistentDataContainer = silurian.getPersistentDataContainer();
-                if (persistentDataContainer.has(TardisWeepingAngelsPlugin.silurian, PersistentDataType.INTEGER)) {
+                if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.silurian, PersistentDataType.INTEGER)) {
                     silurians.add(silurian);
                 }
             });
@@ -78,7 +78,7 @@ public class SilurianSpawnerListener implements Listener {
                     silurian.addPotionEffect(potionEffect);
                     plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> {
                         SilurianEquipment.set(silurian, false);
-                        plugin.getServer().getPluginManager().callEvent(new TardisWeepingAngelSpawnEvent(silurian, EntityType.SKELETON, Monster.SILURIAN, cave));
+                        plugin.getServer().getPluginManager().callEvent(new TARDISWeepingAngelSpawnEvent(silurian, EntityType.SKELETON, Monster.SILURIAN, cave));
                     }, 5L);
                 }
             }
