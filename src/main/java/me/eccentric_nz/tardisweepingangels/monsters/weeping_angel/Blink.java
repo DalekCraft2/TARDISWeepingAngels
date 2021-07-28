@@ -16,8 +16,8 @@
  */
 package me.eccentric_nz.tardisweepingangels.monsters.weeping_angel;
 
-import me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin;
-import me.eccentric_nz.tardisweepingangels.utils.Vector3d;
+import me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin;
+import me.eccentric_nz.tardisweepingangels.utils.Vector3D;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -35,10 +35,10 @@ import java.util.List;
 
 public class Blink implements Listener {
 
-    private final TardisWeepingAngelsPlugin plugin;
+    private final TARDISWeepingAngelsPlugin plugin;
     private final List<String> message = new ArrayList<>();
 
-    public Blink(TardisWeepingAngelsPlugin plugin) {
+    public Blink(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
         message.add("Don't blink. Blink and you're dead.");
         message.add("They are fast. Faster than you can believe.");
@@ -46,12 +46,12 @@ public class Blink implements Listener {
         message.add("And don't blink. Good Luck.");
     }
 
-    public static boolean hasIntersection(Vector3d point1, Vector3d point2, Vector3d min, Vector3d max) {
+    public static boolean hasIntersection(Vector3D point1, Vector3D point2, Vector3D min, Vector3D max) {
         double epsilon = 0.0001f;
-        Vector3d d = point2.subtract(point1).multiply(0.5); // TODO Figure out what these three variables are and rename them.
-        Vector3d e = max.subtract(min).multiply(0.5);
-        Vector3d c = point1.add(d).subtract(min.add(max).multiply(0.5));
-        Vector3d ad = d.abs();
+        Vector3D d = point2.subtract(point1).multiply(0.5); // TODO Figure out what these three variables are and rename them.
+        Vector3D e = max.subtract(min).multiply(0.5);
+        Vector3D c = point1.add(d).subtract(min.add(max).multiply(0.5));
+        Vector3D ad = d.abs();
         if (Math.abs(c.x) > e.x + ad.x) {
             return false;
         }
@@ -75,17 +75,17 @@ public class Blink implements Listener {
     public void onToggleSneak(PlayerToggleSneakEvent event) {
         Player player = event.getPlayer();
         Location observerPose = player.getEyeLocation();
-        Vector3d observerDirection = new Vector3d(observerPose.getDirection());
-        Vector3d observerStart = new Vector3d(observerPose);
-        Vector3d observerEnd = observerStart.add(observerDirection.multiply(16));
+        Vector3D observerDirection = new Vector3D(observerPose.getDirection());
+        Vector3D observerStart = new Vector3D(observerPose);
+        Vector3D observerEnd = observerStart.add(observerDirection.multiply(16));
 
         Skeleton skeleton = null;
         // Get nearby entities
         for (Skeleton target : player.getWorld().getEntitiesByClass(Skeleton.class)) {
             // Bounding box of the given player
-            Vector3d targetPose = new Vector3d(target.getLocation());
-            Vector3d minimum = targetPose.add(-0.5, 0, -0.5);
-            Vector3d maximum = targetPose.add(0.5, 1.67, 0.5);
+            Vector3D targetPos = new Vector3D(target.getLocation());
+            Vector3D minimum = targetPos.add(-0.5, 0, -0.5);
+            Vector3D maximum = targetPos.add(0.5, 1.67, 0.5);
             if (hasIntersection(observerStart, observerEnd, minimum, maximum)) {
                 if (skeleton == null || skeleton.getLocation().distanceSquared(observerPose) > target.getLocation().distanceSquared(observerPose)) {
                     // is it an angel?
@@ -100,7 +100,7 @@ public class Blink implements Listener {
         if (skeleton != null) {
             skeleton.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, plugin.getConfig().getInt("angels.freeze_time"), 30, true, false));
             if (!player.isSneaking()) {
-                player.sendMessage(plugin.pluginName + message.get(TardisWeepingAngelsPlugin.random.nextInt(4)));
+                player.sendMessage(plugin.pluginName + message.get(TARDISWeepingAngelsPlugin.random.nextInt(4)));
             }
         }
     }

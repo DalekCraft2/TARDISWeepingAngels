@@ -6,7 +6,7 @@
 
     <groupId>me.eccentric_nz.tardisweepingangels</groupId>
     <artifactId>TARDISWeepingAngels</artifactId>
-    <version>3.4.0-SNAPSHOT</version>
+    <version>3.4.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>TARDISWeepingAngels</name>
