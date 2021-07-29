@@ -95,7 +95,7 @@ public class Strax implements Listener {
                             player.getEquipment().setItemInMainHand(milk);
                             plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> milkers.remove(uuid), 3000L);
                         } else {
-                            player.sendMessage(plugin.pluginName + "Strax is not lactating right now, try again later.");
+                            player.sendMessage(plugin.getMessagePrefix() + "Strax is not lactating right now, try again later.");
                         }
                     } else if (event.getHand().equals(EquipmentSlot.HAND)) {
                         player.playSound(zombie.getLocation(), "strax", 1.0f, 1.0f);

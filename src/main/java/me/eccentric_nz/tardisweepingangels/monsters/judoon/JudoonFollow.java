@@ -26,7 +26,7 @@ public class JudoonFollow {
 
     public static void run(TARDISWeepingAngelsPlugin plugin, Player player, ArmorStand armorStand, String[] args) {
         if (!player.hasPermission("tardisweepingangels.follow.judoon")) {
-            player.sendMessage(plugin.pluginName + "You don't have permission to make a Judoon follow you!");
+            player.sendMessage(plugin.getMessagePrefix() + "You don't have permission to make a Judoon follow you!");
             return;
         }
         if (armorStand.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid)) {
@@ -37,10 +37,10 @@ public class JudoonFollow {
                 int taskId = plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new JudoonWalkRunnable(armorStand, speed, player), 2L, 2L);
                 plugin.getFollowTasks().put(uuid, taskId);
             } else {
-                player.sendMessage(plugin.pluginName + "That is not your Judoon!");
+                player.sendMessage(plugin.getMessagePrefix() + "That is not your Judoon!");
             }
         } else {
-            player.sendMessage(plugin.pluginName + "That is a broken Judoon :(");
+            player.sendMessage(plugin.getMessagePrefix() + "That is a broken Judoon :(");
         }
     }
 }

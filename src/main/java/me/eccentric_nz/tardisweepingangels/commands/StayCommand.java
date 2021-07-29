@@ -36,7 +36,7 @@ public class StayCommand {
             player = (Player) sender;
         }
         if (player == null) {
-            sender.sendMessage(plugin.pluginName + "Command can only be used by a player!");
+            sender.sendMessage(plugin.getMessagePrefix() + "Command can only be used by a player!");
             return;
         }
         UUID uuid = player.getUniqueId();
@@ -44,7 +44,7 @@ public class StayCommand {
             plugin.getServer().getScheduler().cancelTask(plugin.getFollowTasks().get(uuid));
             plugin.getFollowTasks().remove(uuid);
         } else {
-            player.sendMessage(plugin.pluginName + "An entity is not following you!");
+            player.sendMessage(plugin.getMessagePrefix() + "An entity is not following you!");
         }
     }
 }

@@ -60,7 +60,7 @@ public class DisguiseCommand {
         try {
             monster = Monster.valueOf(upper);
         } catch (IllegalArgumentException e) {
-            sender.sendMessage(plugin.pluginName + "Invalid monster type!");
+            sender.sendMessage(plugin.getMessagePrefix() + "Invalid monster type!");
             return true;
         }
         Player player = null;
@@ -70,23 +70,23 @@ public class DisguiseCommand {
         if (sender instanceof ConsoleCommandSender) {
             // check argument length
             if (args.length < 4) {
-                sender.sendMessage(plugin.pluginName + "You must supply a player UUID when using this command from the console!");
+                sender.sendMessage(plugin.getMessagePrefix() + "You must supply a player UUID when using this command from the console!");
                 return true;
             }
             UUID uuid = UUID.fromString(args[3]);
             player = plugin.getServer().getPlayer(uuid);
         }
         if (player == null) {
-            sender.sendMessage(plugin.pluginName + "Command can only be used by a player, or a player UUID must be supplied!");
+            sender.sendMessage(plugin.getMessagePrefix() + "Command can only be used by a player, or a player UUID must be supplied!");
             return true;
         }
         if (args.length < 3 || (!args[2].equalsIgnoreCase("on") && !args[2].equalsIgnoreCase("off"))) {
-            player.sendMessage(plugin.pluginName + "You need to specify if the disguise should be on or off!");
+            player.sendMessage(plugin.getMessagePrefix() + "You need to specify if the disguise should be on or off!");
             return true;
         }
         PlayerInventory inventory = player.getInventory();
         if (args[2].equalsIgnoreCase("on") && (inventory.getBoots() != null || inventory.getChestplate() != null || inventory.getHelmet() != null || inventory.getLeggings() != null)) {
-            player.sendMessage(plugin.pluginName + "Your armour slots must be empty before using this command!");
+            player.sendMessage(plugin.getMessagePrefix() + "Your armour slots must be empty before using this command!");
             return true;
         }
         if (args[2].equalsIgnoreCase("on")) {

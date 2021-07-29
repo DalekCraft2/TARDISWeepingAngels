@@ -46,7 +46,7 @@ public class PlayerUndisguise implements Listener {
                         if (!itemMeta.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.monsterHead, PersistentDataType.INTEGER)) {
                             if (itemMeta.hasDisplayName() && (itemMeta.getDisplayName().startsWith("Weeping Angel") || itemMeta.getDisplayName().startsWith("Ice Warrior") || itemMeta.getDisplayName().startsWith("Cyberman") || itemMeta.getDisplayName().startsWith("Empty Child") || itemMeta.getDisplayName().startsWith("Hath") || itemMeta.getDisplayName().startsWith("Silurian") || itemMeta.getDisplayName().startsWith("Sontaran") || itemMeta.getDisplayName().startsWith("Strax") || itemMeta.getDisplayName().startsWith("Zygon") || itemMeta.getDisplayName().startsWith("Vashta"))) {
                                 event.setCancelled(true);
-                                (event.getWhoClicked()).sendMessage(plugin.pluginName + "You must use the '/twad [monster] off' command to remove this armour!");
+                                (event.getWhoClicked()).sendMessage(plugin.getMessagePrefix() + "You must use the '/twad [monster] off' command to remove this armour!");
                             }
                         }
                     }

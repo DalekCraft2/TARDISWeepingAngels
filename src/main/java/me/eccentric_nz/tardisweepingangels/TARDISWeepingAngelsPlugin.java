@@ -16,8 +16,8 @@
  */
 package me.eccentric_nz.tardisweepingangels;
 
-import me.eccentric_nz.tardisweepingangels.commands.TabComplete;
 import me.eccentric_nz.tardisweepingangels.commands.TARDISWeepingAngelsCommand;
+import me.eccentric_nz.tardisweepingangels.commands.TabComplete;
 import me.eccentric_nz.tardisweepingangels.death.Death;
 import me.eccentric_nz.tardisweepingangels.death.PlayerDeath;
 import me.eccentric_nz.tardisweepingangels.death.RainDamage;
@@ -55,11 +55,11 @@ import me.eccentric_nz.tardisweepingangels.utils.*;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
+import java.util.logging.Level;
 
 public class TARDISWeepingAngelsPlugin extends JavaPlugin {
 
@@ -91,7 +91,7 @@ public class TARDISWeepingAngelsPlugin extends JavaPlugin {
     private final List<UUID> guards = new ArrayList<>();
     private final List<UUID> playersWithGuards = new ArrayList<>();
     private final HashMap<UUID, Integer> followTasks = new HashMap<>();
-    public String pluginName;
+    private String messagePrefix;
     private boolean steal;
     private PluginManager pluginManager;
     private boolean citizensEnabled = false;
@@ -105,8 +105,7 @@ public class TARDISWeepingAngelsPlugin extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         pluginManager = getServer().getPluginManager();
-        PluginDescriptionFile pdfFile = getDescription();
-        pluginName = ChatColor.GOLD + "[" + pdfFile.getName() + "]" + ChatColor.RESET + " ";
+        messagePrefix = ChatColor.GOLD + "[" + getDescription().getName() + "]" + ChatColor.RESET + " ";
         citizensEnabled = pluginManager.isPluginEnabled("Citizens");
         saveDefaultConfig();
         api = new MonsterEquipment();
@@ -187,6 +186,10 @@ public class TARDISWeepingAngelsPlugin extends JavaPlugin {
         getServer().getScheduler().scheduleSyncDelayedTask(this, new WorldProcessor(this), 200L);
     }
 
+    public String getMessagePrefix() {
+        return messagePrefix;
+    }
+
     public boolean angelsCanSteal() {
         return steal;
     }
@@ -209,7 +212,7 @@ public class TARDISWeepingAngelsPlugin extends JavaPlugin {
      * @param object the Object to print to the console
      */
     public void debug(Object object) {
-        getServer().getConsoleSender().sendMessage(pluginName + "Debug: " + object);
+        getLogger().log(Level.CONFIG, (String) object);
     }
 
     public MonsterEquipment getWeepingAngelsApi() {

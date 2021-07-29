@@ -46,7 +46,7 @@ public class EquipCommand {
         try {
             monster = Monster.valueOf(upper);
         } catch (IllegalArgumentException e) {
-            sender.sendMessage(plugin.pluginName + "Invalid monster type!");
+            sender.sendMessage(plugin.getMessagePrefix() + "Invalid monster type!");
             return true;
         }
         Player player = null;
@@ -54,7 +54,7 @@ public class EquipCommand {
             player = (Player) sender;
         }
         if (player == null) {
-            sender.sendMessage(plugin.pluginName + "Command can only be used by a player!");
+            sender.sendMessage(plugin.getMessagePrefix() + "Command can only be used by a player!");
             return true;
         }
         // get the armour stand player is looking at
@@ -78,7 +78,7 @@ public class EquipCommand {
         if (armorStand != null) {
             new ArmourStandEquipment().setStandEquipment(armorStand, monster, (monster == Monster.EMPTY_CHILD));
         } else {
-            sender.sendMessage(plugin.pluginName + "You are not looking at an armour stand within 8 blocks!");
+            sender.sendMessage(plugin.getMessagePrefix() + "You are not looking at an armour stand within 8 blocks!");
             return true;
         }
         return true;

@@ -41,17 +41,17 @@ public class FollowCommand {
             player = (Player) sender;
         }
         if (player == null) {
-            sender.sendMessage(plugin.pluginName + "Command can only be used by a player!");
+            sender.sendMessage(plugin.getMessagePrefix() + "Command can only be used by a player!");
             return;
         }
         if (plugin.getFollowTasks().containsKey(player.getUniqueId())) {
-            player.sendMessage(plugin.pluginName + "An entity is already following you!");
+            player.sendMessage(plugin.getMessagePrefix() + "An entity is already following you!");
             return;
         }
         // get the armour stand
         ArmorStand armorStand = ArmorStandFinder.getStand(player);
         if (armorStand == null) {
-            player.sendMessage(plugin.pluginName + "You are not looking at an entity that can follow you!");
+            player.sendMessage(plugin.getMessagePrefix() + "You are not looking at an entity that can follow you!");
             return;
         }
         PersistentDataContainer persistentDataContainer = armorStand.getPersistentDataContainer();
@@ -62,7 +62,7 @@ public class FollowCommand {
         } else if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.k9, PersistentDataType.INTEGER)) {
             K9Follow.run(plugin, player, armorStand, args);
         } else {
-            player.sendMessage(plugin.pluginName + "You are not looking at an entity that can follow you!");
+            player.sendMessage(plugin.getMessagePrefix() + "You are not looking at an entity that can follow you!");
         }
     }
 }

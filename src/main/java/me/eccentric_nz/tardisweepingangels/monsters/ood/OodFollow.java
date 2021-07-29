@@ -26,7 +26,7 @@ public class OodFollow {
 
     public static void run(TARDISWeepingAngelsPlugin plugin, Player player, ArmorStand stand, String[] args) {
         if (!player.hasPermission("tardisweepingangels.follow.ood")) {
-            player.sendMessage(plugin.pluginName + "You don't have permission to make an Ood follow you!");
+            player.sendMessage(plugin.getMessagePrefix() + "You don't have permission to make an Ood follow you!");
             return;
         }
         if (stand.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid)) {
@@ -37,10 +37,10 @@ public class OodFollow {
                 int taskId = plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new OodWalkRunnable(stand, speed, player), 2L, 2L);
                 plugin.getFollowTasks().put(uuid, taskId);
             } else {
-                player.sendMessage(plugin.pluginName + "That is not your Ood!");
+                player.sendMessage(plugin.getMessagePrefix() + "That is not your Ood!");
             }
         } else {
-            player.sendMessage(plugin.pluginName + "That is a broken Ood :(");
+            player.sendMessage(plugin.getMessagePrefix() + "That is a broken Ood :(");
         }
     }
 }

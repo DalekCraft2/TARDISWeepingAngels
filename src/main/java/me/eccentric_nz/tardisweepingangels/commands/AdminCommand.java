@@ -53,14 +53,14 @@ public class AdminCommand {
         }
         World world = plugin.getServer().getWorld(args[2]);
         if (world == null) {
-            sender.sendMessage(plugin.pluginName + "Could not find a world with that name!");
+            sender.sendMessage(plugin.getMessagePrefix() + "Could not find a world with that name!");
             return true;
         }
         int m;
         try {
             m = Integer.parseInt(args[3]);
         } catch (NumberFormatException numberFormatException) {
-            sender.sendMessage(plugin.pluginName + "Last argument must be a number!");
+            sender.sendMessage(plugin.getMessagePrefix() + "Last argument must be a number!");
             return false;
         }
         String which = args[1].toLowerCase();
@@ -86,12 +86,12 @@ public class AdminCommand {
                 plugin.getConfig().set("vashta_nerada.worlds." + args[2], m);
                 plugin.getConfig().set("zygons.worlds." + args[2], m);
             } else {
-                sender.sendMessage(plugin.pluginName + "Invalid monster type!");
+                sender.sendMessage(plugin.getMessagePrefix() + "Invalid monster type!");
                 return true;
             }
         }
         plugin.saveConfig();
-        sender.sendMessage(plugin.pluginName + "Config updated!");
+        sender.sendMessage(plugin.getMessagePrefix() + "Config updated!");
         return true;
     }
 }

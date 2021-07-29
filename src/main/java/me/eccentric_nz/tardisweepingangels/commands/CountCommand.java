@@ -43,7 +43,7 @@ public class CountCommand {
         int count = 0;
         World world = plugin.getServer().getWorld(args[2]);
         if (world == null) {
-            sender.sendMessage(plugin.pluginName + "Could not find a world with that name!");
+            sender.sendMessage(plugin.getMessagePrefix() + "Could not find a world with that name!");
             return true;
         }
         if (which.equals("g")) {
@@ -59,7 +59,7 @@ public class CountCommand {
             try {
                 monster = Monster.valueOf(which);
             } catch (IllegalArgumentException illegalArgumentException) {
-                sender.sendMessage(plugin.pluginName + "Invalid monster type \"" + which + "\"! " + illegalArgumentException.getMessage());
+                sender.sendMessage(plugin.getMessagePrefix() + "Invalid monster type \"" + which + "\"! " + illegalArgumentException.getMessage());
                 return true;
             }
             switch (monster) {
@@ -192,7 +192,7 @@ public class CountCommand {
                     break;
             }
         }
-        sender.sendMessage(plugin.pluginName + "There are " + count + " " + what + " in " + world.getName());
+        sender.sendMessage(plugin.getMessagePrefix() + "There are " + count + " " + what + " in " + world.getName());
         return true;
     }
 }

@@ -38,7 +38,7 @@ public class GiveCommand {
         // get the player
         Player player = plugin.getServer().getPlayer(args[1]);
         if (player == null) {
-            sender.sendMessage(plugin.pluginName + "Player not found!");
+            sender.sendMessage(plugin.getMessagePrefix() + "Player not found!");
             return true;
         }
         // check monster type
@@ -47,23 +47,23 @@ public class GiveCommand {
         try {
             monster = Monster.valueOf(upper);
         } catch (IllegalArgumentException e) {
-            sender.sendMessage(plugin.pluginName + "Invalid monster type!");
+            sender.sendMessage(plugin.getMessagePrefix() + "Invalid monster type!");
             return true;
         }
         if (monster == Monster.K9 || monster == Monster.TOCLAFANE) {
-            sender.sendMessage(plugin.pluginName + "That monster type can't be equipped as a helmet!");
+            sender.sendMessage(plugin.getMessagePrefix() + "That monster type can't be equipped as a helmet!");
             return true;
         }
         ItemStack itemStack = HeadBuilder.getItemStack(monster);
         player.getInventory().addItem(itemStack);
         player.updateInventory();
-        sender.sendMessage(plugin.pluginName + " gave " + player.getName() + " 1 " + monster.getName() + " head");
+        sender.sendMessage(plugin.getMessagePrefix() + " gave " + player.getName() + " 1 " + monster.getName() + " head");
         String who = "The server";
         if (sender instanceof Player) {
             who = sender.getName();
         }
         if (!who.equals(player.getName())) {
-            sender.sendMessage(plugin.pluginName + who + " gave you 1 " + monster.getName() + " head");
+            sender.sendMessage(plugin.getMessagePrefix() + who + " gave you 1 " + monster.getName() + " head");
         }
         return true;
     }

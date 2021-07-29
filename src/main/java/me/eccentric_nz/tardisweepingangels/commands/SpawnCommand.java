@@ -65,7 +65,7 @@ public class SpawnCommand {
         try {
             monster = Monster.valueOf(upper);
         } catch (IllegalArgumentException e) {
-            sender.sendMessage(plugin.pluginName + "Invalid monster type!");
+            sender.sendMessage(plugin.getMessagePrefix() + "Invalid monster type!");
             return true;
         }
         Player player = null;
@@ -73,12 +73,12 @@ public class SpawnCommand {
             player = (Player) sender;
         }
         if (player == null) {
-            sender.sendMessage(plugin.pluginName + "Command can only be used by a player!");
+            sender.sendMessage(plugin.getMessagePrefix() + "Command can only be used by a player!");
             return true;
         }
         // check player has permission for this monster
         if (!player.hasPermission("tardisweepingangels.spawn." + monster.getPermission())) {
-            sender.sendMessage(plugin.pluginName + "You don't have permission to spawn a " + monster + "!");
+            sender.sendMessage(plugin.getMessagePrefix() + "You don't have permission to spawn a " + monster + "!");
             return true;
         }
         Location eyeLocation = player.getTargetBlock(trans, 50).getLocation();

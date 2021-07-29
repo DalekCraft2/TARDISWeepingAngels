@@ -43,7 +43,7 @@ public class KillCommand {
         String which = args[1].toUpperCase();
         World world = plugin.getServer().getWorld(args[2]);
         if (world == null) {
-            sender.sendMessage(plugin.pluginName + "Could not find a world with that name!");
+            sender.sendMessage(plugin.getMessagePrefix() + "Could not find a world with that name!");
             return true;
         }
         int count = 0;
@@ -52,7 +52,7 @@ public class KillCommand {
         try {
             monster = Monster.valueOf(which);
         } catch (IllegalArgumentException e) {
-            sender.sendMessage(plugin.pluginName + "Invalid monster type!");
+            sender.sendMessage(plugin.getMessagePrefix() + "Invalid monster type!");
             return true;
         }
         switch (monster) {
@@ -249,7 +249,7 @@ public class KillCommand {
             default:
                 break;
         }
-        sender.sendMessage(plugin.pluginName + "Removed " + count + " " + what + " in " + world.getName());
+        sender.sendMessage(plugin.getMessagePrefix() + "Removed " + count + " " + what + " in " + world.getName());
         return true;
     }
 }

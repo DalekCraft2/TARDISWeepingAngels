@@ -64,7 +64,7 @@ public class OodListener implements Listener {
                 } else if (oodId.equals(TARDISWeepingAngelsPlugin.unclaimed)) {
                     // claim the Ood
                     armorStand.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid, player.getUniqueId());
-                    player.sendMessage(TARDISWeepingAngelsPlugin.plugin.pluginName + "You have claimed this Ood!");
+                    player.sendMessage(TARDISWeepingAngelsPlugin.plugin.getMessagePrefix() + "You have claimed this Ood!");
                 }
             }
         }

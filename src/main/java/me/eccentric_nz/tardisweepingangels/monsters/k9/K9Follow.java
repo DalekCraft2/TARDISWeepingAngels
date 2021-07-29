@@ -26,7 +26,7 @@ public class K9Follow {
 
     public static void run(TARDISWeepingAngelsPlugin plugin, Player player, ArmorStand armorStand, String[] args) {
         if (!player.hasPermission("tardisweepingangels.follow.k9")) {
-            player.sendMessage(plugin.pluginName + "You don't have permission to make K9 follow you!");
+            player.sendMessage(plugin.getMessagePrefix() + "You don't have permission to make K9 follow you!");
             return;
         }
         if (armorStand.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid)) {
@@ -37,10 +37,10 @@ public class K9Follow {
                 int taskId = plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new K9WalkRunnable(armorStand, speed, player), 2L, 2L);
                 plugin.getFollowTasks().put(uuid, taskId);
             } else {
-                player.sendMessage(plugin.pluginName + "That is not your K9!");
+                player.sendMessage(plugin.getMessagePrefix() + "That is not your K9!");
             }
         } else {
-            player.sendMessage(plugin.pluginName + "That is a broken K9 :(");
+            player.sendMessage(plugin.getMessagePrefix() + "That is a broken K9 :(");
         }
     }
 }

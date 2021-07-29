@@ -119,7 +119,7 @@ public class Damage implements Listener {
                             inventory.setItem(slot, new ItemStack(Material.AIR));
                         }
                         player.updateInventory();
-                        player.sendMessage(plugin.pluginName + "The Weeping Angels stole your TARDIS Key");
+                        player.sendMessage(plugin.getMessagePrefix() + "The Weeping Angels stole your TARDIS Key");
                         break;
                     }
                 }

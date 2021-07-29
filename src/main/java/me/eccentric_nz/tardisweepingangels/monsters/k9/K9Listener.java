@@ -93,7 +93,7 @@ public class K9Listener implements Listener {
                         }
                     }
                 } else {
-                    player.sendMessage(plugin.pluginName + "That is not your K9!");
+                    player.sendMessage(plugin.getMessagePrefix() + "That is not your K9!");
                 }
             }
         }
@@ -111,7 +111,7 @@ public class K9Listener implements Listener {
                     Location location = event.getClickedBlock().getLocation().add(0.5d, 1.0d, 0.5d);
                     World world = location.getWorld();
                     if (!plugin.getConfig().getBoolean("k9.worlds." + world.getName())) {
-                        player.sendMessage(plugin.pluginName + "You cannot spawn a K9 in this world!");
+                        player.sendMessage(plugin.getMessagePrefix() + "You cannot spawn a K9 in this world!");
                         return;
                     }
                     // remove egg form inventory

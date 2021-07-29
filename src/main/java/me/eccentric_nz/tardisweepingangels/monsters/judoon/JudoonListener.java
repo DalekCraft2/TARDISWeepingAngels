@@ -78,7 +78,7 @@ public class JudoonListener implements Listener {
                                 box.setItemMeta(boxItemMeta);
                                 armorStand.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER, (ammo + remove));
                                 armorStand.setCustomName("Ammunition: " + (ammo + remove));
-                                player.sendMessage(plugin.pluginName + "You reloaded " + remove + " Judoon ammunition.");
+                                player.sendMessage(plugin.getMessagePrefix() + "You reloaded " + remove + " Judoon ammunition.");
                             }
                         }
                     } else {
@@ -87,12 +87,12 @@ public class JudoonListener implements Listener {
                         int customModelData = itemMeta.getCustomModelData();
                         if (customModelData == 4 && ammo > 0) {
                             if (!plugin.getPlayersWithGuards().contains(player.getUniqueId())) {
-                                player.sendMessage(plugin.pluginName + "Judoon ready for action.");
+                                player.sendMessage(plugin.getMessagePrefix() + "Judoon ready for action.");
                                 // add to repeating task
                                 plugin.getGuards().add(armorStand.getUniqueId());
                                 plugin.getPlayersWithGuards().add(player.getUniqueId());
                             } else {
-                                player.sendMessage(plugin.pluginName + "You already have a Judoon guard!");
+                                player.sendMessage(plugin.getMessagePrefix() + "You already have a Judoon guard!");
                             }
                             // point weapon
                             customModelData = 9;
@@ -102,7 +102,7 @@ public class JudoonListener implements Listener {
                             // stand easy
                             customModelData = 4;
                             armorStand.setCustomNameVisible(false);
-                            player.sendMessage(plugin.pluginName + "Judoon standing at ease.");
+                            player.sendMessage(plugin.getMessagePrefix() + "Judoon standing at ease.");
                             // end guarding task
                             plugin.getGuards().remove(armorStand.getUniqueId());
                             plugin.getPlayersWithGuards().remove(player.getUniqueId());
@@ -115,7 +115,7 @@ public class JudoonListener implements Listener {
                     if (judoonId.equals(TARDISWeepingAngelsPlugin.unclaimed)) {
                         // claim the Judoon
                         armorStand.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid, player.getUniqueId());
-                        player.sendMessage(TARDISWeepingAngelsPlugin.plugin.pluginName + "You have claimed this Judoon!");
+                        player.sendMessage(TARDISWeepingAngelsPlugin.plugin.getMessagePrefix() + "You have claimed this Judoon!");
                     }
                 }
             }
