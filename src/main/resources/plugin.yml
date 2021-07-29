@@ -1,11 +1,11 @@
-authors: [ eccentric_nz ]
-main: me.eccentric_nz.tardisweepingangels.TardisWeepingAngelsPlugin
+authors: [eccentric_nz]
+main: me.eccentric_nz.tardisweepingangels.TARDISWeepingAngelsPlugin
 name: TARDISWeepingAngels
 description: Weeping Angel add-on for the TARDIS plugin
 version: ${project.version}
 api-version: 1.17
 load: POSTWORLD
-softdepend: [ TARDISChunkGenerator,WorldGuard ]
+softdepend: [TARDISChunkGenerator,WorldGuard]
 website: http://tardisjenkins.duckdns.org:8080/job/TARDISWeepingAngels/
 dev-url: https://github.com/eccentricdevotion/TARDISWeepingAngels/
 url: http://eccentricdevotion.github.io/TARDIS/
@@ -68,7 +68,7 @@ permissions:
     default: op
 commands:
   tardisweepingangels:
-    aliases: [ twa ]
+    aliases: [twa]
     description: Manipulate TARDISWeepingAngels monsters with various arguments (spawn, kill, remove, count, disguise, equip, etc.).
     usage: /<command> [subcommand] <monster type> <world> <max>
     spawn:
