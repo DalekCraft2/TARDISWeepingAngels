@@ -31,41 +31,35 @@ public class TARDISWeepingAngelsCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, Command command, @NotNull String label, String[] args) {
-        if (command.getName().equalsIgnoreCase("tardisweepingangels")) {
-            if (args.length == 0) {
-                return false;
-            }
-            String sub = args[0].toLowerCase();
-            switch (sub) {
-                case "spawn":
-                    return new SpawnCommand(plugin).spawn(sender, args);
-                case "disguise":
-                    return new DisguiseCommand(plugin).disguise(sender, args);
-                case "equip":
-                    return new EquipCommand(plugin).equip(sender, args);
-                case "count":
-                    return new CountCommand(plugin).count(sender, args);
-                case "kill":
-                    return new KillCommand(plugin).kill(sender, args);
-                case "set":
-                    return new AdminCommand(plugin).set(sender, args);
-                case "follow":
-                    new FollowCommand(plugin).follow(sender, args);
-                    return true;
-                case "stay":
-                    new StayCommand(plugin).stay(sender);
-                    return true;
-                case "remove":
-                    new RemoveCommand(plugin).remove(sender);
-                    return true;
-                case "give":
-                    return new GiveCommand(plugin).give(sender, args);
-                default:
-                    // unknown command
-                    sender.sendMessage(plugin.getMessagePrefix() + "Invalid command! Try using tab completion.");
-                    return true;
-            }
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
+        if (args.length == 0) {
+            return false;
+        }
+        String sub = args[0].toLowerCase();
+        switch (sub) {
+            case "spawn":
+                return new SpawnCommand(plugin).spawn(sender, args);
+            case "disguise":
+                return new DisguiseCommand(plugin).disguise(sender, args);
+            case "equip":
+                return new EquipCommand(plugin).equip(sender, args);
+            case "count":
+                return new CountCommand(plugin).count(sender, args);
+            case "kill":
+                return new KillCommand(plugin).kill(sender, args);
+            case "set":
+                return new AdminCommand(plugin).set(sender, args);
+            case "follow":
+                return new FollowCommand(plugin).follow(sender, args);
+            case "stay":
+                return new StayCommand(plugin).stay(sender);
+            case "remove":
+                return new RemoveCommand(plugin).remove(sender);
+            case "give":
+                return new GiveCommand(plugin).give(sender, args);
+            default:
+                // unknown command
+                sender.sendMessage(plugin.getMessagePrefix() + "Invalid command! Try using tab completion.");
         }
         return true;
     }

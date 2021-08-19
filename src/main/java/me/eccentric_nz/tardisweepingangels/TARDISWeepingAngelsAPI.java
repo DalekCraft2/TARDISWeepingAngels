@@ -65,7 +65,7 @@ public interface TARDISWeepingAngelsAPI {
     void setDalekEquipment(LivingEntity livingEntity, boolean disguise);
 
     /**
-     * Sets an entity as a Empty Child.
+     * Sets an entity as an Empty Child.
      *
      * @param livingEntity The LivingEntity to disguise
      * @param disguise     A boolean to determine if this is a player disguise
@@ -204,7 +204,7 @@ public interface TARDISWeepingAngelsAPI {
     FollowerChecker isClaimedMonster(Entity entity, UUID uuid);
 
     /**
-     * Set the entity entity equipment and ammunition count for a claimed Judoon
+     * Set the entity equipment and ammunition count for a claimed Judoon
      *
      * @param player     the player that will own this Judoon
      * @param armorStand the armour stand to apply the equipment to

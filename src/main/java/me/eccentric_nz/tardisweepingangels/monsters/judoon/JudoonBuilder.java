@@ -62,7 +62,7 @@ public class JudoonBuilder implements Listener {
                     event.getPlayer().sendMessage(plugin.getMessagePrefix() + "You don't have permission to build a Judoon!");
                     return;
                 }
-                // we're building an Judoon
+                // we're building a Judoon
                 plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> {
                     placed.setType(Material.AIR);
                     below.setType(Material.AIR);

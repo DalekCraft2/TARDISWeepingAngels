@@ -66,7 +66,7 @@ public final class TARDISWeepingAngelSpawnEvent extends Event {
     }
 
     /**
-     * Gets the the Monster type for the TARDISWeepingAngels entity involved in this event.
+     * Gets the Monster type for the TARDISWeepingAngels entity involved in this event.
      *
      * @return Monster of the TARDISWeepingAngels entity involved in this event
      */

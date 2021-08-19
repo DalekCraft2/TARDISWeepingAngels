@@ -35,24 +35,24 @@ public class FollowCommand {
         this.plugin = plugin;
     }
 
-    public void follow(CommandSender sender, String[] args) {
+    public boolean follow(CommandSender sender, String[] args) {
         Player player = null;
         if (sender instanceof Player) {
             player = (Player) sender;
         }
         if (player == null) {
             sender.sendMessage(plugin.getMessagePrefix() + "Command can only be used by a player!");
-            return;
+            return true;
         }
         if (plugin.getFollowTasks().containsKey(player.getUniqueId())) {
             player.sendMessage(plugin.getMessagePrefix() + "An entity is already following you!");
-            return;
+            return true;
         }
         // get the armour stand
         ArmorStand armorStand = ArmorStandFinder.getStand(player);
         if (armorStand == null) {
             player.sendMessage(plugin.getMessagePrefix() + "You are not looking at an entity that can follow you!");
-            return;
+            return true;
         }
         PersistentDataContainer persistentDataContainer = armorStand.getPersistentDataContainer();
         if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.ood, PersistentDataType.INTEGER)) {
@@ -64,5 +64,6 @@ public class FollowCommand {
         } else {
             player.sendMessage(plugin.getMessagePrefix() + "You are not looking at an entity that can follow you!");
         }
+        return true;
     }
 }

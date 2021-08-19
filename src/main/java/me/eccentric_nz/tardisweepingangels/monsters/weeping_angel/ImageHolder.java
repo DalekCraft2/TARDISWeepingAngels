@@ -53,7 +53,7 @@ public class ImageHolder implements Listener {
         if (message.toLowerCase().contains("angel") && TARDISWeepingAngelsPlugin.random.nextInt(100) < plugin.getConfig().getInt("angels.spawn_from_chat.chance")) {
             int distance = plugin.getConfig().getInt("angels.spawn_from_chat.distance_from_player");
             Block block = event.getPlayer().getLocation().getBlock().getRelative(faces.get(TARDISWeepingAngelsPlugin.random.nextInt(4)), distance);
-            // get highest block in a random direction
+            // get the highest block in a random direction
             Location highest = block.getWorld().getHighestBlockAt(block.getLocation()).getLocation();
             Location location = highest.add(0, 1, 0);
             // spawn an angel
