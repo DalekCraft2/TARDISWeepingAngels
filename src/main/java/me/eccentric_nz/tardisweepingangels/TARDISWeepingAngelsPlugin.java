@@ -97,11 +97,6 @@ public class TARDISWeepingAngelsPlugin extends JavaPlugin {
     private boolean citizensEnabled = false;
 
     @Override
-    public void onDisable() {
-        // TODO Place any custom disable code here.
-    }
-
-    @Override
     public void onEnable() {
         plugin = this;
         pluginManager = getServer().getPluginManager();
