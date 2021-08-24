@@ -6,9 +6,7 @@ version: ${project.version}
 api-version: 1.17
 load: POSTWORLD
 softdepend: [TARDISChunkGenerator,WorldGuard]
-website: http://tardisjenkins.duckdns.org:8080/job/TARDISWeepingAngels/
-dev-url: https://github.com/eccentricdevotion/TARDISWeepingAngels/
-url: http://eccentricdevotion.github.io/TARDIS/
+website: https://github.com/eccentricdevotion/TARDISWeepingAngels/
 permissions:
   tardisweepingangels.k9:
     description: Allows a player to have a K9 companion.
