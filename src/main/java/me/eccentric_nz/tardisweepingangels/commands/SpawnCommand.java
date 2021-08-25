@@ -81,6 +81,7 @@ public class SpawnCommand {
             sender.sendMessage(plugin.getMessagePrefix() + "You don't have permission to spawn a " + monster + "!");
             return true;
         }
+        // TODO Make trans not always null.
         Location eyeLocation = player.getTargetBlock(trans, 50).getLocation();
         eyeLocation.add(0.5, 1.0, 0.5);
         eyeLocation.setYaw(player.getLocation().getYaw() - 180.0f);
@@ -110,7 +111,7 @@ public class SpawnCommand {
                 DalekEquipment.set(dalek, false);
                 player.playSound(dalek.getLocation(), "dalek", 1.0f, 1.0f);
                 plugin.getServer().getPluginManager().callEvent(new TARDISWeepingAngelSpawnEvent(dalek, EntityType.SKELETON, Monster.DALEK, eyeLocation));
-                if (args.length > 1 && args[1].equalsIgnoreCase("flying") && plugin.getServer().getPluginManager().isPluginEnabled("TARDISChunkGenerator")) {
+                if (args[1].equalsIgnoreCase("flying") && plugin.getServer().getPluginManager().isPluginEnabled("TARDISChunkGenerator")) {
                     TARDISHelper tardisHelper = (TARDISHelper) plugin.getServer().getPluginManager().getPlugin("TARDISChunkGenerator");
                     // make the Dalek fly
                     EntityEquipment entityEquipment = dalek.getEquipment();

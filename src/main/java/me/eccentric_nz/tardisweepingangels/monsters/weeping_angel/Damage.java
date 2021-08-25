@@ -38,9 +38,7 @@ public class Damage implements Listener {
         material = Material.valueOf(plugin.getConfig().getString("angels.weapon"));
         plugin.getConfig().getStringList("angels.teleport_worlds").forEach((worldName) -> {
             World world = plugin.getServer().getWorld(worldName);
-            if (worldName != null) {
-                angelTpWorlds.add(world);
-            }
+            angelTpWorlds.add(world);
         });
     }
 
@@ -77,9 +75,7 @@ public class Damage implements Listener {
                     Entity target = event.getEntity();
                     Player player = (Player) target;
                     Location location = getRandomLocation(target.getWorld());
-                    if (location != null) {
-                        plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> player.teleport(location), 1L);
-                    }
+                    plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> player.teleport(location), 1L);
                     player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 300, 5, true, false));
                     if (plugin.angelsCanSteal()) {
                         stealKey(player);

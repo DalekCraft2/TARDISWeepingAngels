@@ -39,12 +39,7 @@ public class K9Equipment {
         headMeta.setCustomModelData(1);
         head.setItemMeta(headMeta);
         if (entity instanceof ArmorStand armorStand && player != null) {
-            UUID uuid;
-            if (player != null) {
-                uuid = player.getUniqueId();
-            } else {
-                uuid = TARDISWeepingAngelsPlugin.unclaimed;
-            }
+            UUID uuid = player.getUniqueId();
             armorStand.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.k9, PersistentDataType.INTEGER, 0);
             armorStand.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid, uuid);
             EntityEquipment entityEquipment = armorStand.getEquipment();

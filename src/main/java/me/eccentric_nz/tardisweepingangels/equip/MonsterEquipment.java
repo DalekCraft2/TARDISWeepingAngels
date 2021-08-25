@@ -144,7 +144,7 @@ public class MonsterEquipment implements TARDISWeepingAngelsAPI {
 
     @Override
     public boolean isWeepingAngelMonster(Entity entity) {
-        if (entity instanceof Zombie || entity instanceof PigZombie || entity instanceof Skeleton) {
+        if (entity instanceof Zombie || entity instanceof Skeleton) {
             PersistentDataContainer persistentDataContainer = entity.getPersistentDataContainer();
             return persistentDataContainer.has(TARDISWeepingAngelsPlugin.cyberman, PersistentDataType.INTEGER) || persistentDataContainer.has(TARDISWeepingAngelsPlugin.dalek, PersistentDataType.INTEGER) || persistentDataContainer.has(TARDISWeepingAngelsPlugin.emptyChild, PersistentDataType.INTEGER) || persistentDataContainer.has(TARDISWeepingAngelsPlugin.iceWarrior, PersistentDataType.INTEGER) || persistentDataContainer.has(TARDISWeepingAngelsPlugin.silurian, PersistentDataType.INTEGER) || persistentDataContainer.has(TARDISWeepingAngelsPlugin.sontaran, PersistentDataType.INTEGER) || persistentDataContainer.has(TARDISWeepingAngelsPlugin.strax, PersistentDataType.INTEGER) || persistentDataContainer.has(TARDISWeepingAngelsPlugin.vashtaNerada, PersistentDataType.INTEGER) || persistentDataContainer.has(TARDISWeepingAngelsPlugin.weepingAngel, PersistentDataType.INTEGER) || persistentDataContainer.has(TARDISWeepingAngelsPlugin.zygon, PersistentDataType.INTEGER);
         } else if (entity instanceof Enderman) {
@@ -165,7 +165,7 @@ public class MonsterEquipment implements TARDISWeepingAngelsAPI {
 
     @Override
     public Monster getWeepingAngelMonsterType(Entity entity) {
-        if (entity instanceof Zombie || entity instanceof PigZombie || entity instanceof Skeleton || entity instanceof Enderman) {
+        if (entity instanceof Zombie || entity instanceof Skeleton || entity instanceof Enderman) {
             PersistentDataContainer persistentDataContainer = entity.getPersistentDataContainer();
             if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.cyberman, PersistentDataType.INTEGER)) {
                 return Monster.CYBERMAN;

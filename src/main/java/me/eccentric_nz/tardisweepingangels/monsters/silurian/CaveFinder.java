@@ -27,7 +27,6 @@ import java.util.Collections;
 public class CaveFinder {
 
     public static Location searchCave(Location random) {
-        Location location = null;
         World world = random.getWorld();
         int startX = random.getBlockX();
         int startZ = random.getBlockZ();
@@ -81,7 +80,7 @@ public class CaveFinder {
                 }
             }
         }
-        return location;
+        return null;
     }
 
     private static Check isThereRoom(World world, int x, int z) {
