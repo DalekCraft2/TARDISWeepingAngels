@@ -65,7 +65,7 @@
             <!-- TARDISChunkGenerator -->
             <groupId>me.eccentric_nz.tardischunkgenerator</groupId>
             <artifactId>TARDISChunkGenerator</artifactId>
-            <version>4.7.5-SNAPSHOT</version>
+            <version>4.7.6-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
