@@ -35,7 +35,7 @@ public class CleanGuardians implements Runnable {
     }
 
     @Override
-    public void run() {
+    public void run() { // TODO Copy this to make a better system for Weeping Angel movement.
         plugin.getServer().getWorlds().forEach((world) -> {
             // only configured worlds
             String name = WorldProcessor.sanitiseName(world.getName());

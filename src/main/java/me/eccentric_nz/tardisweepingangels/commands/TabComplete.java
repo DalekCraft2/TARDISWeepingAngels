@@ -36,10 +36,10 @@ import java.util.List;
 public class TabComplete implements TabCompleter {
 
     private final TARDISWeepingAngelsPlugin plugin;
-    private final ImmutableList<String> ON_OFF_SUBS = ImmutableList.of("on", "off");
-    private final ImmutableList<String> WORLD_SUBS;
-    private final ImmutableList<String> MONSTER_SUBS;
-    ImmutableList<String> CMD_SUBS = ImmutableList.of("spawn", "equip", "disguise", "kill", "count", "follow", "stay", "remove", "set", "give");
+    private final ImmutableList<String> onOffSubs = ImmutableList.of("on", "off");
+    private final ImmutableList<String> worldSubs;
+    private final ImmutableList<String> monsterSubs;
+    ImmutableList<String> rootSubs = ImmutableList.of("spawn", "equip", "disguise", "kill", "count", "follow", "stay", "remove", "set", "give");
 
     public TabComplete(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
@@ -47,28 +47,28 @@ public class TabComplete implements TabCompleter {
         for (Monster monster : Monster.values()) {
             temp.add(monster.toString().toLowerCase());
         }
-        MONSTER_SUBS = ImmutableList.copyOf(temp);
+        monsterSubs = ImmutableList.copyOf(temp);
         List<String> worlds = new ArrayList<>();
         this.plugin.getServer().getWorlds().forEach((world) -> worlds.add(world.getName()));
-        WORLD_SUBS = ImmutableList.copyOf(worlds);
+        worldSubs = ImmutableList.copyOf(worlds);
     }
 
     @Override
-    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
+    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, String[] args) {
         if (args.length == 1) {
-            return partial(args[0], CMD_SUBS);
+            return partial(args[0], rootSubs);
         } else if (args.length == 2) {
             if (args[0].equals("give")) {
                 return null;
             } else {
-                return partial(args[1], MONSTER_SUBS);
+                return partial(args[1], monsterSubs);
             }
         } else if (args.length == 3) {
             return switch (args[0]) {
-                case "disguise" -> partial(args[2], ON_OFF_SUBS);
-                case "give" -> partial(args[2], MONSTER_SUBS);
+                case "disguise" -> partial(args[2], onOffSubs);
+                case "give" -> partial(args[2], monsterSubs);
                 case "follow" -> Collections.singletonList("15");
-                default -> partial(args[2], WORLD_SUBS);
+                default -> partial(args[2], worldSubs);
             };
         }
         return ImmutableList.of();

@@ -79,8 +79,8 @@ public class Strax implements Listener {
                 }
             }
             if (entityEquipment.getHelmet().getType().equals(Material.BAKED_POTATO)) {
-                ItemStack helmet = entityEquipment.getHelmet();
-                if (helmet.hasItemMeta() && helmet.getItemMeta().hasDisplayName() && helmet.getItemMeta().getDisplayName().startsWith("Strax")) {
+                ItemStack head = entityEquipment.getHelmet();
+                if (head.hasItemMeta() && head.getItemMeta().hasDisplayName() && head.getItemMeta().getDisplayName().startsWith("Strax")) {
                     Player player = event.getPlayer();
                     UUID uuid = player.getUniqueId();
                     ItemStack itemStack = player.getInventory().getItemInMainHand();

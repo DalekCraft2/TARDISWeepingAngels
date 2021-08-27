@@ -35,13 +35,13 @@ public class DalekEquipment {
 
     public static void set(LivingEntity livingEntity, boolean disguise) {
         livingEntity.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.dalek, PersistentDataType.INTEGER, Monster.DALEK.getPersist());
-        ItemStack helmet = new ItemStack(Material.SLIME_BALL, 1);
-        ItemMeta headMeta = helmet.getItemMeta();
+        ItemStack head = new ItemStack(Material.SLIME_BALL, 1);
+        ItemMeta headMeta = head.getItemMeta();
         headMeta.setDisplayName("Dalek Head");
         headMeta.setCustomModelData(10000005 + WEIGHTED_CHOICE.next());
-        helmet.setItemMeta(headMeta);
+        head.setItemMeta(headMeta);
         EntityEquipment entityEquipment = livingEntity.getEquipment();
-        entityEquipment.setHelmet(helmet);
+        entityEquipment.setHelmet(head);
         entityEquipment.setChestplate(null);
         entityEquipment.setLeggings(null);
         entityEquipment.setBoots(null);
@@ -50,9 +50,9 @@ public class DalekEquipment {
         if (!disguise) {
             entityEquipment.setHelmetDropChance(0F);
             ItemStack bow = new ItemStack(Material.BOW, 1);
-            ItemMeta bowItemMeta = bow.getItemMeta();
-            bowItemMeta.setCustomModelData(1);
-            bow.setItemMeta(bowItemMeta);
+            ItemMeta bowMeta = bow.getItemMeta();
+            bowMeta.setCustomModelData(1);
+            bow.setItemMeta(bowMeta);
             entityEquipment.setItemInMainHand(bow);
             entityEquipment.setItemInMainHandDropChance(0F);
             PotionEffect resistance = new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 360000, 1, true, false);

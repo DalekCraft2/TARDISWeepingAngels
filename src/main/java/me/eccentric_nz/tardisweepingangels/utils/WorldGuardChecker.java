@@ -48,12 +48,12 @@ public class WorldGuardChecker {
         }
     };
 
-    public static boolean canSpawn(Location l) {
+    public static boolean canSpawn(Location location) {
         Plugin plugin = Bukkit.getPluginManager().getPlugin("WorldGuard");
         if (plugin != null) {
             WorldGuardPlatform worldGuardPlatform = WorldGuard.getInstance().getPlatform();
-            BlockVector3 vector = BukkitAdapter.asBlockVector(l);
-            RegionManager regionManager = worldGuardPlatform.getRegionContainer().get(BukkitAdapter.adapt(l.getWorld()));
+            BlockVector3 vector = BukkitAdapter.asBlockVector(location);
+            RegionManager regionManager = worldGuardPlatform.getRegionContainer().get(BukkitAdapter.adapt(location.getWorld()));
             ApplicableRegionSet regionSet = regionManager.getApplicableRegions(vector);
             if (regionSet.testState(null, Flags.MOB_SPAWNING)) {
                 return regionSet.queryValue(null, Flags.DENY_SPAWN) == null;
@@ -65,17 +65,17 @@ public class WorldGuardChecker {
         }
     }
 
-    public static boolean canExplode(Location l) {
+    public static boolean canExplode(Location location) {
         Plugin plugin = Bukkit.getPluginManager().getPlugin("WorldGuard");
         if (plugin != null) {
             WorldGuardPlatform worldGuardPlatform = WorldGuard.getInstance().getPlatform();
             ConfigurationManager configurationManager = worldGuardPlatform.getGlobalStateManager();
-            World bukkitWorld = BukkitAdapter.adapt(l.getWorld());
+            World bukkitWorld = BukkitAdapter.adapt(location.getWorld());
             BukkitWorldConfiguration worldConfig = (BukkitWorldConfiguration) configurationManager.get(bukkitWorld);
             if (worldConfig.blockCreeperBlockDamage || worldConfig.blockTNTBlockDamage) {
                 return false;
             }
-            BlockVector3 vector = BukkitAdapter.asBlockVector(l);
+            BlockVector3 vector = BukkitAdapter.asBlockVector(location);
             RegionManager regionManager = worldGuardPlatform.getRegionContainer().get(bukkitWorld);
             ApplicableRegionSet regionSet = regionManager.getApplicableRegions(vector);
             return regionSet.testState(null, Flags.OTHER_EXPLOSION, Flags.CREEPER_EXPLOSION, Flags.TNT);

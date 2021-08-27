@@ -31,9 +31,9 @@ public class AngelEquipment {
     public static void set(LivingEntity livingEntity, boolean disguise) {
         ItemStack head = new ItemStack(Material.BRICK, 1);
         ItemStack arm = new ItemStack(Material.BRICK, 1);
-        ItemStack chestplate = new ItemStack(Material.IRON_CHESTPLATE, 1);
-        ItemStack leggings = new ItemStack(Material.IRON_LEGGINGS, 1);
-        ItemStack boots = new ItemStack(Material.IRON_BOOTS, 1);
+        ItemStack chest = new ItemStack(Material.IRON_CHESTPLATE, 1);
+        ItemStack legs = new ItemStack(Material.IRON_LEGGINGS, 1);
+        ItemStack feet = new ItemStack(Material.IRON_BOOTS, 1);
         ItemMeta headMeta = head.getItemMeta();
         headMeta.setDisplayName("Weeping Angel Head");
         headMeta.setCustomModelData(4);
@@ -42,28 +42,28 @@ public class AngelEquipment {
         armMeta.setDisplayName("Weeping Angel Arm");
         armMeta.setCustomModelData(2);
         arm.setItemMeta(armMeta);
-        ItemMeta chestMeta = chestplate.getItemMeta();
+        ItemMeta chestMeta = chest.getItemMeta();
         chestMeta.setDisplayName("Weeping Angel Chest");
         if (disguise) {
-            Damageable damageable = (Damageable) chestMeta;
-            damageable.setDamage(235);
+            Damageable chestDamage = (Damageable) chestMeta;
+            chestDamage.setDamage(235);
         }
-        chestplate.setItemMeta(chestMeta);
-        ItemMeta legMeta = leggings.getItemMeta();
-        legMeta.setDisplayName("Weeping Angel Legs");
+        chest.setItemMeta(chestMeta);
+        ItemMeta legsMeta = legs.getItemMeta();
+        legsMeta.setDisplayName("Weeping Angel Legs");
         if (disguise) {
-            Damageable legDamage = (Damageable) legMeta;
-            legDamage.setDamage(220);
+            Damageable legsDamage = (Damageable) legsMeta;
+            legsDamage.setDamage(220);
         }
-        leggings.setItemMeta(legMeta);
-        ItemMeta weaponMeta = boots.getItemMeta();
-        weaponMeta.setDisplayName("Weeping Angel Feet");
-        boots.setItemMeta(weaponMeta);
+        legs.setItemMeta(legsMeta);
+        ItemMeta feetMeta = feet.getItemMeta();
+        feetMeta.setDisplayName("Weeping Angel Feet");
+        feet.setItemMeta(feetMeta);
         EntityEquipment entityEquipment = livingEntity.getEquipment();
         entityEquipment.setHelmet(head);
-        entityEquipment.setChestplate(chestplate);
-        entityEquipment.setLeggings(leggings);
-        entityEquipment.setBoots(boots);
+        entityEquipment.setChestplate(chest);
+        entityEquipment.setLeggings(legs);
+        entityEquipment.setBoots(feet);
         if (!disguise) {
             entityEquipment.setItemInMainHand(arm);
             entityEquipment.setItemInOffHand(arm.clone());

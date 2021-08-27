@@ -36,7 +36,7 @@ public class GiveCommand {
             return false;
         }
         // get the player
-        Player player = plugin.getServer().getPlayer(args[1]);
+        Player player = plugin.getServer().getPlayer(args[1]); // TODO Replace every applicable instance of OfflinePlayer(String) with this.
         if (player == null) {
             sender.sendMessage(plugin.getMessagePrefix() + "Player not found!");
             return true;

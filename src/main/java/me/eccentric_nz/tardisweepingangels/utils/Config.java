@@ -34,10 +34,10 @@ public class Config {
     private final TARDISWeepingAngelsPlugin plugin;
     private final FileConfiguration config;
     HashMap<String, List<String>> listOptions = new HashMap<>();
-    HashMap<String, String> strOptions = new HashMap<>();
+    HashMap<String, String> stringOptions = new HashMap<>();
     HashMap<String, Integer> intOptions = new HashMap<>();
     HashMap<String, Double> doubleOptions = new HashMap<>();
-    HashMap<String, Boolean> boolOptions = new HashMap<>();
+    HashMap<String, Boolean> booleanOptions = new HashMap<>();
 
     public Config(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
@@ -56,7 +56,7 @@ public class Config {
         intOptions.put("ood.spawn_from_cured", 5);
         intOptions.put("toclafane.spawn_from_bee", 5);
         // string
-        strOptions.put("angels.weapon", "DIAMOND_PICKAXE");
+        stringOptions.put("angels.weapon", "DIAMOND_PICKAXE");
         // list
         listOptions.put("angels.drops", Arrays.asList("STONE", "COBBLESTONE"));
         listOptions.put("angels.teleport_worlds", Collections.singletonList("world"));
@@ -73,16 +73,16 @@ public class Config {
         listOptions.put("vashta_nerada.drops", Arrays.asList("BONE", "LEATHER"));
         listOptions.put("zygons.drops", Arrays.asList("PAINTING", "SAND"));
         // boolean
-        boolOptions.put("angels.angels_can_steal", true);
-        boolOptions.put("angels.can_build", true);
-        boolOptions.put("angels.spawn_from_chat.enabled", true);
-        boolOptions.put("cybermen.can_upgrade", true);
-        boolOptions.put("sontarans.can_tame", true);
-        boolOptions.put("judoon.guards", true);
-        boolOptions.put("judoon.can_build", true);
-        boolOptions.put("k9.can_build", true);
-        boolOptions.put("k9.by_taming", true);
-        boolOptions.put("toclafane.destroy_blocks", true);
+        booleanOptions.put("angels.angels_can_steal", true);
+        booleanOptions.put("angels.can_build", true);
+        booleanOptions.put("angels.spawn_from_chat.enabled", true);
+        booleanOptions.put("cybermen.can_upgrade", true);
+        booleanOptions.put("sontarans.can_tame", true);
+        booleanOptions.put("judoon.guards", true);
+        booleanOptions.put("judoon.can_build", true);
+        booleanOptions.put("k9.can_build", true);
+        booleanOptions.put("k9.by_taming", true);
+        booleanOptions.put("toclafane.destroy_blocks", true);
         // float
         doubleOptions.put("config_version", minVersion);
     }
@@ -110,7 +110,7 @@ public class Config {
             }
         }
         // string values
-        for (Map.Entry<String, String> entry : strOptions.entrySet()) {
+        for (Map.Entry<String, String> entry : stringOptions.entrySet()) {
             if (!config.contains(entry.getKey())) {
                 plugin.getConfig().set(entry.getKey(), entry.getValue());
                 i++;
@@ -124,7 +124,7 @@ public class Config {
             }
         }
         // boolean values
-        for (Map.Entry<String, Boolean> entry : boolOptions.entrySet()) {
+        for (Map.Entry<String, Boolean> entry : booleanOptions.entrySet()) {
             if (!config.contains(entry.getKey())) {
                 plugin.getConfig().set(entry.getKey(), entry.getValue());
                 i++;

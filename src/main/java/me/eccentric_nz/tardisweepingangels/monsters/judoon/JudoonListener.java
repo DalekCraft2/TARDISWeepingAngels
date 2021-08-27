@@ -57,8 +57,8 @@ public class JudoonListener implements Listener {
                     if (Tag.SHULKER_BOXES.isTagged(player.getInventory().getItemInMainHand().getType())) {
                         // top up ammo
                         ItemStack box = player.getInventory().getItemInMainHand();
-                        BlockStateMeta boxItemMeta = (BlockStateMeta) box.getItemMeta();
-                        ShulkerBox shulkerBox = (ShulkerBox) boxItemMeta.getBlockState();
+                        BlockStateMeta boxMeta = (BlockStateMeta) box.getItemMeta();
+                        ShulkerBox shulkerBox = (ShulkerBox) boxMeta.getBlockState();
                         Inventory inventory = shulkerBox.getInventory();
                         if (inventory.contains(Material.ARROW)) {
                             int arrow = inventory.first(Material.ARROW);
@@ -74,8 +74,8 @@ public class JudoonListener implements Listener {
                                 }
                                 inventory.setItem(arrow, arrows);
                                 shulkerBox.update();
-                                boxItemMeta.setBlockState(shulkerBox);
-                                box.setItemMeta(boxItemMeta);
+                                boxMeta.setBlockState(shulkerBox);
+                                box.setItemMeta(boxMeta);
                                 armorStand.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER, (ammo + remove));
                                 armorStand.setCustomName("Ammunition: " + (ammo + remove));
                                 player.sendMessage(plugin.getMessagePrefix() + "You reloaded " + remove + " Judoon ammunition.");
@@ -83,8 +83,8 @@ public class JudoonListener implements Listener {
                         }
                     } else {
                         ItemStack arm = armorStand.getEquipment().getItemInMainHand();
-                        ItemMeta itemMeta = arm.getItemMeta();
-                        int customModelData = itemMeta.getCustomModelData();
+                        ItemMeta armMeta = arm.getItemMeta();
+                        int customModelData = armMeta.getCustomModelData();
                         if (customModelData == 4 && ammo > 0) {
                             if (!plugin.getPlayersWithGuards().contains(player.getUniqueId())) {
                                 player.sendMessage(plugin.getMessagePrefix() + "Judoon ready for action.");
@@ -107,8 +107,8 @@ public class JudoonListener implements Listener {
                             plugin.getGuards().remove(armorStand.getUniqueId());
                             plugin.getPlayersWithGuards().remove(player.getUniqueId());
                         }
-                        itemMeta.setCustomModelData(customModelData);
-                        arm.setItemMeta(itemMeta);
+                        armMeta.setCustomModelData(customModelData);
+                        arm.setItemMeta(armMeta);
                         armorStand.getEquipment().setItemInMainHand(arm);
                     }
                 } else {

@@ -55,8 +55,8 @@ public class WorldProcessor implements Runnable {
             plugin.getConfig().set("zygons.worlds", null);
         }
         // add new world settings
-        plugin.getServer().getWorlds().forEach((w) -> {
-            String name = sanitiseName(w.getName());
+        plugin.getServer().getWorlds().forEach((world) -> {
+            String name = sanitiseName(world.getName());
             // set TARDIS worlds, nether and end worlds to zero by default
             int maxSpawnRate = (config.contains("spawn_rate.default_max")) ? config.getInt("spawn_rate.default_max") : 0;
             if (!config.contains("angels.worlds." + name)) {

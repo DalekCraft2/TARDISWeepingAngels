@@ -44,7 +44,7 @@ public class ToclafaneListener implements Listener {
 
     public ToclafaneListener(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
-        plugin.getConfig().getStringList("toclafane.drops").forEach((d) -> drops.add(Material.valueOf(d)));
+        plugin.getConfig().getStringList("toclafane.drops").forEach((drop) -> drops.add(Material.valueOf(drop)));
     }
 
     @EventHandler(priority = EventPriority.NORMAL)
@@ -68,10 +68,10 @@ public class ToclafaneListener implements Listener {
                     EntityEquipment entityEquipment = armorStand.getEquipment();
                     if (entityEquipment != null) {
                         ItemStack head = entityEquipment.getHelmet();
-                        ItemMeta itemMeta = head.getItemMeta();
+                        ItemMeta headMeta = head.getItemMeta();
                         player.playSound(armorStand.getLocation(), "toclafane", 1.0f, 1.0f);
-                        itemMeta.setCustomModelData(2);
-                        head.setItemMeta(itemMeta);
+                        headMeta.setCustomModelData(2);
+                        head.setItemMeta(headMeta);
                         entityEquipment.setHelmet(head);
                         bee.setHasStung(false);
                         bee.setHealth(bee.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());

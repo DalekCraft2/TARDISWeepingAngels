@@ -49,7 +49,6 @@ import java.util.Set;
 public class SpawnCommand {
 
     private final TARDISWeepingAngelsPlugin plugin;
-    private final Set<Material> trans = null;
 
     public SpawnCommand(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
@@ -81,8 +80,7 @@ public class SpawnCommand {
             sender.sendMessage(plugin.getMessagePrefix() + "You don't have permission to spawn a " + monster + "!");
             return true;
         }
-        // TODO Make trans not always null.
-        Location eyeLocation = player.getTargetBlock(trans, 50).getLocation();
+        Location eyeLocation = player.getTargetBlock(null, 50).getLocation();
         eyeLocation.add(0.5, 1.0, 0.5);
         eyeLocation.setYaw(player.getLocation().getYaw() - 180.0f);
         World world = eyeLocation.getWorld();

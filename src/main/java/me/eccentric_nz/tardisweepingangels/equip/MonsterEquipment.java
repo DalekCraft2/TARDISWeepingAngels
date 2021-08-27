@@ -228,11 +228,11 @@ public class MonsterEquipment implements TARDISWeepingAngelsAPI {
 
     @Override
     public ItemStack getK9() {
-        ItemStack is = new ItemStack(Material.BONE);
-        ItemMeta im = is.getItemMeta();
-        im.setDisplayName("K9");
-        im.setCustomModelData(1);
-        is.setItemMeta(im);
-        return is;
+        ItemStack itemStack = new ItemStack(Material.BONE);
+        ItemMeta itemMeta = itemStack.getItemMeta();
+        itemMeta.setDisplayName("K9");
+        itemMeta.setCustomModelData(1);
+        itemStack.setItemMeta(itemMeta);
+        return itemStack;
     }
 }

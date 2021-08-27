@@ -53,9 +53,9 @@ public class JudoonGuardRunnable implements Runnable {
                                     Vector bulletVelocity = direction.multiply(3.0d);
                                     snowball.setVelocity(bulletVelocity);
                                     ammo -= 1;
-                                    ArmorStand stand = (ArmorStand) uuidEntity;
-                                    stand.setCustomName("Ammunition: " + ammo);
-                                    stand.setCustomNameVisible(true);
+                                    ArmorStand armorStand = (ArmorStand) uuidEntity;
+                                    armorStand.setCustomName("Ammunition: " + ammo);
+                                    armorStand.setCustomNameVisible(true);
                                     uuidEntity.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER, ammo);
                                 }
                             }

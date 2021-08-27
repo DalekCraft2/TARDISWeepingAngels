@@ -125,13 +125,13 @@ public class PlayerDeath implements Listener {
                     Projectile arrow = (Arrow) attacker;
                     ProjectileSource source = arrow.getShooter();
                     if (source instanceof Skeleton skeleton) {
-                        PersistentDataContainer spdc = skeleton.getPersistentDataContainer();
+                        PersistentDataContainer skeletonPersistentDataContainer = skeleton.getPersistentDataContainer();
                         String name = event.getEntity().getName();
-                        if (spdc.has(TARDISWeepingAngelsPlugin.dalek, PersistentDataType.INTEGER)) {
+                        if (skeletonPersistentDataContainer.has(TARDISWeepingAngelsPlugin.dalek, PersistentDataType.INTEGER)) {
                             event.setDeathMessage(name + " was slain by a Dalek");
                             return;
                         }
-                        if (spdc.has(TARDISWeepingAngelsPlugin.silurian, PersistentDataType.INTEGER)) {
+                        if (skeletonPersistentDataContainer.has(TARDISWeepingAngelsPlugin.silurian, PersistentDataType.INTEGER)) {
                             event.setDeathMessage(name + " was slain by a Silurian");
                         }
                     }

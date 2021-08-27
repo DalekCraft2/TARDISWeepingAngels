@@ -62,17 +62,17 @@ public class Death implements Listener {
 
     public Death(TARDISWeepingAngelsPlugin plugin) {
         this.plugin = plugin;
-        plugin.getConfig().getStringList("angels.drops").forEach((a) -> weepingAngelDrops.add(Material.valueOf(a)));
-        plugin.getConfig().getStringList("cybermen.drops").forEach((c) -> cybermanDrops.add(Material.valueOf(c)));
-        plugin.getConfig().getStringList("daleks.drops").forEach((d) -> dalekDrops.add(Material.valueOf(d)));
-        plugin.getConfig().getStringList("empty_child.drops").forEach((e) -> emptyChildDrops.add(Material.valueOf(e)));
-        plugin.getConfig().getStringList("hath.drops").forEach((e) -> hathDrops.add(Material.valueOf(e)));
-        plugin.getConfig().getStringList("ice_warriors.drops").forEach((i) -> iceWarriorDrops.add(Material.valueOf(i)));
-        plugin.getConfig().getStringList("sontarans.drops").forEach((o) -> sontaranDrops.add(Material.valueOf(o)));
-        plugin.getConfig().getStringList("silent.drops").forEach((m) -> silentDrops.add(Material.valueOf(m)));
-        plugin.getConfig().getStringList("silurians.drops").forEach((s) -> silurianDrops.add(Material.valueOf(s)));
-        plugin.getConfig().getStringList("vashta_nerada.drops").forEach((v) -> vashtaNeradaDrops.add(Material.valueOf(v)));
-        plugin.getConfig().getStringList("zygons.drops").forEach((z) -> zygonDrops.add(Material.valueOf(z)));
+        plugin.getConfig().getStringList("angels.drops").forEach((weepingAngel) -> weepingAngelDrops.add(Material.valueOf(weepingAngel)));
+        plugin.getConfig().getStringList("cybermen.drops").forEach((cyberman) -> cybermanDrops.add(Material.valueOf(cyberman)));
+        plugin.getConfig().getStringList("daleks.drops").forEach((dalek) -> dalekDrops.add(Material.valueOf(dalek)));
+        plugin.getConfig().getStringList("empty_child.drops").forEach((emptyChild) -> emptyChildDrops.add(Material.valueOf(emptyChild)));
+        plugin.getConfig().getStringList("hath.drops").forEach((hath) -> hathDrops.add(Material.valueOf(hath)));
+        plugin.getConfig().getStringList("ice_warriors.drops").forEach((iceWarrior) -> iceWarriorDrops.add(Material.valueOf(iceWarrior)));
+        plugin.getConfig().getStringList("sontarans.drops").forEach((sontaran) -> sontaranDrops.add(Material.valueOf(sontaran)));
+        plugin.getConfig().getStringList("silent.drops").forEach((silent) -> silentDrops.add(Material.valueOf(silent)));
+        plugin.getConfig().getStringList("silurians.drops").forEach((silurian) -> silurianDrops.add(Material.valueOf(silurian)));
+        plugin.getConfig().getStringList("vashta_nerada.drops").forEach((vashtaNerada) -> vashtaNeradaDrops.add(Material.valueOf(vashtaNerada)));
+        plugin.getConfig().getStringList("zygons.drops").forEach((zygon) -> zygonDrops.add(Material.valueOf(zygon)));
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
@@ -260,11 +260,11 @@ public class Death implements Listener {
                 Entity attacker = (((EntityDamageByEntityEvent) damage).getDamager());
                 PersistentDataContainer attackerPersistentDataContainer = attacker.getPersistentDataContainer();
                 if (attacker instanceof Zombie && attackerPersistentDataContainer.has(TARDISWeepingAngelsPlugin.cyberman, PersistentDataType.INTEGER)) {
-                    Location loc = event.getEntity().getLocation();
-                    LivingEntity livingEntity = (LivingEntity) loc.getWorld().spawnEntity(loc, EntityType.ZOMBIE);
+                    Location location = event.getEntity().getLocation();
+                    LivingEntity livingEntity = (LivingEntity) location.getWorld().spawnEntity(location, EntityType.ZOMBIE);
                     livingEntity.setSilent(true);
                     CybermanEquipment.set(livingEntity, false);
-                    plugin.getServer().getPluginManager().callEvent(new TARDISWeepingAngelSpawnEvent(livingEntity, EntityType.ZOMBIE, Monster.CYBERMAN, loc));
+                    plugin.getServer().getPluginManager().callEvent(new TARDISWeepingAngelSpawnEvent(livingEntity, EntityType.ZOMBIE, Monster.CYBERMAN, location));
                     if (event.getEntity() instanceof Player) {
                         String name = event.getEntity().getName();
                         livingEntity.setCustomName(name);

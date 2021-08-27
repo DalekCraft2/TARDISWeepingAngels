@@ -47,8 +47,7 @@ public class ArmourStandEquipment {
             case TOCLAFANE -> new ItemStack(Material.GUNPOWDER, 1);
             case VASHTA_NERADA -> new ItemStack(Material.BOOK, 1);
             case WEEPING_ANGEL -> new ItemStack(Material.BRICK, 1);
-            default -> // ZYGON
-                    new ItemStack(Material.PAINTING, 1);
+            case ZYGON -> new ItemStack(Material.PAINTING, 1);
         };
         ItemMeta headMeta = head.getItemMeta();
         headMeta.setDisplayName(monster.getName() + " Head");

@@ -42,21 +42,21 @@ public class OodWalkRunnable implements Runnable {
     @Override
     public void run() {
         Location location = armorStand.getLocation();
-        Vector pos = location.toVector(); // TODO Figure out whether this is "position" or "pose".
+        Vector position = location.toVector();
         if (player != null) {
             EntityEquipment entityEquipment = armorStand.getEquipment();
             if (entityEquipment != null) {
                 ItemStack head = entityEquipment.getHelmet();
-                ItemMeta itemMeta = head.getItemMeta();
-                int colour = itemMeta.getCustomModelData() - (itemMeta.getCustomModelData() % 10);
-                itemMeta.setCustomModelData(walkCycle[i] + colour);
-                head.setItemMeta(itemMeta);
+                ItemMeta headMeta = head.getItemMeta();
+                int colour = headMeta.getCustomModelData() - (headMeta.getCustomModelData() % 10);
+                headMeta.setCustomModelData(walkCycle[i] + colour);
+                head.setItemMeta(headMeta);
                 entityEquipment.setHelmet(head);
                 BoundingBox armorStandBoundingBox = armorStand.getBoundingBox();
                 BoundingBox playerBoundingBox = player.getBoundingBox().expand(1.0);
                 if (!armorStandBoundingBox.overlaps(playerBoundingBox) && location.getWorld() == player.getWorld()) {
                     Vector target = player.getLocation().toVector();
-                    Vector velocity = target.subtract(pos);
+                    Vector velocity = target.subtract(position);
                     armorStand.setVelocity(velocity.normalize().multiply(speed));
                     location.setDirection(velocity);
                     armorStand.setRotation(location.getYaw(), location.getPitch());

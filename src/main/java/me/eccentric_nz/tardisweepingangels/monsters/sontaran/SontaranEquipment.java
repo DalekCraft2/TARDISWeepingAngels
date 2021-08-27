@@ -29,45 +29,45 @@ import org.bukkit.persistence.PersistentDataType;
 public class SontaranEquipment {
 
     public static void set(LivingEntity livingEntity, boolean disguise) {
-        ItemStack helmet = new ItemStack(Material.POTATO, 1);
+        ItemStack head = new ItemStack(Material.POTATO, 1);
         ItemStack arm = new ItemStack(Material.POTATO, 1);
-        ItemStack chestplate = new ItemStack(Material.GOLDEN_CHESTPLATE, 1);
-        ItemStack leggings = new ItemStack(Material.GOLDEN_LEGGINGS, 1);
-        ItemMeta headMeta = helmet.getItemMeta();
+        ItemStack chest = new ItemStack(Material.GOLDEN_CHESTPLATE, 1);
+        ItemStack legs = new ItemStack(Material.GOLDEN_LEGGINGS, 1);
+        ItemMeta headMeta = head.getItemMeta();
         headMeta.setDisplayName("Sontaran Head");
         headMeta.setCustomModelData(4);
-        helmet.setItemMeta(headMeta);
+        head.setItemMeta(headMeta);
         ItemMeta armMeta = arm.getItemMeta();
         armMeta.setDisplayName("Sontaran Arm");
         armMeta.setCustomModelData(2);
         arm.setItemMeta(armMeta);
-        ItemMeta chestMeta = chestplate.getItemMeta();
+        ItemMeta chestMeta = chest.getItemMeta();
         chestMeta.setDisplayName("Sontaran Chest");
         if (disguise) {
-            Damageable damageable = (Damageable) chestMeta;
-            damageable.setDamage(235);
+            Damageable chestDamage = (Damageable) chestMeta;
+            chestDamage.setDamage(235);
         }
-        chestplate.setItemMeta(chestMeta);
-        ItemMeta legMeta = leggings.getItemMeta();
-        legMeta.setDisplayName("Sontaran Legs");
+        chest.setItemMeta(chestMeta);
+        ItemMeta legsMeta = legs.getItemMeta();
+        legsMeta.setDisplayName("Sontaran Legs");
         if (disguise) {
-            Damageable legDamage = (Damageable) legMeta;
-            legDamage.setDamage(220);
+            Damageable legsDamage = (Damageable) legsMeta;
+            legsDamage.setDamage(220);
         }
-        leggings.setItemMeta(legMeta);
+        legs.setItemMeta(legsMeta);
 
         EntityEquipment entityEquipment = livingEntity.getEquipment();
-        entityEquipment.setChestplate(chestplate);
-        entityEquipment.setLeggings(leggings);
+        entityEquipment.setChestplate(chest);
+        entityEquipment.setLeggings(legs);
         entityEquipment.setBoots(null);
-        entityEquipment.setHelmet(helmet);
+        entityEquipment.setHelmet(head);
         if (!disguise) {
-            ItemStack sword = new ItemStack(Material.POTATO, 1);
-            ItemMeta weaponMeta = sword.getItemMeta();
+            ItemStack weapon = new ItemStack(Material.POTATO, 1);
+            ItemMeta weaponMeta = weapon.getItemMeta();
             weaponMeta.setDisplayName("Sontaran Weapon");
             weaponMeta.setCustomModelData(3);
-            sword.setItemMeta(weaponMeta);
-            entityEquipment.setItemInMainHand(sword);
+            weapon.setItemMeta(weaponMeta);
+            entityEquipment.setItemInMainHand(weapon);
             entityEquipment.setItemInOffHand(arm);
             entityEquipment.setItemInMainHandDropChance(0F);
             entityEquipment.setItemInOffHandDropChance(0F);

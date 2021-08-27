@@ -56,10 +56,10 @@ public class AdminCommand {
             sender.sendMessage(plugin.getMessagePrefix() + "Could not find a world with that name!");
             return true;
         }
-        int m;
+        int maxSpawnRate;
         try {
-            m = Integer.parseInt(args[3]);
-        } catch (NumberFormatException numberFormatException) {
+            maxSpawnRate = Integer.parseInt(args[3]);
+        } catch (NumberFormatException e) {
             sender.sendMessage(plugin.getMessagePrefix() + "Last argument must be a number!");
             return false;
         }
@@ -67,24 +67,24 @@ public class AdminCommand {
         Monster monster;
         try {
             monster = Monster.valueOf(which);
-            plugin.getConfig().set(types.get(monster) + ".worlds." + args[2], m);
-        } catch (IllegalArgumentException illegalArgumentException) {
+            plugin.getConfig().set(types.get(monster) + ".worlds." + args[2], maxSpawnRate);
+        } catch (IllegalArgumentException e) {
             if (which.equals("all")) {
-                plugin.getConfig().set("angels.worlds." + args[2], m);
-                plugin.getConfig().set("cybermen.worlds." + args[2], m);
-                plugin.getConfig().set("daleks.worlds." + args[2], m);
-                plugin.getConfig().set("empty_child.worlds." + args[2], m);
-                plugin.getConfig().set("hath.worlds." + args[2], m);
-                plugin.getConfig().set("ice_warriors.worlds." + args[2], m);
-                plugin.getConfig().set("silence.worlds." + args[2], m);
-                plugin.getConfig().set("sontarans.worlds." + args[2], m);
+                plugin.getConfig().set("angels.worlds." + args[2], maxSpawnRate);
+                plugin.getConfig().set("cybermen.worlds." + args[2], maxSpawnRate);
+                plugin.getConfig().set("daleks.worlds." + args[2], maxSpawnRate);
+                plugin.getConfig().set("empty_child.worlds." + args[2], maxSpawnRate);
+                plugin.getConfig().set("hath.worlds." + args[2], maxSpawnRate);
+                plugin.getConfig().set("ice_warriors.worlds." + args[2], maxSpawnRate);
+                plugin.getConfig().set("silence.worlds." + args[2], maxSpawnRate);
+                plugin.getConfig().set("sontarans.worlds." + args[2], maxSpawnRate);
                 plugin.getConfig().set("ood.worlds." + args[2], true);
-                plugin.getConfig().set("judoon.worlds." + args[2], m);
-                plugin.getConfig().set("toclafane.worlds." + args[2], m);
+                plugin.getConfig().set("judoon.worlds." + args[2], maxSpawnRate);
+                plugin.getConfig().set("toclafane.worlds." + args[2], maxSpawnRate);
                 plugin.getConfig().set("k9.worlds." + args[2], true);
-                plugin.getConfig().set("silurians.worlds." + args[2], m);
-                plugin.getConfig().set("vashta_nerada.worlds." + args[2], m);
-                plugin.getConfig().set("zygons.worlds." + args[2], m);
+                plugin.getConfig().set("silurians.worlds." + args[2], maxSpawnRate);
+                plugin.getConfig().set("vashta_nerada.worlds." + args[2], maxSpawnRate);
+                plugin.getConfig().set("zygons.worlds." + args[2], maxSpawnRate);
             } else {
                 sender.sendMessage(plugin.getMessagePrefix() + "Invalid monster type!");
                 return true;

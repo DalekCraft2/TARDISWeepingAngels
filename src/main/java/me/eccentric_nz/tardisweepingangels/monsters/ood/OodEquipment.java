@@ -60,10 +60,10 @@ public class OodEquipment {
             armMeta.setCustomModelData(3 + colour);
             arm.setItemMeta(armMeta);
             ItemStack brainArm = new ItemStack(Material.ROTTEN_FLESH);
-            ItemMeta brainMeta = brainArm.getItemMeta();
-            brainMeta.setDisplayName("Ood Brain Arm");
-            brainMeta.setCustomModelData(4 + colour);
-            brainArm.setItemMeta(brainMeta);
+            ItemMeta brainArmMeta = brainArm.getItemMeta();
+            brainArmMeta.setDisplayName("Ood Brain Arm");
+            brainArmMeta.setCustomModelData(4 + colour);
+            brainArm.setItemMeta(brainArmMeta);
             EntityEquipment entityEquipment = armorStand.getEquipment();
             entityEquipment.setHelmet(head);
             entityEquipment.setItemInMainHand(brainArm);

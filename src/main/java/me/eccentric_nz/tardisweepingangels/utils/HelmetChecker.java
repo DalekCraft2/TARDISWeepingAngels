@@ -62,49 +62,49 @@ public class HelmetChecker implements Listener {
                 }
             }
             // check chestplate
-            ItemStack chestplate = entityEquipment.getChestplate();
-            if (chestplate.hasItemMeta() && chestplate.getItemMeta().hasDisplayName()) {
-                String displayName = chestplate.getItemMeta().getDisplayName();
+            ItemStack chest = entityEquipment.getChestplate();
+            if (chest.hasItemMeta() && chest.getItemMeta().hasDisplayName()) {
+                String displayName = chest.getItemMeta().getDisplayName();
                 if (displayName.startsWith("Cyberman") || displayName.startsWith("Ice") || displayName.startsWith("Silurian") || displayName.startsWith("Sontaran") || displayName.startsWith("Vashta") || displayName.startsWith("Zygon")) {
                     event.setCancelled(true);
                     // restore head
-                    ItemStack helmet;
+                    ItemStack head;
                     String name;
                     Monster monster;
                     if (displayName.startsWith("Cyberman")) {
-                        helmet = new ItemStack(Material.IRON_INGOT, 1);
+                        head = new ItemStack(Material.IRON_INGOT, 1);
                         name = "Cyberman Head";
                         monster = Monster.CYBERMAN;
                     } else if (displayName.startsWith("Hath")) {
-                        helmet = new ItemStack(Material.PUFFERFISH, 1);
+                        head = new ItemStack(Material.PUFFERFISH, 1);
                         name = "Hath Head";
                         monster = Monster.HATH;
                     } else if (displayName.startsWith("Ice")) {
-                        helmet = new ItemStack(Material.SNOWBALL, 1);
+                        head = new ItemStack(Material.SNOWBALL, 1);
                         name = "Ice Warrior Head";
                         monster = Monster.ICE_WARRIOR;
                     } else if (displayName.startsWith("Silurian")) {
-                        helmet = new ItemStack(Material.FEATHER, 1);
+                        head = new ItemStack(Material.FEATHER, 1);
                         name = "Silurian Head";
                         monster = Monster.SILURIAN;
                     } else if (displayName.startsWith("Sontaran")) {
-                        helmet = new ItemStack(Material.POTATO, 1);
+                        head = new ItemStack(Material.POTATO, 1);
                         name = "Sontaran Head";
                         monster = Monster.SONTARAN;
                     } else if (displayName.startsWith("Vashta")) {
-                        helmet = new ItemStack(Material.BOOK, 1);
+                        head = new ItemStack(Material.BOOK, 1);
                         name = "Vashta Nerada Head";
                         monster = Monster.VASHTA_NERADA;
                     } else {
-                        helmet = new ItemStack(Material.PAINTING, 1);
+                        head = new ItemStack(Material.PAINTING, 1);
                         name = "Zygon Head";
                         monster = Monster.ZYGON;
                     }
-                    ItemMeta headMeta = helmet.getItemMeta();
+                    ItemMeta headMeta = head.getItemMeta();
                     headMeta.setDisplayName(name);
                     headMeta.setCustomModelData(monster.getCustomModelData());
-                    helmet.setItemMeta(headMeta);
-                    entityEquipment.setHelmet(helmet);
+                    head.setItemMeta(headMeta);
+                    entityEquipment.setHelmet(head);
                     entityEquipment.setHelmetDropChance(0F);
                 }
             }

@@ -46,9 +46,9 @@ public class OodListener implements Listener {
                     EntityEquipment entityEquipment = armorStand.getEquipment();
                     if (entityEquipment != null) {
                         ItemStack head = entityEquipment.getHelmet();
-                        ItemMeta itemMeta = head.getItemMeta();
+                        ItemMeta headMeta = head.getItemMeta();
                         int rage = armorStand.getPersistentDataContainer().get(TARDISWeepingAngelsPlugin.ood, PersistentDataType.INTEGER);
-                        int customModelData = itemMeta.getCustomModelData();
+                        int customModelData = headMeta.getCustomModelData();
                         if (rage == 1) {
                             customModelData -= 100;
                             rage = 0;
@@ -56,8 +56,8 @@ public class OodListener implements Listener {
                             customModelData += 100;
                             rage = 1;
                         }
-                        itemMeta.setCustomModelData(customModelData);
-                        head.setItemMeta(itemMeta);
+                        headMeta.setCustomModelData(customModelData);
+                        head.setItemMeta(headMeta);
                         entityEquipment.setHelmet(head);
                         armorStand.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.ood, PersistentDataType.INTEGER, rage);
                     }

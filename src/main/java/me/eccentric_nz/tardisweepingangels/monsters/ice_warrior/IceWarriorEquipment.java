@@ -29,45 +29,45 @@ import org.bukkit.persistence.PersistentDataType;
 public class IceWarriorEquipment {
 
     public static void set(LivingEntity livingEntity, boolean disguise) {
-        ItemStack helmet = new ItemStack(Material.SNOWBALL, 1);
-        ItemStack chestplate = new ItemStack(Material.IRON_CHESTPLATE, 1);
-        ItemStack leggings = new ItemStack(Material.IRON_LEGGINGS, 1);
+        ItemStack head = new ItemStack(Material.SNOWBALL, 1);
+        ItemStack chest = new ItemStack(Material.IRON_CHESTPLATE, 1);
+        ItemStack legs = new ItemStack(Material.IRON_LEGGINGS, 1);
         ItemStack arm = new ItemStack(Material.SNOWBALL, 1);
-        ItemStack weapon = new ItemStack(Material.SNOWBALL, 1);
-        ItemMeta headMeta = helmet.getItemMeta();
+        ItemStack dagger = new ItemStack(Material.SNOWBALL, 1);
+        ItemMeta headMeta = head.getItemMeta();
         headMeta.setDisplayName("Ice Warrior Head");
         headMeta.setCustomModelData(4);
-        helmet.setItemMeta(headMeta);
+        head.setItemMeta(headMeta);
         ItemMeta armMeta = arm.getItemMeta();
         armMeta.setDisplayName("Ice Warrior Arm");
         armMeta.setCustomModelData(2);
         arm.setItemMeta(armMeta);
-        ItemMeta chestMeta = chestplate.getItemMeta();
+        ItemMeta chestMeta = chest.getItemMeta();
         chestMeta.setDisplayName("Ice Warrior Chest");
         if (disguise) {
-            Damageable damageable = (Damageable) chestMeta;
-            damageable.setDamage(235);
+            Damageable chestDamage = (Damageable) chestMeta;
+            chestDamage.setDamage(235);
         }
-        chestplate.setItemMeta(chestMeta);
-        ItemMeta legMeta = leggings.getItemMeta();
-        legMeta.setDisplayName("Ice Warrior Legs");
+        chest.setItemMeta(chestMeta);
+        ItemMeta legsMeta = legs.getItemMeta();
+        legsMeta.setDisplayName("Ice Warrior Legs");
         if (disguise) {
-            Damageable legDamage = (Damageable) legMeta;
-            legDamage.setDamage(220);
+            Damageable legsDamage = (Damageable) legsMeta;
+            legsDamage.setDamage(220);
         }
-        leggings.setItemMeta(legMeta);
+        legs.setItemMeta(legsMeta);
 
         EntityEquipment entityEquipment = livingEntity.getEquipment();
-        entityEquipment.setHelmet(helmet);
-        entityEquipment.setChestplate(chestplate);
-        entityEquipment.setLeggings(leggings);
+        entityEquipment.setHelmet(head);
+        entityEquipment.setChestplate(chest);
+        entityEquipment.setLeggings(legs);
         entityEquipment.setBoots(null);
         if (!disguise) {
-            ItemMeta sword = weapon.getItemMeta();
-            sword.setDisplayName("Ice Warrior Dagger");
-            sword.setCustomModelData(3);
-            weapon.setItemMeta(sword);
-            entityEquipment.setItemInMainHand(weapon);
+            ItemMeta daggerMeta = dagger.getItemMeta();
+            daggerMeta.setDisplayName("Ice Warrior Dagger");
+            daggerMeta.setCustomModelData(3);
+            dagger.setItemMeta(daggerMeta);
+            entityEquipment.setItemInMainHand(dagger);
             entityEquipment.setItemInOffHand(arm);
             entityEquipment.setItemInMainHandDropChance(0F);
             entityEquipment.setItemInOffHandDropChance(0F);

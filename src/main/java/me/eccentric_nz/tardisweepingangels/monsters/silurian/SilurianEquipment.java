@@ -29,44 +29,44 @@ import org.bukkit.persistence.PersistentDataType;
 public class SilurianEquipment {
 
     public static void set(LivingEntity livingEntity, boolean disguise) {
-        ItemStack helmet = new ItemStack(Material.FEATHER, 1);
+        ItemStack head = new ItemStack(Material.FEATHER, 1);
         ItemStack arm = new ItemStack(Material.BOW, 1);
-        ItemStack chestplate = new ItemStack(Material.GOLDEN_CHESTPLATE, 1);
-        ItemStack leggings = new ItemStack(Material.GOLDEN_LEGGINGS, 1);
-        ItemMeta headMeta = helmet.getItemMeta();
+        ItemStack chest = new ItemStack(Material.GOLDEN_CHESTPLATE, 1);
+        ItemStack legs = new ItemStack(Material.GOLDEN_LEGGINGS, 1);
+        ItemMeta headMeta = head.getItemMeta();
         headMeta.setDisplayName("Silurian Head");
         headMeta.setCustomModelData(3);
-        helmet.setItemMeta(headMeta);
+        head.setItemMeta(headMeta);
         ItemMeta armMeta = arm.getItemMeta();
         armMeta.setDisplayName("Silurian Arm");
         armMeta.setCustomModelData(2);
         arm.setItemMeta(armMeta);
-        ItemMeta chestMeta = chestplate.getItemMeta();
+        ItemMeta chestMeta = chest.getItemMeta();
         chestMeta.setDisplayName("Silurian Chest");
         if (disguise) {
             Damageable chestDamage = (Damageable) chestMeta;
             chestDamage.setDamage(235);
         }
-        chestplate.setItemMeta(chestMeta);
-        ItemMeta legMeta = leggings.getItemMeta();
-        legMeta.setDisplayName("Silurian Legs");
+        chest.setItemMeta(chestMeta);
+        ItemMeta legsMeta = legs.getItemMeta();
+        legsMeta.setDisplayName("Silurian Legs");
         if (disguise) {
-            Damageable legDamage = (Damageable) legMeta;
-            legDamage.setDamage(220);
+            Damageable legsDamage = (Damageable) legsMeta;
+            legsDamage.setDamage(220);
         }
-        leggings.setItemMeta(legMeta);
+        legs.setItemMeta(legsMeta);
 
         EntityEquipment entityEquipment = livingEntity.getEquipment();
-        entityEquipment.setChestplate(chestplate);
-        entityEquipment.setLeggings(leggings);
+        entityEquipment.setChestplate(chest);
+        entityEquipment.setLeggings(legs);
         entityEquipment.setBoots(null);
-        entityEquipment.setHelmet(helmet);
+        entityEquipment.setHelmet(head);
         if (!disguise) {
             ItemStack bow = new ItemStack(Material.BOW, 1);
-            ItemMeta weaponMeta = bow.getItemMeta();
-            weaponMeta.setDisplayName("Silurian Weapon");
-            weaponMeta.setCustomModelData(3);
-            bow.setItemMeta(weaponMeta);
+            ItemMeta bowMeta = bow.getItemMeta();
+            bowMeta.setDisplayName("Silurian Weapon");
+            bowMeta.setCustomModelData(3);
+            bow.setItemMeta(bowMeta);
             entityEquipment.setItemInMainHand(bow);
             entityEquipment.setItemInOffHand(arm);
             entityEquipment.setItemInMainHandDropChance(0F);

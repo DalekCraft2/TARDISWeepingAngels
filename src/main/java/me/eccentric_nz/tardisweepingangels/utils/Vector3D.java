@@ -22,7 +22,7 @@ package me.eccentric_nz.tardisweepingangels.utils;
 import org.bukkit.Location;
 import org.bukkit.util.Vector;
 
-public class Vector3D {
+public class Vector3D { // TODO Make this extend the Bukkit Vector.
 
     /**
      * Represents the null (0, 0, 0) origin.

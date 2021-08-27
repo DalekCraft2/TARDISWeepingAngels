@@ -54,10 +54,10 @@ public class JudoonEquipment {
             armMeta.setCustomModelData(3);
             arm.setItemMeta(armMeta);
             ItemStack weaponArm = new ItemStack(Material.YELLOW_DYE);
-            ItemMeta weaponMeta = weaponArm.getItemMeta();
-            weaponMeta.setDisplayName("Judoon Weapon Arm");
-            weaponMeta.setCustomModelData(4);
-            weaponArm.setItemMeta(weaponMeta);
+            ItemMeta weaponArmMeta = weaponArm.getItemMeta();
+            weaponArmMeta.setDisplayName("Judoon Weapon Arm");
+            weaponArmMeta.setCustomModelData(4);
+            weaponArm.setItemMeta(weaponArmMeta);
             EntityEquipment entityEquipment = armorStand.getEquipment();
             entityEquipment.setHelmet(head);
             entityEquipment.setItemInMainHand(weaponArm);

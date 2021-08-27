@@ -29,36 +29,36 @@ import org.bukkit.persistence.PersistentDataType;
 public class CybermanEquipment {
 
     public static void set(LivingEntity livingEntity, boolean disguise) {
-        ItemStack helmet = new ItemStack(Material.IRON_INGOT, 1);
+        ItemStack head = new ItemStack(Material.IRON_INGOT, 1);
         ItemStack arm = new ItemStack(Material.IRON_INGOT, 1);
-        ItemStack chestplate = new ItemStack(Material.IRON_CHESTPLATE, 1);
-        ItemStack leggings = new ItemStack(Material.IRON_LEGGINGS, 1);
-        ItemMeta headMeta = helmet.getItemMeta();
+        ItemStack chest = new ItemStack(Material.IRON_CHESTPLATE, 1);
+        ItemStack legs = new ItemStack(Material.IRON_LEGGINGS, 1);
+        ItemMeta headMeta = head.getItemMeta();
         headMeta.setDisplayName("Cyberman Head");
         headMeta.setCustomModelData(3);
-        helmet.setItemMeta(headMeta);
+        head.setItemMeta(headMeta);
         ItemMeta armMeta = arm.getItemMeta();
         armMeta.setDisplayName("Cyberman Arm");
         armMeta.setCustomModelData(2);
         arm.setItemMeta(armMeta);
-        ItemMeta chestMeta = chestplate.getItemMeta();
+        ItemMeta chestMeta = chest.getItemMeta();
         chestMeta.setDisplayName("Cyberman Chest");
         if (disguise) {
-            Damageable damageable = (Damageable) chestMeta;
-            damageable.setDamage(235);
+            Damageable chestDamage = (Damageable) chestMeta;
+            chestDamage.setDamage(235);
         }
-        chestplate.setItemMeta(chestMeta);
-        ItemMeta legMeta = leggings.getItemMeta();
-        legMeta.setDisplayName("Cyberman Legs");
+        chest.setItemMeta(chestMeta);
+        ItemMeta legsMeta = legs.getItemMeta();
+        legsMeta.setDisplayName("Cyberman Legs");
         if (disguise) {
-            Damageable legDamage = (Damageable) legMeta;
-            legDamage.setDamage(220);
+            Damageable legsDamage = (Damageable) legsMeta;
+            legsDamage.setDamage(220);
         }
-        leggings.setItemMeta(legMeta);
+        legs.setItemMeta(legsMeta);
         EntityEquipment entityEquipment = livingEntity.getEquipment();
-        entityEquipment.setHelmet(helmet);
-        entityEquipment.setChestplate(chestplate);
-        entityEquipment.setLeggings(leggings);
+        entityEquipment.setHelmet(head);
+        entityEquipment.setChestplate(chest);
+        entityEquipment.setLeggings(legs);
         entityEquipment.setBoots(null);
         if (!disguise) {
             entityEquipment.setItemInMainHandDropChance(0F);

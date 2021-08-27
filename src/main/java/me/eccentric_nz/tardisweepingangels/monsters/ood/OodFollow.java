@@ -24,17 +24,17 @@ import java.util.UUID;
 
 public class OodFollow {
 
-    public static void run(TARDISWeepingAngelsPlugin plugin, Player player, ArmorStand stand, String[] args) {
+    public static void run(TARDISWeepingAngelsPlugin plugin, Player player, ArmorStand armorStand, String[] args) {
         if (!player.hasPermission("tardisweepingangels.follow.ood")) {
             player.sendMessage(plugin.getMessagePrefix() + "You don't have permission to make an Ood follow you!");
             return;
         }
-        if (stand.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid)) {
+        if (armorStand.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid)) {
             UUID uuid = player.getUniqueId();
-            UUID oodId = stand.getPersistentDataContainer().get(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid);
+            UUID oodId = armorStand.getPersistentDataContainer().get(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid);
             if (oodId.equals(uuid)) {
                 double speed = (args.length == 2) ? Math.min(Double.parseDouble(args[1]) / 100.0d, 0.5d) : 0.15d;
-                int taskId = plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new OodWalkRunnable(stand, speed, player), 2L, 2L);
+                int taskId = plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new OodWalkRunnable(armorStand, speed, player), 2L, 2L);
                 plugin.getFollowTasks().put(uuid, taskId);
             } else {
                 player.sendMessage(plugin.getMessagePrefix() + "That is not your Ood!");

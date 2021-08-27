@@ -74,13 +74,13 @@ public class K9Listener implements Listener {
         if (!player.hasPermission("tardisweepingangels.k9")) {
             return;
         }
-        Entity ent = event.getRightClicked();
-        if (ent.getType().equals(EntityType.ARMOR_STAND) && ent.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.k9, PersistentDataType.INTEGER)) {
-            if (ent.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid)) {
+        Entity entity = event.getRightClicked();
+        if (entity.getType().equals(EntityType.ARMOR_STAND) && entity.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.k9, PersistentDataType.INTEGER)) {
+            if (entity.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid)) {
                 UUID uuid = player.getUniqueId();
-                UUID k9Id = ent.getPersistentDataContainer().get(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid);
+                UUID k9Id = entity.getPersistentDataContainer().get(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid);
                 if (k9Id.equals(uuid)) {
-                    player.playSound(ent.getLocation(), "k9", 1.0f, 1.0f);
+                    player.playSound(entity.getLocation(), "k9", 1.0f, 1.0f);
                     if (plugin.getFollowTasks().containsKey(uuid)) {
                         // stay
                         plugin.getServer().getScheduler().cancelTask(plugin.getFollowTasks().get(uuid));
@@ -88,7 +88,7 @@ public class K9Listener implements Listener {
                     } else {
                         // follow
                         if (player.hasPermission("tardisweepingangels.follow.k9")) {
-                            int taskId = plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new K9WalkRunnable((ArmorStand) ent, 0.15d, player), 2L, 2L);
+                            int taskId = plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new K9WalkRunnable((ArmorStand) entity, 0.15d, player), 2L, 2L);
                             plugin.getFollowTasks().put(uuid, taskId);
                         }
                     }

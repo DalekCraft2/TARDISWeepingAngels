@@ -22,7 +22,7 @@ import org.bukkit.Material;
 /**
  * @author eccentric_nz
  */
-public enum Monster {
+public enum Monster { // TODO Try to make this plugin not have bits of code for each monster in multiple classes. Maybe make an interface for all monsters and have a class for each monster, which implements it.
 
     CYBERMAN("Cyberman", "cyberman", 2, 4, Material.IRON_INGOT),
     DALEK("Dalek", "dalek", 3, 10000005, Material.SLIME_BALL, 10000004),

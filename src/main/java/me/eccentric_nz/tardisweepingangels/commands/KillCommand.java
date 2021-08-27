@@ -56,7 +56,7 @@ public class KillCommand {
             return true;
         }
         switch (monster) {
-            case WEEPING_ANGEL:
+            case WEEPING_ANGEL -> {
                 Collection<Skeleton> weepingAngels = world.getEntitiesByClass(Skeleton.class);
                 for (Skeleton weepingAngel : weepingAngels) {
                     EntityEquipment entityEquipment = weepingAngel.getEquipment();
@@ -65,8 +65,8 @@ public class KillCommand {
                         count++;
                     }
                 }
-                break;
-            case CYBERMAN:
+            }
+            case CYBERMAN -> {
                 what = "Cybermen";
                 Collection<Zombie> cybermen = world.getEntitiesByClass(Zombie.class);
                 for (Zombie cyberman : cybermen) {
@@ -79,8 +79,8 @@ public class KillCommand {
                         }
                     }
                 }
-                break;
-            case DALEK:
+            }
+            case DALEK -> {
                 what = "Daleks";
                 Collection<Skeleton> daleks = world.getEntitiesByClass(Skeleton.class);
                 for (Skeleton dalek : daleks) {
@@ -93,8 +93,8 @@ public class KillCommand {
                         }
                     }
                 }
-                break;
-            case EMPTY_CHILD:
+            }
+            case EMPTY_CHILD -> {
                 what = "Empty Children";
                 Collection<Zombie> emptyChildren = world.getEntitiesByClass(Zombie.class);
                 for (Zombie emptyChild : emptyChildren) {
@@ -107,8 +107,8 @@ public class KillCommand {
                         }
                     }
                 }
-                break;
-            case HATH:
+            }
+            case HATH -> {
                 what = "Hath";
                 Collection<PigZombie> haths = world.getEntitiesByClass(PigZombie.class);
                 for (Zombie hath : haths) {
@@ -121,9 +121,8 @@ public class KillCommand {
                         }
                     }
                 }
-                break;
-            case ICE_WARRIOR:
-            case STRAX:
+            }
+            case ICE_WARRIOR, STRAX -> {
                 Collection<PigZombie> warriors = world.getEntitiesByClass(PigZombie.class);
                 for (PigZombie warrior : warriors) {
                     EntityEquipment entityEquipment = warrior.getEquipment();
@@ -144,8 +143,8 @@ public class KillCommand {
                         }
                     }
                 }
-                break;
-            case SILURIAN:
+            }
+            case SILURIAN -> {
                 what = "Silurians";
                 Collection<Skeleton> silurians = world.getEntitiesByClass(Skeleton.class);
                 for (Skeleton silurian : silurians) {
@@ -158,8 +157,8 @@ public class KillCommand {
                         }
                     }
                 }
-                break;
-            case SILENT:
+            }
+            case SILENT -> {
                 what = "Silents";
                 Collection<Enderman> silents = world.getEntitiesByClass(Enderman.class);
                 for (Enderman silent : silents) {
@@ -169,8 +168,8 @@ public class KillCommand {
                         count++;
                     }
                 }
-                break;
-            case SONTARAN:
+            }
+            case SONTARAN -> {
                 what = "Sontarans";
                 Collection<Zombie> sontarans = world.getEntitiesByClass(Zombie.class);
                 for (Zombie sontaran : sontarans) {
@@ -183,11 +182,8 @@ public class KillCommand {
                         }
                     }
                 }
-                break;
-            case OOD:
-            case JUDOON:
-            case K9:
-            case TOCLAFANE:
+            }
+            case OOD, JUDOON, K9, TOCLAFANE -> {
                 Collection<ArmorStand> oods = world.getEntitiesByClass(ArmorStand.class);
                 for (ArmorStand ood : oods) {
                     if (ood.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.ood, PersistentDataType.INTEGER)) {
@@ -217,8 +213,8 @@ public class KillCommand {
                         count++;
                     }
                 }
-                break;
-            case VASHTA_NERADA:
+            }
+            case VASHTA_NERADA -> {
                 what = "Vashta Nerada";
                 Collection<Zombie> vashtaNeradas = world.getEntitiesByClass(Zombie.class);
                 for (Zombie vashtaNerada : vashtaNeradas) {
@@ -231,8 +227,8 @@ public class KillCommand {
                         }
                     }
                 }
-                break;
-            case ZYGON:
+            }
+            case ZYGON -> {
                 what = "Zygons";
                 Collection<Zombie> zygons = world.getEntitiesByClass(Zombie.class);
                 for (Zombie zygon : zygons) {
@@ -245,9 +241,9 @@ public class KillCommand {
                         }
                     }
                 }
-                break;
-            default:
-                break;
+            }
+            default -> {
+            }
         }
         sender.sendMessage(plugin.getMessagePrefix() + "Removed " + count + " " + what + " in " + world.getName());
         return true;

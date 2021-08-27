@@ -53,19 +53,19 @@ public class GasMask implements Listener {
             ItemStack helmet = inventory.getHelmet();
             if (helmet != null) {
                 // move it to the first free slot
-                int free_slot = inventory.firstEmpty();
-                if (free_slot != -1) {
-                    inventory.setItem(free_slot, helmet);
+                int freeSlot = inventory.firstEmpty();
+                if (freeSlot != -1) {
+                    inventory.setItem(freeSlot, helmet);
                 } else {
                     player.getWorld().dropItemNaturally(player.getLocation(), helmet);
                 }
             }
             // set helmet to pumpkin
             ItemStack gasMask = new ItemStack(Material.CARVED_PUMPKIN, 1);
-            ItemMeta itemMeta = gasMask.getItemMeta();
-            itemMeta.setDisplayName("Gas Mask");
-            itemMeta.setCustomModelData(1);
-            gasMask.setItemMeta(itemMeta);
+            ItemMeta gasMaskMeta = gasMask.getItemMeta();
+            gasMaskMeta.setDisplayName("Gas Mask");
+            gasMaskMeta.setCustomModelData(1);
+            gasMask.setItemMeta(gasMaskMeta);
             inventory.setHelmet(gasMask);
             player.updateInventory();
             // schedule delayed task
