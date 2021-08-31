@@ -52,6 +52,12 @@ import java.util.UUID;
  */
 public class MonsterEquipment implements TARDISWeepingAngelsAPI {
 
+    private final TARDISWeepingAngelsPlugin plugin;
+
+    public MonsterEquipment(TARDISWeepingAngelsPlugin plugin) {
+        this.plugin = plugin;
+    }
+
     @Override
     public void setWeepingAngelEquipment(LivingEntity livingEntity, boolean disguise) {
         AngelEquipment.set(livingEntity, disguise);
@@ -206,7 +212,7 @@ public class MonsterEquipment implements TARDISWeepingAngelsAPI {
 
     @Override
     public FollowerChecker isClaimedMonster(Entity entity, UUID uuid) {
-        return new FollowerChecker(entity, uuid);
+        return new FollowerChecker(plugin, entity, uuid);
     }
 
     @Override
@@ -217,8 +223,8 @@ public class MonsterEquipment implements TARDISWeepingAngelsAPI {
 
     @Override
     public void setFollowing(ArmorStand armorStand, Player player) {
-        int taskId = TARDISWeepingAngelsPlugin.plugin.getServer().getScheduler().scheduleSyncRepeatingTask(TARDISWeepingAngelsPlugin.plugin, new JudoonWalkRunnable(armorStand, 0.15d, player), 2L, 2L);
-        TARDISWeepingAngelsPlugin.plugin.getFollowTasks().put(player.getUniqueId(), taskId);
+        int taskId = plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, new JudoonWalkRunnable(armorStand, 0.15d, player), 2L, 2L);
+        plugin.getFollowTasks().put(player.getUniqueId(), taskId);
     }
 
     @Override

@@ -84,7 +84,8 @@ public final class TARDISWeepingAngelSpawnEvent extends Event {
     }
 
     @Override
-    public @NotNull HandlerList getHandlers() {
+    @NotNull
+    public HandlerList getHandlers() {
         return HANDLERS;
     }
 }

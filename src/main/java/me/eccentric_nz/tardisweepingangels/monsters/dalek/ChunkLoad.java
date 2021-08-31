@@ -29,6 +29,12 @@ import org.bukkit.persistence.PersistentDataType;
  */
 public class ChunkLoad implements Listener {
 
+    private final TARDISWeepingAngelsPlugin plugin;
+
+    public ChunkLoad(TARDISWeepingAngelsPlugin plugin) {
+        this.plugin = plugin;
+    }
+
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onChunkLoad(ChunkLoadEvent event) {
         for (Entity entity : event.getChunk().getEntities()) {
@@ -51,7 +57,7 @@ public class ChunkLoad implements Listener {
                 if (drowned.getEquipment().getHelmet() != null) {
                     ItemMeta itemMeta = drowned.getEquipment().getHelmet().getItemMeta();
                     if (itemMeta != null && itemMeta.hasDisplayName() && itemMeta.getDisplayName().endsWith(" Head")) {
-                        Bukkit.getScheduler().scheduleSyncDelayedTask(TARDISWeepingAngelsPlugin.plugin, drowned::remove, 2L);
+                        Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, drowned::remove, 2L);
                     }
                 }
             } else if (entity instanceof Zombie zombie) {

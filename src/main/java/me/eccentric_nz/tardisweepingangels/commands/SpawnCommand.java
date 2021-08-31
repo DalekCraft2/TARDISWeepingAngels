@@ -44,8 +44,6 @@ import org.bukkit.entity.*;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.Set;
-
 public class SpawnCommand {
 
     private final TARDISWeepingAngelsPlugin plugin;

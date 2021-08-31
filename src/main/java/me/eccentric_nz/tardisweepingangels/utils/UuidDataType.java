@@ -26,12 +26,14 @@ import java.util.UUID;
 public class UuidDataType implements PersistentDataType<byte[], UUID> {
 
     @Override
-    public @NotNull Class<byte[]> getPrimitiveType() {
+    @NotNull
+    public Class<byte[]> getPrimitiveType() {
         return byte[].class;
     }
 
     @Override
-    public @NotNull Class<UUID> getComplexType() {
+    @NotNull
+    public Class<UUID> getComplexType() {
         return UUID.class;
     }
 
@@ -44,7 +46,8 @@ public class UuidDataType implements PersistentDataType<byte[], UUID> {
     }
 
     @Override
-    public @NotNull UUID fromPrimitive(byte @NotNull [] primitive, @NotNull PersistentDataAdapterContext context) {
+    @NotNull
+    public UUID fromPrimitive(byte @NotNull [] primitive, @NotNull PersistentDataAdapterContext context) {
         ByteBuffer byteBuffer = ByteBuffer.wrap(primitive);
         long firstLong = byteBuffer.getLong();
         long secondLong = byteBuffer.getLong();

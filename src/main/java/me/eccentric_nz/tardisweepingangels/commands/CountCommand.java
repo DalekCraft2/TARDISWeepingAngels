@@ -58,20 +58,20 @@ public class CountCommand {
             Monster monster;
             try {
                 monster = Monster.valueOf(which);
-            } catch (IllegalArgumentException illegalArgumentException) {
-                sender.sendMessage(plugin.getMessagePrefix() + "Invalid monster type \"" + which + "\"! " + illegalArgumentException.getMessage());
+            } catch (IllegalArgumentException e) {
+                sender.sendMessage(plugin.getMessagePrefix() + "Invalid monster type \"" + which + "\"! " + e.getMessage());
                 return true;
             }
             switch (monster) {
-                case WEEPING_ANGEL:
+                case WEEPING_ANGEL -> {
                     Collection<Skeleton> angels = world.getEntitiesByClass(Skeleton.class);
                     for (Skeleton angel : angels) {
                         if (angel.getPersistentDataContainer().has(TARDISWeepingAngelsPlugin.weepingAngel, PersistentDataType.INTEGER)) {
                             count++;
                         }
                     }
-                    break;
-                case CYBERMAN:
+                }
+                case CYBERMAN -> {
                     what = "Cybermen";
                     Collection<Zombie> cybermen = world.getEntitiesByClass(Zombie.class);
                     for (Zombie cyberman : cybermen) {
@@ -79,8 +79,8 @@ public class CountCommand {
                             count++;
                         }
                     }
-                    break;
-                case DALEK:
+                }
+                case DALEK -> {
                     what = "Daleks";
                     Collection<Skeleton> daleks = world.getEntitiesByClass(Skeleton.class);
                     for (Skeleton dalek : daleks) {
@@ -88,8 +88,8 @@ public class CountCommand {
                             count++;
                         }
                     }
-                    break;
-                case EMPTY_CHILD:
+                }
+                case EMPTY_CHILD -> {
                     what = "Empty Children";
                     Collection<Zombie> emptyChildren = world.getEntitiesByClass(Zombie.class);
                     for (Zombie emptyChild : emptyChildren) {
@@ -97,8 +97,8 @@ public class CountCommand {
                             count++;
                         }
                     }
-                    break;
-                case HATH:
+                }
+                case HATH -> {
                     what = "Hath";
                     Collection<PigZombie> haths = world.getEntitiesByClass(PigZombie.class);
                     for (PigZombie hath : haths) {
@@ -106,8 +106,8 @@ public class CountCommand {
                             count++;
                         }
                     }
-                    break;
-                case ICE_WARRIOR:
+                }
+                case ICE_WARRIOR -> {
                     what = "Ice Warriors";
                     Collection<PigZombie> iceWarriors = world.getEntitiesByClass(PigZombie.class);
                     for (PigZombie iceWarrior : iceWarriors) {
@@ -115,8 +115,8 @@ public class CountCommand {
                             count++;
                         }
                     }
-                    break;
-                case JUDOON:
+                }
+                case JUDOON -> {
                     what = "Judoon";
                     Collection<ArmorStand> judoons = world.getEntitiesByClass(ArmorStand.class);
                     for (ArmorStand judoon : judoons) {
@@ -124,8 +124,8 @@ public class CountCommand {
                             count++;
                         }
                     }
-                    break;
-                case K9:
+                }
+                case K9 -> {
                     what = "K9";
                     Collection<ArmorStand> k9s = world.getEntitiesByClass(ArmorStand.class);
                     for (ArmorStand k9 : k9s) {
@@ -133,8 +133,8 @@ public class CountCommand {
                             count++;
                         }
                     }
-                    break;
-                case SILENT:
+                }
+                case SILENT -> {
                     what = "Silents";
                     Collection<Enderman> silents = world.getEntitiesByClass(Enderman.class);
                     for (Enderman silent : silents) {
@@ -142,8 +142,8 @@ public class CountCommand {
                             count++;
                         }
                     }
-                    break;
-                case SONTARAN:
+                }
+                case SONTARAN -> {
                     what = "Sontarans";
                     Collection<Zombie> sontarans = world.getEntitiesByClass(Zombie.class);
                     for (Zombie sontaran : sontarans) {
@@ -151,8 +151,8 @@ public class CountCommand {
                             count++;
                         }
                     }
-                    break;
-                case OOD:
+                }
+                case OOD -> {
                     what = "Ood";
                     Collection<ArmorStand> oods = world.getEntitiesByClass(ArmorStand.class);
                     for (ArmorStand ood : oods) {
@@ -160,8 +160,8 @@ public class CountCommand {
                             count++;
                         }
                     }
-                    break;
-                case SILURIAN:
+                }
+                case SILURIAN -> {
                     what = "Silurians";
                     Collection<Skeleton> silurians = world.getEntitiesByClass(Skeleton.class);
                     for (Skeleton silurian : silurians) {
@@ -169,8 +169,8 @@ public class CountCommand {
                             count++;
                         }
                     }
-                    break;
-                case VASHTA_NERADA:
+                }
+                case VASHTA_NERADA -> {
                     what = "Vashta Nerada";
                     Collection<Zombie> vashtaNeradas = world.getEntitiesByClass(Zombie.class);
                     for (Zombie vashtaNerada : vashtaNeradas) {
@@ -178,8 +178,8 @@ public class CountCommand {
                             count++;
                         }
                     }
-                    break;
-                case ZYGON:
+                }
+                case ZYGON -> {
                     what = "Zygons";
                     Collection<Zombie> zygons = world.getEntitiesByClass(Zombie.class);
                     for (Zombie zygon : zygons) {
@@ -187,9 +187,9 @@ public class CountCommand {
                             count++;
                         }
                     }
-                    break;
-                default:
-                    break;
+                }
+                default -> {
+                }
             }
         }
         sender.sendMessage(plugin.getMessagePrefix() + "There are " + count + " " + what + " in " + world.getName());

@@ -26,11 +26,13 @@ import java.util.UUID;
 
 public class FollowerChecker {
 
+    private final TARDISWeepingAngelsPlugin plugin;
     private Monster monster;
     private int persist = -1;
     private boolean following = false;
 
-    public FollowerChecker(Entity entity, UUID playerUuid) {
+    public FollowerChecker(TARDISWeepingAngelsPlugin plugin, Entity entity, UUID playerUuid) {
+        this.plugin = plugin;
         checkEntity(entity, playerUuid);
     }
 
@@ -43,10 +45,10 @@ public class FollowerChecker {
         if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid)) {
             UUID uuid = persistentDataContainer.get(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid);
             if (playerUuid.equals(uuid)) {
-                if (TARDISWeepingAngelsPlugin.plugin.getFollowTasks().containsKey(playerUuid)) {
+                if (plugin.getFollowTasks().containsKey(playerUuid)) {
                     following = true;
                     // remove following task
-                    TARDISWeepingAngelsPlugin.plugin.getFollowTasks().remove(playerUuid);
+                    plugin.getFollowTasks().remove(playerUuid);
                 }
                 if (persistentDataContainer.has(TARDISWeepingAngelsPlugin.judoon, PersistentDataType.INTEGER)) {
                     monster = Monster.JUDOON;

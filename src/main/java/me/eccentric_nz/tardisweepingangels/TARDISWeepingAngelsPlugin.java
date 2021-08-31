@@ -103,7 +103,7 @@ public class TARDISWeepingAngelsPlugin extends JavaPlugin {
         messagePrefix = ChatColor.GOLD + "[" + getDescription().getName() + "]" + ChatColor.RESET + " ";
         citizensEnabled = pluginManager.isPluginEnabled("Citizens");
         saveDefaultConfig();
-        api = new MonsterEquipment();
+        api = new MonsterEquipment(this);
         // update the config
         new Config(this).updateConfig();
         // initialise namespaced keys
@@ -134,22 +134,22 @@ public class TARDISWeepingAngelsPlugin extends JavaPlugin {
         pluginManager.registerEvents(new AntiTeleport(this), this);
         pluginManager.registerEvents(new K9Listener(this), this);
         pluginManager.registerEvents(new RainDamage(), this);
-        pluginManager.registerEvents(new ChunkLoad(), this);
+        pluginManager.registerEvents(new ChunkLoad(this), this);
         pluginManager.registerEvents(new SilurianSpawnerListener(this), this);
-        pluginManager.registerEvents(new OodListener(), this);
+        pluginManager.registerEvents(new OodListener(this), this);
         pluginManager.registerEvents(new JudoonListener(this), this);
         pluginManager.registerEvents(new ToclafaneListener(this), this);
         pluginManager.registerEvents(new ArmorStandListener(), this);
         pluginManager.registerEvents(new MonsterTranformListener(this), this);
         pluginManager.registerEvents(new MonsterTargetListener(), this);
         pluginManager.registerEvents(new MonsterHeadEquipListener(this), this);
-        if (plugin.getConfig().getInt("ood.spawn_from_villager") > 0) {
+        if (getConfig().getInt("ood.spawn_from_villager") > 0) {
             pluginManager.registerEvents(new VillagerSpawnListener(this), this);
         }
-        if (plugin.getConfig().getInt("ood.spawn_from_cured") > 0) {
+        if (getConfig().getInt("ood.spawn_from_cured") > 0) {
             pluginManager.registerEvents(new VillagerCuredListener(this), this);
         }
-        if (plugin.getConfig().getInt("toclafane.spawn_from_bee") > 0) {
+        if (getConfig().getInt("toclafane.spawn_from_bee") > 0) {
             pluginManager.registerEvents(new BeeSpawnListener(this), this);
         }
         // register command

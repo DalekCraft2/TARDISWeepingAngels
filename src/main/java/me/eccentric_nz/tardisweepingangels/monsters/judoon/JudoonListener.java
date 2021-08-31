@@ -115,7 +115,7 @@ public class JudoonListener implements Listener {
                     if (judoonId.equals(TARDISWeepingAngelsPlugin.unclaimed)) {
                         // claim the Judoon
                         armorStand.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid, player.getUniqueId());
-                        player.sendMessage(TARDISWeepingAngelsPlugin.plugin.getMessagePrefix() + "You have claimed this Judoon!");
+                        player.sendMessage(plugin.getMessagePrefix() + "You have claimed this Judoon!");
                     }
                 }
             }

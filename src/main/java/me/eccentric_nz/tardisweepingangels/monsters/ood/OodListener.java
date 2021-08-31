@@ -32,6 +32,12 @@ import java.util.UUID;
 
 public class OodListener implements Listener {
 
+    private final TARDISWeepingAngelsPlugin plugin;
+
+    public OodListener(TARDISWeepingAngelsPlugin plugin) {
+        this.plugin = plugin;
+    }
+
     @EventHandler(priority = EventPriority.NORMAL)
     public void onDamageOod(EntityDamageByEntityEvent event) {
         if (event.getEntity() instanceof ArmorStand armorStand && event.getDamager() instanceof Player player) {
@@ -64,7 +70,7 @@ public class OodListener implements Listener {
                 } else if (oodId.equals(TARDISWeepingAngelsPlugin.unclaimed)) {
                     // claim the Ood
                     armorStand.getPersistentDataContainer().set(TARDISWeepingAngelsPlugin.ownerUuid, TARDISWeepingAngelsPlugin.persistentDataTypeUuid, player.getUniqueId());
-                    player.sendMessage(TARDISWeepingAngelsPlugin.plugin.getMessagePrefix() + "You have claimed this Ood!");
+                    player.sendMessage(plugin.getMessagePrefix() + "You have claimed this Ood!");
                 }
             }
         }
